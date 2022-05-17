@@ -1,5 +1,7 @@
-export const DOMAIN_API =
-    process.env.NODE_ENV === "production" ? "https://io.bellissimo.uz/api" : "https://devio.bellissimo.uz/api"
+// export const DOMAIN_API =
+//     process.env.NODE_ENV === "production" ? "https://io.bellissimo.uz/api" : "https://devio.bellissimo.uz/api"
+
+export const DOMAIN_API = "https://io.bellissimo.uz/api"
 
 export const request = async <T>(
     url: string,
