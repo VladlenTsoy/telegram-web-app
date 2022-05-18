@@ -12,7 +12,6 @@ const MenuList: React.FC = () => {
     const dispatch = useDispatch()
     const [visible, setVisible] = useState(false)
 
-    console.log(window.Telegram.WebApp.initData)
     useEffect(() => {
         const promise = dispatch(fetchMenu())
         return () => {
@@ -33,6 +32,10 @@ const MenuList: React.FC = () => {
                         delectus dolore dolorum eligendi est et ex mollitia nemo officiis provident quas quasi
                         reprehenderit ut
                         velit voluptas.
+                        <div>-----</div>
+                        <div>
+                            {JSON.stringify(window.Telegram.WebApp.initData)}
+                        </div>
                     </div>
                 </div>
             }
