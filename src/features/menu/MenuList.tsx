@@ -13,6 +13,10 @@ const MenuList: React.FC = () => {
     const [visible, setVisible] = useState(false)
 
     useEffect(() => {
+
+        window.Telegram.WebApp.MainButton.text = "Проверка"
+        window.Telegram.WebApp.MainButton.show()
+
         const promise = dispatch(fetchMenu())
         return () => {
             promise.abort()
