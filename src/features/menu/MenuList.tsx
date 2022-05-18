@@ -33,8 +33,8 @@ const MenuList: React.FC = () => {
                         reprehenderit ut
                         velit voluptas.
                         <div>-----</div>
-                        <pre style={{fontSize: 10}}>
-                            {JSON.stringify(window.Telegram.WebApp.initData)}
+                        <pre style={{width: 200, overflow: "scroll"}}>
+                            {JSON.stringify(window.Telegram.WebApp.initData || "123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123")}
                         </pre>
                     </div>
                 </div>
