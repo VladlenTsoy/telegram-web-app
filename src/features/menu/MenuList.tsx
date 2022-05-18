@@ -33,9 +33,9 @@ const MenuList: React.FC = () => {
                         reprehenderit ut
                         velit voluptas.
                         <div>-----</div>
-                        <div>
+                        <pre style={{fontSize: 10}}>
                             {JSON.stringify(window.Telegram.WebApp.initData)}
-                        </div>
+                        </pre>
                     </div>
                 </div>
             }
