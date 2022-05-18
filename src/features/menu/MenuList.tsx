@@ -12,6 +12,7 @@ const MenuList: React.FC = () => {
     const dispatch = useDispatch()
     const [visible, setVisible] = useState(false)
 
+    console.log(window.Telegram.WebApp.initData)
     useEffect(() => {
         const promise = dispatch(fetchMenu())
         return () => {
