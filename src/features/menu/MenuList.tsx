@@ -1,75 +1,31 @@
-import React, {useEffect, useState} from "react"
-import {useDispatch} from "store"
-import {fetchMenu} from "./fetchMenu"
-import {useGetMenuLoading, useGetPizza} from "./menuSlice"
-import Loader from "components/Loader"
+import React from "react"
 import styles from "./MenuList.module.css"
-import {formatPrice} from "../../utils/formatPrice"
+import {useGetMenu} from "./menuSlice"
+import {Link} from "react-router-dom"
+
+const obj: {[key: string]: string} = {
+    "4b328756-a3c4-4362-af84-9b029ee20c57": "🍕",
+    "2a8e8de6-1e21-451d-ad46-56d2bfdd3db4": "🥤",
+    "8ba69bed-a233-4c0f-97d8-c380dbdb5a8f": "🍟",
+    "34b23388-aa3d-4a24-9820-892dc731b6eb": "🥗",
+    "f5927e50-d95c-454f-bdb8-c1b6e335d066": "🍰",
+    "0e86aeb7-d000-4253-82b4-7982bd39bd59": "⚪️"
+}
 
 const MenuList: React.FC = () => {
-    const pizza = useGetPizza()
-    const loading = useGetMenuLoading()
-    const dispatch = useDispatch()
-    const [visible, setVisible] = useState(false)
-
-    const onClickHandler = () => {
-        window.Telegram.WebApp.MainButton.text = "Добавить в корзину"
-        window.Telegram.WebApp.MainButton.show()
-        window.Telegram.WebApp.MainButton.color = "#006F4C"
-        setVisible(true)
-    }
-
-    const onCloseHandler = () => {
-        setVisible(false)
-        window.Telegram.WebApp.MainButton.hide()
-    }
-
-    useEffect(() => {
-        const promise = dispatch(fetchMenu())
-        return () => {
-            promise.abort()
-        }
-    }, [dispatch])
-
-    if (loading)
-        return <Loader />
-
-    return (
-        <div className={styles.container}>
-            {visible &&
-                <div className={styles.modal} onClick={onCloseHandler}>
-                    <div className={styles.content}>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam asperiores at blanditiis
-                        commodi,
-                        delectus dolore dolorum eligendi est et ex mollitia nemo officiis provident quas quasi
-                        reprehenderit ut
-                        velit voluptas.
-                        <div>-----</div>
-                        <pre style={{width: 200, overflow: "scroll"}}>
-                            {JSON.stringify(window.Telegram.WebApp.initData || "123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123")}
-                        </pre>
-                    </div>
-                </div>
+    const categories = useGetMenu()
+    return <div className={styles.container}>
+        <h1>Меню</h1>
+        <div className={styles.list}>
+            {
+                categories.map(category =>
+                    <Link to="/pizza-list" className={styles.card} key={category.id}>
+                        <span className={styles.icon}>{obj[category.id]}</span>{category.name}
+                    </Link>
+                )
             }
-            {pizza && pizza.map(item =>
-                <div key={item.id} className={styles.card}>
-                    <div className={styles.image}>
-                        <img src={item.image} alt={item.name} />
-                    </div>
-                    <div className={styles.details}>
-                        <div className={styles.title}>{item.translations.title["ru"]}</div>
-                        <div className={styles.desc}>{item.translations.desc["ru"]}</div>
-                        <div className={styles.priceAndButton}>
-                            <div className={styles.price}>
-                                от <span>{formatPrice(item.price)}</span> сум
-                            </div>
-                            <button className={styles.action} onClick={onClickHandler}>+</button>
-                        </div>
-                    </div>
-                </div>
-            )}
         </div>
-    )
+    </div>
 }
 
 export default MenuList
