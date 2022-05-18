@@ -12,11 +12,19 @@ const MenuList: React.FC = () => {
     const dispatch = useDispatch()
     const [visible, setVisible] = useState(false)
 
-    useEffect(() => {
-
-        window.Telegram.WebApp.MainButton.text = "Проверка"
+    const onClickHandler = () => {
+        window.Telegram.WebApp.MainButton.text = "Добавить в корзину"
         window.Telegram.WebApp.MainButton.show()
+        window.Telegram.WebApp.MainButton.color = "#006F4C"
+        setVisible(true)
+    }
 
+    const onCloseHandler = () => {
+        setVisible(false)
+        window.Telegram.WebApp.MainButton.hide()
+    }
+
+    useEffect(() => {
         const promise = dispatch(fetchMenu())
         return () => {
             promise.abort()
@@ -29,7 +37,7 @@ const MenuList: React.FC = () => {
     return (
         <div className={styles.container}>
             {visible &&
-                <div className={styles.modal} onClick={() => setVisible(false)}>
+                <div className={styles.modal} onClick={onCloseHandler}>
                     <div className={styles.content}>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam asperiores at blanditiis
                         commodi,
@@ -55,7 +63,7 @@ const MenuList: React.FC = () => {
                             <div className={styles.price}>
                                 от <span>{formatPrice(item.price)}</span> сум
                             </div>
-                            <button className={styles.action} onClick={() => setVisible(true)}>+</button>
+                            <button className={styles.action} onClick={onClickHandler}>+</button>
                         </div>
                     </div>
                 </div>
