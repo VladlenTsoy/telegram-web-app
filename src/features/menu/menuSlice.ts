@@ -1,7 +1,7 @@
 import {createEntityAdapter, createSlice} from "@reduxjs/toolkit"
 import {fetchMenu} from "./fetchMenu"
 import {Category} from "types/Menu"
-import {StoreState} from "../../store"
+import {StoreState} from "store"
 import {useSelector} from "react-redux"
 
 export const menuAdapter = createEntityAdapter<Category>({})
@@ -19,6 +19,7 @@ const menuSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: builder => {
+        // Загрузка меню
         builder.addCase(fetchMenu.pending, state => {
             state.loading = true
         })
@@ -26,20 +27,22 @@ const menuSlice = createSlice({
             menuAdapter.setAll(state, action.payload)
             state.loading = false
         })
-        builder.addCase(fetchMenu.rejected, (state, action) => {
+        builder.addCase(fetchMenu.rejected, state => {
             state.loading = false
         })
     }
 })
 
-const {selectAll, selectById} = menuAdapter.getSelectors<StoreState>(state => state.menu)
+const {selectAll} = menuAdapter.getSelectors<StoreState>(state => state.menu)
 
+// Вывод меню
 export const useGetMenu = () => useSelector(selectAll)
+// Вывод загрузки
 export const useGetMenuLoading = () => useSelector((state: StoreState) => state.menu.loading)
+// Вывод пицц
 export const useGetPizza = () => {
     const categories = useGetMenu()
     return categories.find(category => category.menuType === "pizza")?.groups
 }
-
 
 export default menuSlice.reducer

@@ -17,13 +17,15 @@ const MenuList: React.FC = () => {
     return <div className={styles.container}>
         <h1>Меню</h1>
         <div className={styles.list}>
-            {
-                categories.map(category =>
-                    <Link to="/pizza-list" className={styles.card} key={category.id}>
-                        <span className={styles.icon}>{obj[category.id]}</span>{category.name}
-                    </Link>
-                )
-            }
+            <div className={styles.content}>
+                {
+                    categories.map(category =>
+                        <Link to="/pizza-list" className={styles.card} key={category.id}>
+                            <span className={styles.icon}>{obj[category.id]}</span>{category.name}
+                        </Link>
+                    )
+                }
+            </div>
         </div>
     </div>
 }

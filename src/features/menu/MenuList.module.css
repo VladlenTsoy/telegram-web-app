@@ -1,23 +1,31 @@
 .container {
-    padding: 1rem;
+    padding: 0 .5rem;
+}
 
+.container h1 {
+    margin-top: 0;
 }
 
 .container .list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    overflow: scroll;
+}
+
+.container .list .content {
+    display: flex;
     gap: 1rem;
 }
 
 .container .list .card {
     background: white;
     padding: 1rem;
-    box-shadow: 5px 2px 30px rgba(211, 209, 216, 0.3);
+    /*box-shadow: 5px 2px 30px rgba(211, 209, 216, 0.3);*/
     border-radius: 14px;
     font-size: 20px;
     text-transform: none;
     text-decoration: none;
+    white-space: nowrap;
     color: var(--tg-theme-text-color);
+    background: rgba(255, 0, 0, 0.15);
 }
 
 .container .list .card .icon {

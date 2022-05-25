@@ -13,6 +13,7 @@ function App() {
     const dispatch = useDispatch()
 
     useEffect(() => {
+        window.Telegram.WebApp.ready()
         const promise = dispatch(fetchMenu())
         return () => {
             promise.abort()
