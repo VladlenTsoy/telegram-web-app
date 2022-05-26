@@ -12,11 +12,6 @@
     gap: .5rem;
 }
 
-.container .list .card.active {
-    background: white;
-    box-shadow: 5px 2px 30px rgba(211, 209, 216, 0.3);
-}
-
 .container .list .card {
     padding: .5rem 1rem;
     border-radius: 14px;
@@ -25,6 +20,13 @@
     white-space: nowrap;
     color: var(--tg-theme-text-color);
     text-align: center;
+    box-shadow: 5px 2px 30px rgba(211, 209, 216, 0);
+    transition: box-shadow .2s ease-in-out;
+}
+
+.container .list .card.active {
+    background: white;
+    box-shadow: 5px 2px 30px rgba(211, 209, 216, 0.3);
 }
 
 .container .list .card .icon {

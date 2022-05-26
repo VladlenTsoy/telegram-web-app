@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useEffect, useState} from "react"
 import styles from "./MenuList.module.css"
 import {useGetMenu} from "./menuSlice"
 import {Link} from "react-router-dom"
@@ -15,15 +15,31 @@ const obj: {[key: string]: string} = {
 
 const MenuList: React.FC = () => {
     const categories = useGetMenu()
+    const [selectCategoryId, setSelectCategoryId] = useState<string>()
+
+    const onClickHandler = (categoryId: string) => {
+        setSelectCategoryId(categoryId)
+    }
+
+    useEffect(() => {
+        if (categories.length) {
+            setSelectCategoryId(categories[0].id)
+        }
+    }, [categories])
+
     return <div className={styles.container}>
         <h1>Меню</h1>
         <div className={styles.list}>
             {
-                categories.map((category, key) =>
-                    <Link to="/pizza-list" className={cn(styles.card, {[styles.active]: key === 0})} key={category.id}>
+                categories.map(category =>
+                    <div
+                        key={category.id}
+                        className={cn(styles.card, {[styles.active]: category.id === selectCategoryId})}
+                        onClick={() => onClickHandler(category.id)}
+                    >
                         <span className={styles.icon}>{obj[category.id]}</span>
                         <div className={styles.title}>{category.name}</div>
-                    </Link>
+                    </div>
                 )
             }
         </div>
