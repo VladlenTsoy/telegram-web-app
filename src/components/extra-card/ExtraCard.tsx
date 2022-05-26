@@ -1,5 +1,5 @@
 import React from "react"
-import styles from "./ConstructorCard.module.css"
+import styles from "./ExtraCard.module.css"
 import {Group} from "types/Menu"
 
 interface ConstructorCardProps {
@@ -8,7 +8,7 @@ interface ConstructorCardProps {
     color: string
 }
 
-const ConstructorCard: React.FC<ConstructorCardProps> = ({item, icon, color}) => {
+const ExtraCard: React.FC<ConstructorCardProps> = ({item, icon, color}) => {
     return (
         <div className={styles.card} style={{background: color}}>
             <div className={styles.icon}>{icon}</div>
@@ -19,4 +19,4 @@ const ConstructorCard: React.FC<ConstructorCardProps> = ({item, icon, color}) =>
     )
 }
 
-export default ConstructorCard
+export default ExtraCard

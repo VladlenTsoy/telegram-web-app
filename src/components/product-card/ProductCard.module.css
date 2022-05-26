@@ -1,0 +1,55 @@
+.card {
+    text-align: center;
+}
+
+.image {
+    /*width: 150px;*/
+    height: 150px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.image img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    transform: scale(1.5);
+}
+
+.details {
+    text-align: left;
+}
+
+.details .title {
+    font-weight: bold;
+    white-space: nowrap;
+    font-size: var(--font-size-md);
+    margin-bottom: .5rem;
+}
+
+.card .details .priceAndButton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card .details .priceAndButton .price {
+    font-size: var(--font-size-sm);
+    color: var(--tg-theme-hint-color);
+}
+
+.card .details .priceAndButton .price span {
+    font-size: var(--font-size-md);
+    color: var(--tg-theme-link-color);
+    font-weight: bold;
+    margin: 0 .25rem;
+}
+
+.card .details .priceAndButton .action {
+    background: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+    padding: .15rem .65rem;
+    border-radius: 10px;
+    border: 0;
+    font-size: 25px;
+}

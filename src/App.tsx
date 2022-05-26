@@ -1,8 +1,6 @@
 import React, {useEffect} from "react"
 import styles from "./App.module.css"
 import MenuList from "./features/menu/MenuList"
-import {BrowserRouter, Route, Routes} from "react-router-dom"
-import PizzaList from "./features/menu/pizza/PizzaList"
 import {useDispatch} from "./store"
 import {fetchMenu} from "./features/menu/fetchMenu"
 import Loader from "./components/loader/Loader"
@@ -25,12 +23,7 @@ function App() {
 
     return (
         <div className={styles.app}>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<MenuList />} />
-                    <Route path="/pizza-list" element={<PizzaList />} />
-                </Routes>
-            </BrowserRouter>
+            <MenuList />
         </div>
     )
 }

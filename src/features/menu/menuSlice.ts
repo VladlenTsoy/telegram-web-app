@@ -44,5 +44,10 @@ export const useGetPizza = () => {
     const categories = useGetMenu()
     return categories.find(category => category.menuType === "pizza")?.groups
 }
+// Вывод пицц
+export const useGetById = (key: string) => {
+    const categories = useGetMenu()
+    return categories.find(category => category.menuType === key || category.icon === key)?.products
+}
 
 export default menuSlice.reducer

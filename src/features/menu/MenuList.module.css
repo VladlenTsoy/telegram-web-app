@@ -42,3 +42,11 @@
 .container .list .card .title {
     font-size: var(--font-size-md);
 }
+
+
+.content {
+    overflow: hidden;
+    padding: 1rem .5rem;
+    box-shadow: var(--box-shadow);
+    border-radius: 20px 20px 0 0;
+}
