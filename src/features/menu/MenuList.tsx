@@ -32,7 +32,6 @@ const MenuList: React.FC = () => {
     }, [categories])
 
     return <div className={styles.container}>
-        <h2>Меню</h2>
         <div className={styles.list}>
             {
                 categories.map(category =>

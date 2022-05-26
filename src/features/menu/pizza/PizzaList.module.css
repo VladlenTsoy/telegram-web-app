@@ -65,7 +65,7 @@
 }
 
 .card .details .priceAndButton .action {
-    background: #006F4C;
+    background: var(--tg-theme-button-color);
     color: var(--tg-theme-button-text-color);
     padding: .15rem .65rem;
     border-radius: 10px;
