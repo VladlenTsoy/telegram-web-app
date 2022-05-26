@@ -7,3 +7,11 @@
     box-shadow: 5px 2px 30px rgba(211, 209, 216, 0.3);
     border-radius: 20px 20px 0 0;
 }
+
+.extra {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .5rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}

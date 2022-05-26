@@ -1,10 +1,10 @@
 import React, {useState} from "react"
 import styles from "./PizzaCard.module.css"
 import {formatPrice} from "utils/formatPrice"
-import {Category} from "types/Menu"
+import {Group} from "types/Menu"
 
 interface PizzaCardProps {
-    pizza: Category["groups"][0]
+    pizza: Group
 }
 
 const PizzaCard: React.FC<PizzaCardProps> = ({pizza}) => {

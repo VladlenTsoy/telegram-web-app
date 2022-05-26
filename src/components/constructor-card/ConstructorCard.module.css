@@ -1,0 +1,15 @@
+.card {
+    display: flex;
+    align-items: center;
+    border-radius: var(--border-radius);
+    padding: .5rem 1rem;
+}
+
+.icon {
+    font-size: 35px;
+    margin-right: .5rem;
+}
+
+.title {
+    font-size: var(--font-size-lg);
+}

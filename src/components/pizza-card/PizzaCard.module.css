@@ -1,5 +1,5 @@
 .card {
-    --height-image: 130px;
+    --height-image: 135px;
 
     display: grid;
     gap: .75rem;
@@ -42,7 +42,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
 }
 
 .card .details .priceAndButton .price {
@@ -52,7 +51,7 @@
 
 .card .details .priceAndButton .price span {
     font-size: var(--font-size-md);
-    color: var(--tg-theme-text-color);
+    color: var(--tg-theme-link-color);
     font-weight: bold;
     margin: 0 .25rem;
 }
@@ -64,9 +63,6 @@
     border-radius: 10px;
     border: 0;
     font-size: 25px;
-    position: absolute;
-    right: 0;
-    bottom: 0;
 }
 
 
