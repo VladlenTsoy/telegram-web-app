@@ -18,6 +18,10 @@ const MenuList: React.FC = () => {
     const [selectCategoryId, setSelectCategoryId] = useState<string>()
 
     const onClickHandler = (categoryId: string) => {
+        // Открыть приложение полностью
+        if (window.Telegram && !window.Telegram.WebApp.isExpanded)
+            window.Telegram.WebApp.expand()
+        // Выбрать категорию
         setSelectCategoryId(categoryId)
     }
 

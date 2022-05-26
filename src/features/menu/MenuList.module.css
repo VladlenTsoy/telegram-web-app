@@ -31,10 +31,11 @@
 
 .container .list .card .icon {
     font-size: 35px;
+
 }
 
 .container .list .card .title {
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 16px;
+    /*font-weight: bold;*/
     /*font-size: 20px;*/
 }
