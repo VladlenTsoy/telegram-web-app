@@ -5,7 +5,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom"
 import PizzaList from "./features/menu/pizza/PizzaList"
 import {useDispatch} from "./store"
 import {fetchMenu} from "./features/menu/fetchMenu"
-import Loader from "./components/Loader"
+import Loader from "./components/loader/Loader"
 import {useGetMenuLoading} from "./features/menu/menuSlice"
 
 function App() {
