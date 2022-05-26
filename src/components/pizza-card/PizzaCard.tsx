@@ -50,7 +50,7 @@ const PizzaCard: React.FC<PizzaCardProps> = ({pizza}) => {
                     <div className={styles.desc}>{pizza.translations.desc["ru"]}</div>
                     <div className={styles.priceAndButton}>
                         <div className={styles.price}>
-                            от <span>{formatPrice(pizza.price)}</span> сум
+                            от<span>{formatPrice(pizza.price)}</span>сум
                         </div>
                         <button className={styles.action} onClick={onClickHandler}>+</button>
                     </div>
