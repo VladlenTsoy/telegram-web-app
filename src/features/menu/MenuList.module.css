@@ -25,7 +25,8 @@
 }
 
 .container .list .card.active {
-    background: white;
+    background: var(--tg-theme-button-color);
+    color: white;
     box-shadow: 5px 2px 30px rgba(211, 209, 216, 0.3);
 }
 
