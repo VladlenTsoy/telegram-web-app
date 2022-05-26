@@ -1,19 +1,22 @@
 .container {
+}
+
+.container h2 {
+    margin-top: 0;
+    margin-bottom: .75rem;
     padding: 0 .5rem;
 }
 
-.container h1 {
-    margin-top: 0;
-}
-
 .container .list {
+    padding: 0 .5rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: .5rem;
+    margin-bottom: 1rem;
 }
 
 .container .list .card {
-    padding: .5rem 1rem;
+    padding: .25rem 1rem;
     border-radius: 14px;
     text-transform: none;
     text-decoration: none;
@@ -37,6 +40,4 @@
 
 .container .list .card .title {
     font-size: 16px;
-    /*font-weight: bold;*/
-    /*font-size: 20px;*/
 }

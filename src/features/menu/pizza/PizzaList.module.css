@@ -3,12 +3,14 @@
     grid-template-columns: 1fr;
     overflow: hidden;
     gap: 1rem;
-    padding: 1rem;
+    padding: 1rem .5rem;
+    box-shadow: 5px 2px 30px rgba(211, 209, 216, 0.3);
+    border-radius: 20px 20px 0 0;
 }
 
 .card {
-    background: var(--tg-theme-bg-color);
-    box-shadow: 5px 2px 30px rgba(211, 209, 216, 0.3);
+    /*background: var(--tg-theme-bg-color);*/
+    /*box-shadow: 5px 2px 30px rgba(211, 209, 216, 0.3);*/
     display: grid;
     grid-template-columns: 145px 1fr;
     border-radius: 14px;

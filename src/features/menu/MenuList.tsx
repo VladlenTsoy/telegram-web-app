@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react"
 import styles from "./MenuList.module.css"
 import {useGetMenu} from "./menuSlice"
-import {Link} from "react-router-dom"
 import cn from "classnames"
+import PizzaList from "./pizza/PizzaList"
 
 const obj: {[key: string]: string} = {
     "4b328756-a3c4-4362-af84-9b029ee20c57": "🍕",
@@ -32,7 +32,7 @@ const MenuList: React.FC = () => {
     }, [categories])
 
     return <div className={styles.container}>
-        <h1>Меню</h1>
+        <h2>Меню</h2>
         <div className={styles.list}>
             {
                 categories.map(category =>
@@ -47,6 +47,7 @@ const MenuList: React.FC = () => {
                 )
             }
         </div>
+        <PizzaList />
     </div>
 }
 
