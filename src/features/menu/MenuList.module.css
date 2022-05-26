@@ -7,28 +7,32 @@
 }
 
 .container .list {
-    overflow: scroll;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: .5rem;
 }
 
-.container .list .content {
-    display: flex;
-    gap: 1rem;
+.container .list .card.active {
+    background: white;
+    box-shadow: 5px 2px 30px rgba(211, 209, 216, 0.3);
 }
 
 .container .list .card {
-    background: white;
-    padding: 1rem;
-    /*box-shadow: 5px 2px 30px rgba(211, 209, 216, 0.3);*/
+    padding: .5rem 1rem;
     border-radius: 14px;
-    font-size: 20px;
     text-transform: none;
     text-decoration: none;
     white-space: nowrap;
     color: var(--tg-theme-text-color);
-    background: rgba(255, 0, 0, 0.15);
+    text-align: center;
 }
 
 .container .list .card .icon {
-    margin-right: .25rem;
-    font-size: 25px;
+    font-size: 35px;
+}
+
+.container .list .card .title {
+    font-size: 20px;
+    font-weight: bold;
+    /*font-size: 20px;*/
 }

@@ -2,6 +2,7 @@ import React from "react"
 import styles from "./MenuList.module.css"
 import {useGetMenu} from "./menuSlice"
 import {Link} from "react-router-dom"
+import cn from "classnames"
 
 const obj: {[key: string]: string} = {
     "4b328756-a3c4-4362-af84-9b029ee20c57": "🍕",
@@ -17,15 +18,14 @@ const MenuList: React.FC = () => {
     return <div className={styles.container}>
         <h1>Меню</h1>
         <div className={styles.list}>
-            <div className={styles.content}>
-                {
-                    categories.map(category =>
-                        <Link to="/pizza-list" className={styles.card} key={category.id}>
-                            <span className={styles.icon}>{obj[category.id]}</span>{category.name}
-                        </Link>
-                    )
-                }
-            </div>
+            {
+                categories.map((category, key) =>
+                    <Link to="/pizza-list" className={cn(styles.card, {[styles.active]: key === 0})} key={category.id}>
+                        <span className={styles.icon}>{obj[category.id]}</span>
+                        <div className={styles.title}>{category.name}</div>
+                    </Link>
+                )
+            }
         </div>
     </div>
 }
