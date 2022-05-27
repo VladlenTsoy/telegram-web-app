@@ -14,8 +14,8 @@ const PizzaList = () => {
     return (
         <div className={styles.container}>
             <div className={styles.extra}>
-                {constructor && <ExtraCard item={constructor} icon={"👷"} color="#ffcf0026"/>}
-                {halfPizza && <ExtraCard item={halfPizza} icon={"🌓"} color="#00dcff26"/>}
+                {constructor && <ExtraCard item={constructor} icon={"👷"} color="linear-gradient(140deg, rgba(255, 207, 0, 0.15), rgba(255, 207, 0, 0.30))"/>}
+                {halfPizza && <ExtraCard item={halfPizza} icon={"🌓"} color="linear-gradient(140deg, rgba(0, 220, 255, 0.15), rgba(0, 220, 255, 0.30))"/>}
             </div>
             {pizza && pizza
                 .filter(item => item.id !== constructorId && item.id !== halfPizzaId)
