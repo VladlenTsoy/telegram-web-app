@@ -4,15 +4,16 @@
     border-radius: var(--border-radius);
     padding: .5rem 1rem;
     position: relative;
-    box-shadow: 5px 2px 5px rgba(211, 209, 216, 0.15);
 }
 
 .card.constructor {
     background: linear-gradient(140deg, rgba(255, 207, 0, 0.15), rgba(255, 207, 0, 0.30));
+    box-shadow: 5px 2px 5px rgba(255, 207, 0, 0.15);
 }
 
 .card.half {
     background: linear-gradient(140deg, rgba(0, 220, 255, 0.15), rgba(0, 220, 255, 0.30));
+    box-shadow: 5px 2px 5px rgba(0, 220, 255, 0.15);
 }
 
 .card::after {
@@ -49,4 +50,11 @@
 .title {
     font-size: var(--font-size-lg);
     white-space: nowrap;
+}
+
+@media (max-width: 400px) {
+    .card {
+        --font-size-lg: 14px;
+        padding: .5rem;
+    }
 }

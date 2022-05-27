@@ -22,8 +22,12 @@ const ProductCard: React.FC<ProductCardProps> = ({product}) => {
                         <span>{formatPrice(product.price)}</span>сум
                     </div>
                     <div className={styles.actions}>
-                        <button className={cn(styles.action, styles.remove)}>-</button>
-                        <button className={cn(styles.action, styles.add)}>+</button>
+                        <button className={cn(styles.action, styles.remove)}>
+                            <span>-</span>
+                        </button>
+                        <button className={cn(styles.action, styles.add)}>
+                            <span>+</span>
+                        </button>
                     </div>
                 </div>
             </div>

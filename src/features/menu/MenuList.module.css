@@ -25,13 +25,13 @@
     color: var(--tg-theme-text-color);
     text-align: center;
     box-shadow: 5px 2px 30px rgba(211, 209, 216, 0);
-    transition: box-shadow .2s ease-in-out;
+    transition: all .2s ease-in-out;
 }
 
 .container .list .card.active {
     background: var(--tg-theme-button-color);
     color: white;
-    box-shadow: 5px 2px 30px rgba(211, 209, 216, 0.3);
+    box-shadow: 0 0 30px -10px var(--tg-theme-button-color);
 }
 
 .container .list .card .icon {

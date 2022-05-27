@@ -57,6 +57,7 @@
 .card .details .priceAndButton .price {
     font-size: var(--font-size-sm);
     color: var(--tg-theme-hint-color);
+    white-space: nowrap;
 }
 
 .card .details .priceAndButton .price span {
@@ -69,22 +70,24 @@
 .card .details .priceAndButton .actions {
     border-radius: 10px;
     border: 0;
-    font-size: 25px;
-    display: flex;
+    display: grid;
     gap: .25rem;
+    grid-template-columns: 35px 35px;
 }
 
 .card .details .priceAndButton .actions .action {
     color: var(--tg-theme-button-text-color);
-    /*padding: .15rem .65rem;*/
     border-radius: 10px;
     border: 0;
-    font-size: 25px;
+    position: relative;
     height: 35px;
     width: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
+    display: block;
+}
+
+.card .details .priceAndButton .actions .action span {
+    font-size: 25px;
 }
 
 .add {
