@@ -9,6 +9,7 @@
     height: 150px;
     overflow: hidden;
     margin: 0 auto;
+    position: relative;
 }
 
 .image img {
@@ -16,6 +17,22 @@
     width: 100%;
     object-fit: contain;
     transform: scale(1.5);
+}
+
+.image .count {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    z-index: 2;
+    top: .5rem;
+    right: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--tg-theme-button-color);
+    color: white;
+    border-radius: 50%;
+    font-weight: bold;
 }
 
 .details {
@@ -49,11 +66,31 @@
     margin-right: .25rem;
 }
 
-.card .details .priceAndButton .action {
-    background: var(--tg-theme-button-color);
-    color: var(--tg-theme-button-text-color);
-    padding: .15rem .65rem;
+.card .details .priceAndButton .actions {
     border-radius: 10px;
     border: 0;
     font-size: 25px;
+    display: flex;
+    gap: .25rem;
+}
+
+.card .details .priceAndButton .actions .action {
+    color: var(--tg-theme-button-text-color);
+    /*padding: .15rem .65rem;*/
+    border-radius: 10px;
+    border: 0;
+    font-size: 25px;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add {
+    background: var(--tg-theme-button-color);
+}
+
+.remove {
+    background: var(--danger-color);
 }

@@ -11,7 +11,7 @@ const obj: {[key: string]: string} = {
     "8ba69bed-a233-4c0f-97d8-c380dbdb5a8f": "🍟",
     "34b23388-aa3d-4a24-9820-892dc731b6eb": "🥗",
     "f5927e50-d95c-454f-bdb8-c1b6e335d066": "🍰",
-    "0e86aeb7-d000-4253-82b4-7982bd39bd59": "⚪️"
+    "0e86aeb7-d000-4253-82b4-7982bd39bd59": "😋"
 }
 
 const MenuList: React.FC = () => {

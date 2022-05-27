@@ -2,6 +2,7 @@ import React from "react"
 import styles from "./ProductCard.module.css"
 import {Product} from "types/Menu"
 import {formatPrice} from "../../utils/formatPrice"
+import cn from "classnames"
 
 interface ProductCardProps {
     product: Product
@@ -12,6 +13,7 @@ const ProductCard: React.FC<ProductCardProps> = ({product}) => {
         <div className={styles.card}>
             <div className={styles.image}>
                 <img src={product.image} alt={product.translations.title["ru"]} />
+                <div className={styles.count}>{2}</div>
             </div>
             <div className={styles.details}>
                 <div className={styles.title}>{product.translations.title["ru"]}</div>
@@ -19,7 +21,10 @@ const ProductCard: React.FC<ProductCardProps> = ({product}) => {
                     <div className={styles.price}>
                         <span>{formatPrice(product.price)}</span>сум
                     </div>
-                    <button className={styles.action}>+</button>
+                    <div className={styles.actions}>
+                        <button className={cn(styles.action, styles.remove)}>-</button>
+                        <button className={cn(styles.action, styles.add)}>+</button>
+                    </div>
                 </div>
             </div>
         </div>
