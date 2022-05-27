@@ -31,7 +31,7 @@
 .container .list .card.active {
     background: var(--tg-theme-button-color);
     color: white;
-    box-shadow: 0 0 30px -10px var(--tg-theme-button-color);
+    box-shadow: 0 0 30px -15px var(--tg-theme-button-color);
 }
 
 .container .list .card .icon {
