@@ -90,6 +90,10 @@
     font-size: 25px;
 }
 
+.hidden {
+    opacity: 0;
+}
+
 .add {
     background: var(--tg-theme-button-color);
 }

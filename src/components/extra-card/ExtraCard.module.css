@@ -54,7 +54,7 @@
 
 @media (max-width: 400px) {
     .card {
-        --font-size-lg: 14px;
+        --font-size-lg: 16px;
         padding: .5rem;
     }
 }
