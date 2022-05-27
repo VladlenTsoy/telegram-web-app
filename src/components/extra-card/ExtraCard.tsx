@@ -1,17 +1,17 @@
 import React from "react"
 import styles from "./ExtraCard.module.css"
 import {Group} from "types/Menu"
+import cn from "classnames"
 
 interface ConstructorCardProps {
     item: Group
-    icon: string
-    color: string
+    type: "constructor" | "half"
 }
 
-const ExtraCard: React.FC<ConstructorCardProps> = ({item, icon, color}) => {
+const ExtraCard: React.FC<ConstructorCardProps> = ({item, type}) => {
     return (
-        <div className={styles.card} style={{background: color}}>
-            <div className={styles.icon}>{icon}</div>
+        <div className={cn(styles.card, styles[type])}>
+            <div className={styles.icon}>{type === "constructor" ? "👷" : "🌓"}</div>
             <div className={styles.title}>
                 {item.translations.title["ru"]}
             </div>
