@@ -5,6 +5,7 @@ import cn from "classnames"
 import PizzaList from "./pizza/PizzaList"
 import ProductList from "./product/ProductList"
 import {useCartTotalPrice} from "../cart/cartSlice"
+import {formatPrice} from "../../utils/formatPrice"
 
 const obj: {[key: string]: string} = {
     "4b328756-a3c4-4362-af84-9b029ee20c57": "🍕",
@@ -36,9 +37,10 @@ const MenuList: React.FC = () => {
 
     useEffect(() => {
         if (cartTotalPrice > 0) {
-            window.Telegram.WebApp.MainButton.text = `${cartTotalPrice}`
+            window.Telegram.WebApp.MainButton.text = `Корзина: ${formatPrice(cartTotalPrice)} сум`
             window.Telegram.WebApp.MainButton.show()
-        }
+        } else
+            window.Telegram.WebApp.MainButton.hide()
     }, [cartTotalPrice])
 
     return <div className={styles.container}>
