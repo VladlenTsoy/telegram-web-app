@@ -17,7 +17,7 @@ const ProductCard: React.FC<ProductCardProps> = ({product}) => {
                 <div className={styles.title}>{product.translations.title["ru"]}</div>
                 <div className={styles.priceAndButton}>
                     <div className={styles.price}>
-                        от<span>{formatPrice(product.price)}</span>сум
+                        <span>{formatPrice(product.price)}</span>сум
                     </div>
                     <button className={styles.action}>+</button>
                 </div>

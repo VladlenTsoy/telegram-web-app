@@ -20,7 +20,7 @@ const PizzaList = () => {
             {pizza && pizza
                 .filter(item => item.id !== constructorId && item.id !== halfPizzaId)
                 .map(item =>
-                    <PizzaCard pizza={item} />
+                    <PizzaCard pizza={item} key={item.id}/>
                 )
             }
         </div>

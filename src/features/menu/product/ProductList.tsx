@@ -11,7 +11,7 @@ const ProductList: React.FC<ProductListProps> = ({type}) => {
     const products = useGetById(type)
     return (
         <div className={styles.container}>
-            {products && products.map(product => <ProductCard product={product} />)}
+            {products && products.map(product => <ProductCard product={product} key={product.id} />)}
         </div>
     )
 }
