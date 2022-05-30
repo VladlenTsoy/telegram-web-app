@@ -5,6 +5,7 @@ import {useDispatch} from "./store"
 import {fetchMenu} from "./features/menu/fetchMenu"
 import Loader from "./components/loader/Loader"
 import {useGetMenuLoading} from "./features/menu/menuSlice"
+import cn from "classnames"
 
 function App() {
     const isLoading = useGetMenuLoading()
@@ -22,7 +23,7 @@ function App() {
         return <Loader />
 
     return (
-        <div className={styles.app}>
+        <div className={cn(styles.app)} data-theme={window?.Telegram?.WebApp?.colorScheme || "light"}>
             <MenuList />
         </div>
     )

@@ -58,7 +58,7 @@ const MenuList: React.FC = () => {
                 )
             }
         </div>
-        <div className={styles.content}>
+        <div className={cn(styles.content, {[styles.light]: window?.Telegram?.WebApp?.colorScheme === "light"})}>
             {selectCategoryId === "4b328756-a3c4-4362-af84-9b029ee20c57" && <PizzaList />}
             {selectCategoryId === "2a8e8de6-1e21-451d-ad46-56d2bfdd3db4" && <ProductList type="Drinks" scale="2" />}
             {selectCategoryId === "8ba69bed-a233-4c0f-97d8-c380dbdb5a8f" && <ProductList type="Snack" />}
