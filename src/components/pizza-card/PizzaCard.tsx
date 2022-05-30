@@ -14,7 +14,6 @@ const PizzaCard: React.FC<PizzaCardProps> = ({pizza}) => {
         if (window && window?.Telegram) {
             window.Telegram.WebApp.MainButton.text = "Добавить в корзину"
             window.Telegram.WebApp.MainButton.show()
-            window.Telegram.WebApp.MainButton.color = "#006F4C"
         }
         setVisible(true)
     }

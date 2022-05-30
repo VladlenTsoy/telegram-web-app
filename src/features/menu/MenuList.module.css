@@ -29,9 +29,10 @@
 }
 
 .container .list .card.active {
-    background: var(--tg-theme-button-color);
+    background: var(--primary-color);
+    background-image: var(--primary-gradient);
     color: white;
-    box-shadow: 0 0 30px -15px var(--tg-theme-button-color);
+    box-shadow: 0 0 30px -15px var(--primary-color);
 }
 
 .container .list .card .icon {
