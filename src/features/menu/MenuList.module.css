@@ -21,14 +21,12 @@
     white-space: nowrap;
     color: var(--tg-theme-text-color);
     text-align: center;
-    transition: all .2s ease-in-out;
 }
 
 .container .list .card.active {
-    background: var(--primary-color);
+    background-color: var(--primary-color);
     background-image: var(--primary-gradient);
     color: white;
-    box-shadow: 0 0 30px -15px var(--primary-color);
 }
 
 .container .list .card .icon {

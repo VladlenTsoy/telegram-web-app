@@ -101,7 +101,7 @@
     font-size: var(--font-size-sm);
     color: var(--tg-theme-hint-color);
     white-space: nowrap;
-    margin-bottom: .3rem;
+    margin-bottom: .5rem;
 }
 
 .card .details .priceAndButton .price span {
