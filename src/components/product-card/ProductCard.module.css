@@ -34,7 +34,9 @@
     border-radius: 50%;
     font-weight: bold;
     transform: scale(1);
-    animation: bounceIn .5s ease-in-out;
+    animation-name: bounceIn;
+    animation-duration: .5s;
+    animation-fill-mode: both;
 }
 
 @keyframes bounceIn {
