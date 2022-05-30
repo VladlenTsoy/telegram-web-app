@@ -14,6 +14,14 @@
     background: linear-gradient(140deg, rgba(63, 0, 255, 0.3), rgba(63, 0, 255, 0.6));
 }
 
+[data-theme="light"] .card.constructor {
+    background: linear-gradient(140deg, rgba(255, 207, 0, 0.15), rgba(255, 207, 0, 0.30));
+}
+
+[data-theme="light"] .card.half {
+    background: linear-gradient(140deg, rgba(0, 220, 255, 0.15), rgba(0, 220, 255, 0.30));
+}
+
 .card::after {
     content: "→";
     background: var(--tg-theme-button-color);
@@ -38,6 +46,14 @@
 
 .card.half::after {
     background: rgb(63 0 255);
+}
+
+[data-theme="light"] .card.constructor::after {
+    background: rgb(255, 207, 0);
+}
+
+[data-theme="light"] .card.half::after {
+    background: rgb(0, 220, 255);
 }
 
 .icon {
