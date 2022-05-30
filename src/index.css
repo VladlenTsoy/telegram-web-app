@@ -2,7 +2,9 @@
 
 :root {
     --tg-theme-bg-color: #ffffff;
+    /*--tg-theme-bg-color: black;*/
     --tg-theme-text-color: #080808;
+    /*--tg-theme-text-color: white;*/
     --tg-theme-hint-color: #b5b5b5;
     --tg-theme-link-color: #58a1fd;
     --tg-theme-button-color: #5ac8fb;

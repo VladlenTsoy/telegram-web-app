@@ -2,6 +2,7 @@
     text-align: center;
     display: grid;
     grid-template-rows: 100px 1fr;
+    gap: .3rem;
 }
 
 .image {
@@ -10,6 +11,7 @@
     overflow: hidden;
     margin: 0 auto;
     position: relative;
+    border-radius: var(--border-radius);
 }
 
 .image img {
@@ -24,8 +26,8 @@
     width: 25px;
     height: 25px;
     z-index: 2;
-    top: .5rem;
-    right: .5rem;
+    top: .25rem;
+    right: .25rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -87,7 +89,7 @@
 
 .details .title {
     font-size: var(--font-size-sm);
-    margin-bottom: .5rem;
+    margin-bottom: .3rem;
 }
 
 .card .details .priceAndButton {
@@ -99,7 +101,7 @@
     font-size: var(--font-size-sm);
     color: var(--tg-theme-hint-color);
     white-space: nowrap;
-    margin-bottom: .5rem;
+    margin-bottom: .3rem;
 }
 
 .card .details .priceAndButton .price span {
