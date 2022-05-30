@@ -4,7 +4,7 @@ import {Product} from "types/Menu"
 import {formatPrice} from "utils/formatPrice"
 import cn from "classnames"
 import {useDispatch} from "store"
-import {addToCart, minusAmount, useCartGetByUID} from "../../features/cart/cartSlice"
+import {addToCart, minusAmount, useCartGetByUID} from "features/cart/cartSlice"
 
 interface ProductCardProps {
     product: Product
@@ -59,15 +59,15 @@ const ProductCard: React.FC<ProductCardProps> = ({product, scale}) => {
                         <button
                             disabled={!cartProduct}
                             onClick={onClickMinusHandler}
-                            className={cn(styles.action, styles.remove, {[styles.hidden]: !cartProduct})}
+                            className={cn(styles.action, styles.remove)}
                         >
                             <span>-</span>
                         </button>
                         <button
                             onClick={onClickAddHandler}
-                            className={cn(styles.action, styles.add)}
+                            className={cn(styles.action, styles.add, {[styles.block]: !cartProduct})}
                         >
-                            <span>+</span>
+                            {!!cartProduct ? <span>+</span> : <span>Добавить</span>}
                         </button>
                     </div>
                 </div>

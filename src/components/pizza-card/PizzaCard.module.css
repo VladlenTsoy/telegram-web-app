@@ -51,7 +51,7 @@
 
 .card .details .priceAndButton .price span {
     font-size: var(--font-size-md);
-    color: var(--tg-theme-link-color);
+    color: var(--tg-theme-text-color);
     font-weight: bold;
     margin: 0 .25rem;
 }
