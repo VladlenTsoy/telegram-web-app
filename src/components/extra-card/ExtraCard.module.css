@@ -8,12 +8,12 @@
 
 .card.constructor {
     background: linear-gradient(140deg, rgba(255, 207, 0, 0.15), rgba(255, 207, 0, 0.30));
-    box-shadow: 5px 2px 5px rgba(255, 207, 0, 0.15);
+    box-shadow: 0 0 5px rgba(255, 207, 0, 0.15);
 }
 
 .card.half {
     background: linear-gradient(140deg, rgba(0, 220, 255, 0.15), rgba(0, 220, 255, 0.30));
-    box-shadow: 5px 2px 5px rgba(0, 220, 255, 0.15);
+    box-shadow: 0 0 5px rgba(0, 220, 255, 0.15);
 }
 
 .card::after {
