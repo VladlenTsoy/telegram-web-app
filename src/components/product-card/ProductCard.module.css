@@ -1,6 +1,5 @@
 .card {
     text-align: center;
-    /*padding: 0 .5rem .5rem .5rem;*/
     display: grid;
     grid-template-rows: 100px 1fr;
 }
@@ -34,6 +33,46 @@
     color: white;
     border-radius: 50%;
     font-weight: bold;
+    transform: scale(1);
+    animation: bounceIn .5s ease-in-out;
+}
+
+@keyframes bounceIn {
+    from,
+    20%,
+    40%,
+    60%,
+    80%,
+    to {
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    0% {
+        /*opacity: 0;*/
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+
+    20% {
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+
+    40% {
+        transform: scale3d(0.9, 0.9, 0.9);
+    }
+
+    60% {
+        /*opacity: 1;*/
+        transform: scale3d(1.03, 1.03, 1.03);
+    }
+
+    80% {
+        transform: scale3d(0.97, 0.97, 0.97);
+    }
+
+    to {
+        /*opacity: 1;*/
+        transform: scale3d(1, 1, 1);
+    }
 }
 
 .details {
@@ -44,13 +83,11 @@
 }
 
 .details .title {
-    /*font-weight: bold;*/
     font-size: var(--font-size-sm);
     margin-bottom: .5rem;
 }
 
 .card .details .priceAndButton {
-    /*display: flex;*/
     justify-content: space-between;
     align-items: center;
 }

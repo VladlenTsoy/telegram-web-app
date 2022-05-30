@@ -48,7 +48,7 @@ const ProductCard: React.FC<ProductCardProps> = ({product, scale}) => {
                     alt={product.translations.title["ru"]}
                     style={{transform: `scale(${scale})`}}
                 />
-                {!!cartProduct && <div className={styles.count}>{cartProduct.amount}</div>}
+                {!!cartProduct && <div className={styles.count} key={cartProduct.amount}>{cartProduct.amount}</div>}
             </div>
             <div className={styles.details}>
                 <div className={styles.title}>{product.translations.title["ru"]}</div>
