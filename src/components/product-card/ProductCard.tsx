@@ -5,6 +5,7 @@ import {formatPrice} from "utils/formatPrice"
 import cn from "classnames"
 import {useDispatch} from "store"
 import {addToCart, minusAmount, useCartGetByUID} from "features/cart/cartSlice"
+import {BsPlus, BsDash} from "react-icons/bs"
 
 interface ProductCardProps {
     product: Product
@@ -61,13 +62,13 @@ const ProductCard: React.FC<ProductCardProps> = ({product, scale}) => {
                             onClick={onClickMinusHandler}
                             className={cn(styles.action, styles.remove)}
                         >
-                            <span>-</span>
+                            <span><BsDash /></span>
                         </button>
                         <button
                             onClick={onClickAddHandler}
                             className={cn(styles.action, styles.add, {[styles.block]: !cartProduct})}
                         >
-                            {!!cartProduct ? <span>+</span> : <span>Добавить</span>}
+                            {!!cartProduct ? <span><BsPlus /></span> : <span>Добавить</span>}
                         </button>
                     </div>
                 </div>
