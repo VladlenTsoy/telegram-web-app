@@ -1,6 +1,6 @@
 import React from "react"
 import styles from "./ModalPizzaCard.module.css"
-import {motion} from "framer-motion"
+import {motion, useMotionValue} from "framer-motion"
 import {Group} from "types/Menu"
 import LabelTextToggleBtn from "../lable-text-toggle-btn/LabelTextToggleBtn"
 
@@ -34,21 +34,25 @@ interface ModalPizzaCardProps {
 }
 
 const ModalPizzaCard: React.FC<ModalPizzaCardProps> = ({group, onClose}) => {
+    const y = useMotionValue(0)
     const onDragListener = (e: any) => {
-        if (e.layerY <= 0) onClose()
+        if (y.get() <= -150) onClose()
     }
 
     return (
         <motion.div
             className={styles.card}
-            drag={"y"}
+            drag="y"
             onDragEnd={onDragListener}
+            dragElastic={{
+                top: 1,
+                bottom: 1
+            }}
             dragConstraints={{
                 top: 0,
-                left: -0,
-                right: 0,
                 bottom: 0
             }}
+            style={{y}}
             layoutId={`card-container-${group.id}`}
         >
             <img src={group.image} alt={group.translations.title["ru"]} className={styles.image} />
