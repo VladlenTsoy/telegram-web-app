@@ -24,7 +24,7 @@ const PizzaCard: React.FC<PizzaCardProps> = ({pizza}) => {
     return (
         <>
             <Modal visible={visible} onClose={onCloseHandler}>
-                <ModalPizzaCard group={pizza} />
+                <ModalPizzaCard group={pizza} onClose={onCloseHandler} />
             </Modal>
             <div key={pizza.id} className={styles.card}>
                 <div className={styles.image}>

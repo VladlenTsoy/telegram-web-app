@@ -30,17 +30,33 @@ const pizzaTypeData = [
 
 interface ModalPizzaCardProps {
     group: Group
+    onClose: () => void
 }
 
-const ModalPizzaCard: React.FC<ModalPizzaCardProps> = ({group}) => {
+const ModalPizzaCard: React.FC<ModalPizzaCardProps> = ({group, onClose}) => {
+    const onDragListener = (e: any) => {
+        if (e.layerY <= 0) onClose()
+    }
+
     return (
-        <motion.div className={styles.card} layoutId={`card-container-${group.id}`}>
-            <img src={group.image} alt={group.translations.title["ru"]} className={styles.image}/>
+        <motion.div
+            className={styles.card}
+            drag={"y"}
+            onDragEnd={onDragListener}
+            dragConstraints={{
+                top: 0,
+                left: -0,
+                right: 0,
+                bottom: 0
+            }}
+            layoutId={`card-container-${group.id}`}
+        >
+            <img src={group.image} alt={group.translations.title["ru"]} className={styles.image} />
             <div className={styles.details}>
                 <h1 className={styles.title}>{group.translations.title["ru"]}</h1>
                 <p className={styles.description}>{group.translations.desc["ru"]}</p>
-                <LabelTextToggleBtn value={0} data={pizzaSizeData} label={"Выберите тип теста"}/>
-                <LabelTextToggleBtn value={0} data={pizzaTypeData} label={"Выберите тип теста"}/>
+                <LabelTextToggleBtn value={0} data={pizzaSizeData} label={"Выберите тип теста"} />
+                <LabelTextToggleBtn value={0} data={pizzaTypeData} label={"Выберите тип теста"} />
                 <div className={styles.priceAndAction}>
                     <div className={styles.price}>90 000 сум</div>
                     <button className={styles.action}>Добавить в корзину</button>
