@@ -67,25 +67,3 @@
     font-size: 25px;
 }
 
-
-.modal {
-    position: fixed;
-    z-index: 4;
-    display: flex;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    background: rgba(0, 0, 0, 0.05);
-    backdrop-filter: blur(2px);
-}
-
-.modal .content {
-    padding: 1rem;
-    border-radius: var(--border-radius);
-    background: var(--tg-theme-bg-color);
-    box-shadow: var(--box-shadow);
-}

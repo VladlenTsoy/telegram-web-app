@@ -1,0 +1,54 @@
+.card {
+    background: var(--tg-theme-bg-color);
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    margin: 0 auto;
+    height: auto;
+    pointer-events: all;
+    width: calc(100% - 1rem);
+    max-width: 700px;
+}
+
+.card .image {
+    width: 100%;
+    margin: 0 auto;
+    border-radius: var(--border-radius);
+}
+
+.card .details {
+    padding: 1rem;
+}
+
+.card .details .title {
+    margin: 0 0 .75rem;
+}
+
+.card .details .description {
+    font-size: var(--font-size-sm);
+    margin-bottom: 1.5rem;
+}
+
+.card .details .priceAndAction {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.card .details .priceAndAction .price {
+    white-space: nowrap;
+}
+
+.card .details .priceAndAction .action {
+    background: var(--primary-gradient);
+
+    border: 0;
+    border-radius: 40px;
+    padding: 1rem  1.5rem;
+    color: white;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bolder;
+}
