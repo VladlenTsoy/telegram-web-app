@@ -7,17 +7,26 @@ import Loader from "./components/loader/Loader"
 import {useGetMenuLoading} from "./features/menu/menuSlice"
 import cn from "classnames"
 import {useTranslation} from "react-i18next"
-import {useCartTotalPrice} from "./features/cart/cartSlice"
+import {useCartCountItems, useCartProducts, useCartTotalPrice} from "./features/cart/cartSlice"
 
 function App() {
     const isLoading = useGetMenuLoading()
     const dispatch = useDispatch()
     const {i18n} = useTranslation()
     const cartTotalPrice = useCartTotalPrice()
+    const products = useCartProducts()
+    const cartCountItems = useCartCountItems()
 
     useEffect(() => {
         // Запуск телеграм приложения
         window.Telegram.WebApp.ready()
+        // Кнопка
+        window.Telegram.WebApp.MainButton.onClick(() => {
+            window.Telegram.WebApp.sendData({
+                products
+            })
+        })
+
         // Загрузка меню
         const promise = dispatch(fetchMenu())
         return () => {
@@ -36,7 +45,7 @@ function App() {
 
     useEffect(() => {
         if (cartTotalPrice > 0) {
-            window.Telegram.WebApp.MainButton.text = `Корзина`
+            window.Telegram.WebApp.MainButton.text = `Корзина (${cartCountItems})`
             window.Telegram.WebApp.MainButton.show()
         } else
             window.Telegram.WebApp.MainButton.hide()

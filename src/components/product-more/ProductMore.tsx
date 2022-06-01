@@ -48,6 +48,7 @@ const ProductMore: React.FC<ProductMoreProps> = ({group, onClose}) => {
                 {
                     productSize && sizes.length &&
                     <CrustAndAction
+                        onClose={onClose}
                         productSize={productSize}
                         sizes={sizes}
                         selectProductSize={onChangeSizeHandler}

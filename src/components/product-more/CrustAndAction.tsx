@@ -10,14 +10,14 @@ import {CartProductModifier} from "types/Cart"
 import {addToCart} from "../../features/cart/cartSlice"
 import CrustSelect from "./CrustSelect"
 
-
 interface CrustsSelectProps {
+    onClose: () => void
     sizes: {id: string, title: string, price: number}[]
     productSize: ProductSize
     selectProductSize: (productSizeId: ProductSize["id"]) => void
 }
 
-const CrustAndAction: React.FC<CrustsSelectProps> = ({productSize, sizes, selectProductSize}) => {
+const CrustAndAction: React.FC<CrustsSelectProps> = ({productSize, sizes, selectProductSize, onClose}) => {
     const {lang, t} = useLanguage()
     const dispatch = useDispatch()
     // Борта
@@ -55,23 +55,23 @@ const CrustAndAction: React.FC<CrustsSelectProps> = ({productSize, sizes, select
 
     // Добавление в корзину
     const onClickAddHandler = () => {
-        if (productSize) {
-            // Добавить в корзину
-            dispatch(
-                addToCart({
-                    uid: productSize.id + modifier?.productId,
-                    productId: productSize.id,
-                    type: "pizza",
-                    title: productSize.translations.title,
-                    defaultTitle: productSize.name,
-                    comboInformation: null,
-                    image: productSize.image,
-                    amount: 1,
-                    modifiers: modifier ? [modifier] : [],
-                    price: productSize.price
-                })
-            )
-        }
+        // Добавить в корзину
+        dispatch(
+            addToCart({
+                uid: productSize.id + modifier?.productId,
+                productId: productSize.id,
+                type: "pizza",
+                title: productSize.translations.title,
+                defaultTitle: productSize.name,
+                comboInformation: null,
+                image: productSize.image,
+                amount: 1,
+                modifiers: modifier ? [modifier] : [],
+                price: productSize.price
+            })
+        )
+        // Закрыть подробнее
+        onClose()
     }
 
     const price = formatPrice(productSize.price + (modifier?.price || 0)) + " " + t("sum")
