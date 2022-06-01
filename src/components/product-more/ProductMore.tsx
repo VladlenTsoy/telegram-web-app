@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react"
-import styles from "./ModalPizzaCard.module.css"
-import {motion, useMotionValue} from "framer-motion"
+import styles from "./ProductMore.module.css"
 import {Group, ProductSize, TranslationTitle} from "types/Menu"
 import LabelTextToggleBtn from "../lable-text-toggle-btn/LabelTextToggleBtn"
 import {useLanguage} from "../../utils/i18n.config"
+import {formatPrice} from "../../utils/formatPrice"
 
 export interface CrustOption {
     id: string
@@ -26,23 +26,17 @@ export interface CartProductModifier {
     // label?: string
 }
 
-interface ModalPizzaCardProps {
+interface ProductMoreProps {
     group: Group
     onClose: () => void
 }
 
-const ModalPizzaCard: React.FC<ModalPizzaCardProps> = ({group, onClose}) => {
+const ProductMore: React.FC<ProductMoreProps> = ({group, onClose}) => {
     const {lang, t} = useLanguage()
-    const y = useMotionValue(0)
     const [sizes, setSizes] = useState<{id: string, title: string, price: number}[]>([])
     const [productSize, setProductSize] = useState<ProductSize>()
     const [crusts, setCrusts] = useState<CrustOption[]>([])
     const [modifier, setModifier] = useState<CartProductModifier>()
-
-    const onDragListener = (e: any) => {
-        console.log(y.get())
-        if (y.get() >= 100) onClose()
-    }
 
     const selectModifier = (modifierId: string) => {
         if (productSize) {
@@ -88,40 +82,23 @@ const ModalPizzaCard: React.FC<ModalPizzaCardProps> = ({group, onClose}) => {
     }, [productSize])
 
     return (
-        <div className={styles.wrapper}>
-            <motion.div
-                className={styles.card}
-                drag="y"
-                onDragEnd={onDragListener}
-                dragElastic={{
-                    top: 0,
-                    bottom: 1
-                }}
-                dragConstraints={{
-                    top: 0,
-                    bottom: 0
-                }}
-                style={{y}}
-                initial={{opacity: 0, y: "100%"}}
-                animate={{opacity: 1, y: 0}}
-                transition={{ease: "linear", duration: 0.2}}
-                exit={{opacity: 0, y: "100%"}}
-            >
+        <>
+            <div className={styles.imageContainer}>
                 <img src={group.image} alt={group.translations.title[lang]} className={styles.image} />
-                <div className={styles.details}>
-                    <h1 className={styles.title}>{group.translations.title[lang]}</h1>
-                    <p className={styles.description}>{group.translations.desc[lang]}</p>
-                    <LabelTextToggleBtn value={productSize?.id} data={sizes} label={"Выберите тип теста"} />
-                    {crusts.length &&
-                        <LabelTextToggleBtn value={crusts[0].id} data={crusts} label={"Выберите тип теста"} />}
-                    <div className={styles.priceAndAction}>
-                        <div className={styles.price}>90 000 сум</div>
-                        <button className={styles.action}>Добавить в корзину</button>
-                    </div>
+            </div>
+            <div className={styles.details}>
+                <h2 className={styles.title}>{group.translations.title[lang]}</h2>
+                <p className={styles.description}>{group.translations.desc[lang]}</p>
+                <LabelTextToggleBtn value={productSize?.id} data={sizes} label={"Выберите тип теста"} />
+                {crusts.length &&
+                    <LabelTextToggleBtn value={crusts[0].id} data={crusts} label={"Выберите тип теста"} />}
+                <div className={styles.priceAndAction}>
+                    <div className={styles.price}>{formatPrice(group.price)} сум</div>
+                    <button className={styles.action}>Добавить в корзину</button>
                 </div>
-            </motion.div>
-        </div>
+            </div>
+        </>
     )
 }
 
-export default ModalPizzaCard
+export default ProductMore

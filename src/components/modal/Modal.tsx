@@ -1,7 +1,7 @@
 import React, {useEffect} from "react"
 import styles from "./Modal.module.css"
 import Portal from "components/portal/Portal"
-import {AnimatePresence, motion} from "framer-motion"
+import {AnimatePresence, motion, useMotionValue} from "framer-motion"
 
 interface ModalProps {
     children?: React.ReactNode
@@ -10,10 +10,22 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({visible, onClose, children}) => {
+    const y = useMotionValue(0)
 
     useEffect(() => {
         document.body.style.overflow = visible ? "hidden" : "auto"
+        if (window.Telegram.WebApp.MainButton.isVisible) {
+            if (visible)
+                window.Telegram.WebApp.MainButton.hide()
+            else
+                window.Telegram.WebApp.MainButton.show()
+        }
     }, [visible])
+
+
+    const onDragListener = (e: any) => {
+        if (y.get() >= 100) onClose()
+    }
 
     const onCloseHandler = () => {
         onClose()
@@ -34,7 +46,28 @@ const Modal: React.FC<ModalProps> = ({visible, onClose, children}) => {
                     >
                     </motion.div>
                     <div className={styles.container}>
-                        {children}
+                        <div className={styles.wrapper}>
+                            <motion.div
+                                className={styles.card}
+                                drag="y"
+                                onDragEnd={onDragListener}
+                                dragElastic={{
+                                    top: 0,
+                                    bottom: 1
+                                }}
+                                dragConstraints={{
+                                    top: 0,
+                                    bottom: 0
+                                }}
+                                style={{y}}
+                                initial={{opacity: 0, y: "100%"}}
+                                animate={{opacity: 1, y: 0}}
+                                transition={{ease: "linear", duration: 0.2}}
+                                exit={{opacity: 0, y: "100%"}}
+                            >
+                                {children}
+                            </motion.div>
+                        </div>
                     </div>
                 </>
             }

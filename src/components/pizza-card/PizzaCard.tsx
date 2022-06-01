@@ -4,7 +4,7 @@ import {formatPrice} from "utils/formatPrice"
 import {Group} from "types/Menu"
 import Modal from "../modal/Modal"
 import {motion} from "framer-motion"
-import ModalPizzaCard from "../modal/ModalPizzaCard"
+import ProductMore from "../product-more/ProductMore"
 import {useLanguage} from "../../utils/i18n.config"
 
 interface PizzaCardProps {
@@ -26,7 +26,7 @@ const PizzaCard: React.FC<PizzaCardProps> = ({pizza}) => {
     return (
         <>
             <Modal visible={visible} onClose={onCloseHandler}>
-                <ModalPizzaCard group={pizza} onClose={onCloseHandler} />
+                <ProductMore group={pizza} onClose={onCloseHandler} />
             </Modal>
             <div key={pizza.id} className={styles.card}>
                 <div className={styles.image}>

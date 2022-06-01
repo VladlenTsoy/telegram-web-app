@@ -1,0 +1,49 @@
+.imageContainer {
+    padding-top: .5rem;
+    text-align: center;
+    width: 100%;
+}
+
+.imageContainer .image {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+    border-radius: var(--border-radius);
+}
+
+.details {
+    padding: 1rem .5rem;
+}
+
+.details .title {
+    margin: 0 0 .75rem;
+}
+
+.details .description {
+    font-size: var(--font-size-sm);
+    margin-bottom: 1.5rem;
+}
+
+.details .priceAndAction {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.details .priceAndAction .price {
+    white-space: nowrap;
+}
+
+.details .priceAndAction .action {
+    background: var(--primary-gradient);
+
+    border: 0;
+    border-radius: 40px;
+    padding: 1rem 1.5rem;
+    color: white;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bolder;
+}
