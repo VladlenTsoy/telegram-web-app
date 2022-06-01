@@ -21,7 +21,6 @@
     position: fixed;
     z-index: 1;
     overflow: hidden;
-    overflow-y: scroll;
 }
 
 .wrapper {
@@ -32,6 +31,7 @@
 }
 
 .card {
+    position: relative;
     background: var(--tg-theme-bg-color);
     border-radius: var(--border-radius) var(--border-radius) 0 0;
     overflow: hidden;
@@ -39,4 +39,18 @@
     height: auto;
     pointer-events: all;
     max-width: 700px;
+}
+
+.close {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--tg-theme-bg-color);
+    color: var(--tg-theme-text-color);
 }

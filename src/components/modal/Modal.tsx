@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react"
 import styles from "./Modal.module.css"
 import Portal from "components/portal/Portal"
+import {GrClose} from "react-icons/gr"
 import {AnimatePresence, motion, useMotionValue} from "framer-motion"
 
 interface ModalProps {
@@ -25,7 +26,7 @@ const Modal: React.FC<ModalProps> = ({visible, onClose, children}) => {
         //
         if (window.scrollY === 0) {
             if (visible)
-                window.scrollTo(0, 1)
+                window.scrollTo(0, 100)
             else
                 window.scrollTo(0, 0)
         }
@@ -42,11 +43,15 @@ const Modal: React.FC<ModalProps> = ({visible, onClose, children}) => {
         if (y.get() >= 50) onClose()
     }
 
+    const onDragEndListener = () => {
+        if (y.get() >= 100) onClose()
+    }
+
     const onCloseHandler = () => {
         onClose()
     }
 
-    return <Portal visible={visible}>
+    return <Portal visible={visible} destroyOnClose>
         <AnimatePresence>
             {visible &&
                 <>
@@ -65,10 +70,11 @@ const Modal: React.FC<ModalProps> = ({visible, onClose, children}) => {
                             <motion.div
                                 className={styles.card}
                                 drag="y"
-                                onDragEnd={onDragListener}
+                                onDrag={onDragListener}
+                                onDragEnd={onDragEndListener}
                                 dragElastic={{
                                     top: 0,
-                                    bottom: 1
+                                    bottom: .3
                                 }}
                                 dragConstraints={{
                                     top: 0,
@@ -80,6 +86,9 @@ const Modal: React.FC<ModalProps> = ({visible, onClose, children}) => {
                                 transition={{ease: "linear", duration: 0.2}}
                                 exit={{opacity: 0, y: "100%"}}
                             >
+                                <div className={styles.close} onClick={onClose}>
+                                    <GrClose />
+                                </div>
                                 {children}
                             </motion.div>
                         </div>
