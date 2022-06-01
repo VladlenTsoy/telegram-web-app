@@ -23,7 +23,6 @@ function App() {
         // Кнопка
         window.Telegram.WebApp.MainButton.onClick(() => {
             window.Telegram.WebApp.sendData("test")
-            window.Telegram.WebApp.close()
         })
 
         // Загрузка меню
