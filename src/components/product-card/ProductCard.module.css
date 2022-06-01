@@ -38,7 +38,7 @@
     font-weight: bold;
     transform: scale(1);
     animation-name: bounceIn;
-    animation-duration: .5s;
+    animation-duration: .2s;
     animation-fill-mode: both;
 }
 

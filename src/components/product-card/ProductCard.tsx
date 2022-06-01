@@ -6,6 +6,7 @@ import cn from "classnames"
 import {useDispatch} from "store"
 import {addToCart, minusAmount, useCartGetByUID} from "features/cart/cartSlice"
 import {BsPlus, BsDash} from "react-icons/bs"
+import {useLanguage} from "../../utils/i18n.config"
 
 interface ProductCardProps {
     product: Product
@@ -13,6 +14,7 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({product, scale}) => {
+    const {lang} = useLanguage()
     const dispatch = useDispatch()
     const cartProduct = useCartGetByUID(product.id)
 
@@ -45,13 +47,13 @@ const ProductCard: React.FC<ProductCardProps> = ({product, scale}) => {
             >
                 <img
                     src={product.image}
-                    alt={product.translations.title["ru"]}
+                    alt={product.translations.title[lang]}
                     style={{transform: `scale(${scale})`}}
                 />
                 {!!cartProduct && <div className={styles.count} key={cartProduct.amount}>{cartProduct.amount}</div>}
             </div>
             <div className={styles.details}>
-                <div className={styles.title}>{product.translations.title["ru"]}</div>
+                <div className={styles.title}>{product.translations.title[lang]}</div>
                 <div className={styles.priceAndButton}>
                     <div className={styles.price}>
                         <span>{formatPrice(product.price)}</span>сум

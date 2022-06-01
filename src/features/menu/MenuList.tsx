@@ -4,8 +4,7 @@ import {useGetMenu} from "./menuSlice"
 import cn from "classnames"
 import PizzaList from "./pizza/PizzaList"
 import ProductList from "./product/ProductList"
-import {useCartTotalPrice} from "../cart/cartSlice"
-import {formatPrice} from "../../utils/formatPrice"
+import {useLanguage} from "../../utils/i18n.config"
 
 const obj: {[key: string]: string} = {
     "4b328756-a3c4-4362-af84-9b029ee20c57": "🍕",
@@ -18,7 +17,7 @@ const obj: {[key: string]: string} = {
 
 const MenuList: React.FC = () => {
     const categories = useGetMenu()
-    const cartTotalPrice = useCartTotalPrice()
+    const {lang} = useLanguage()
     const [selectCategoryId, setSelectCategoryId] = useState<string>()
 
     const onClickHandler = (categoryId: string) => {
@@ -35,13 +34,6 @@ const MenuList: React.FC = () => {
         }
     }, [categories])
 
-    useEffect(() => {
-        if (cartTotalPrice > 0) {
-            window.Telegram.WebApp.MainButton.text = `Корзина: ${formatPrice(cartTotalPrice)} сум`
-            window.Telegram.WebApp.MainButton.show()
-        } else
-            window.Telegram.WebApp.MainButton.hide()
-    }, [cartTotalPrice])
 
     return <div className={styles.container}>
         <div className={styles.list}>
@@ -53,7 +45,7 @@ const MenuList: React.FC = () => {
                         onClick={() => onClickHandler(category.id)}
                     >
                         <span className={styles.icon}>{obj[category.id]}</span>
-                        <div className={styles.title}>{category.name}</div>
+                        <div className={styles.title}>{category.translations.title[lang] || category.name}</div>
                     </div>
                 )
             }

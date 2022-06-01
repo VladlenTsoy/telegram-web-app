@@ -26,8 +26,8 @@ const Modal: React.FC<ModalProps> = ({visible, onClose, children}) => {
                     <motion.div
                         initial={{opacity: 0}}
                         animate={{opacity: 1}}
-                        exit={{opacity: 0, transition: {duration: 0.15}}}
-                        transition={{duration: 0.2, delay: 0.15}}
+                        exit={{opacity: 0, transition: {duration: 0.075}}}
+                        transition={{duration: 0.1, delay: 0.075}}
                         style={{pointerEvents: "auto"}}
                         className={styles.overlay}
                         onClick={onCloseHandler}

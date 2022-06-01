@@ -1,12 +1,19 @@
+.wrapper {
+    position: absolute;
+    bottom: 0;
+    /*left: 50%;*/
+    /*top: 50%;*/
+    /*transform: translate(-50%, -50%);*/
+    /*width: calc(100% - 1rem);*/
+}
+
 .card {
     background: var(--tg-theme-bg-color);
-    position: relative;
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
     overflow: hidden;
     margin: 0 auto;
     height: auto;
     pointer-events: all;
-    width: calc(100% - 1rem);
     max-width: 700px;
 }
 

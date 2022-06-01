@@ -4,7 +4,6 @@ import TextToggleBtn from "components/text-toggle-btn/TextToggleBtn"
 
 interface LabelToggleBtnProps {
     label: string
-    additionalBlock?: any
     data: {
         id?: string | number
         title: string
@@ -18,16 +17,21 @@ interface LabelToggleBtnProps {
     value?: string | number
 }
 
-const LabelTextToggleBtn: React.FC<LabelToggleBtnProps> = ({label, additionalBlock, data, value, width}) => {
+const LabelTextToggleBtn: React.FC<LabelToggleBtnProps> = (
+    {
+        label,
+        data,
+        value,
+        width
+    }
+) => {
     return (
-        <div>
-            <div className={styles.additionalBlock}>
-                <p className={styles.label}>
-                    {label}
-                </p>
+        <>
+            <div className={styles.label}>
+                {label}
             </div>
             <TextToggleBtn data={data} width={width} value={value} />
-        </div>
+        </>
     )
 }
 

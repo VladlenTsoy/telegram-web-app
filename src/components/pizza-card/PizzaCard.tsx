@@ -5,12 +5,14 @@ import {Group} from "types/Menu"
 import Modal from "../modal/Modal"
 import {motion} from "framer-motion"
 import ModalPizzaCard from "../modal/ModalPizzaCard"
+import {useLanguage} from "../../utils/i18n.config"
 
 interface PizzaCardProps {
     pizza: Group
 }
 
 const PizzaCard: React.FC<PizzaCardProps> = ({pizza}) => {
+    const {lang} = useLanguage()
     const [visible, setVisible] = useState(false)
 
     const onClickHandler = () => {
@@ -31,8 +33,8 @@ const PizzaCard: React.FC<PizzaCardProps> = ({pizza}) => {
                     <img src={pizza.image} alt={pizza.name} />
                 </div>
                 <div className={styles.details}>
-                    <div className={styles.title}>{pizza.translations.title["ru"]}</div>
-                    <div className={styles.desc}>{pizza.translations.desc["ru"]}</div>
+                    <div className={styles.title}>{pizza.translations.title[lang]}</div>
+                    <div className={styles.desc}>{pizza.translations.desc[lang]}</div>
                     <div className={styles.priceAndButton}>
                         <div className={styles.price}>
                             от<span>{formatPrice(pizza.price)}</span>сум
