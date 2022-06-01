@@ -1,4 +1,4 @@
-import React, {useEffect} from "react"
+import React, {useEffect, useState} from "react"
 import styles from "./Modal.module.css"
 import Portal from "components/portal/Portal"
 import {AnimatePresence, motion, useMotionValue} from "framer-motion"
@@ -11,20 +11,33 @@ interface ModalProps {
 
 const Modal: React.FC<ModalProps> = ({visible, onClose, children}) => {
     const y = useMotionValue(0)
+    const [mainButtonIsVisible] = useState(window.Telegram.WebApp.MainButton.isVisible)
 
     useEffect(() => {
         document.body.style.overflow = visible ? "hidden" : "auto"
-        if (window.Telegram.WebApp.MainButton.isVisible) {
+        //
+        if (mainButtonIsVisible) {
             if (visible)
                 window.Telegram.WebApp.MainButton.hide()
             else
                 window.Telegram.WebApp.MainButton.show()
         }
+        //
+        if (visible && window.scrollY === 0)
+            window.scrollTo(0, 1)
+        else
+            window.scrollTo(0, 0)
+        //
+        if (visible)
+            window.Telegram.WebApp.expand()
     }, [visible])
 
+    useEffect(() => {
 
-    const onDragListener = (e: any) => {
-        if (y.get() >= 100) onClose()
+    }, [visible])
+
+    const onDragListener = () => {
+        if (y.get() >= 50) onClose()
     }
 
     const onCloseHandler = () => {
