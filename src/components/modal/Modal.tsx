@@ -23,10 +23,12 @@ const Modal: React.FC<ModalProps> = ({visible, onClose, children}) => {
                 window.Telegram.WebApp.MainButton.show()
         }
         //
-        if (visible && window.scrollY === 0)
-            window.scrollTo(0, 1)
-        else
-            window.scrollTo(0, 0)
+        if (window.scrollY === 0) {
+            if (visible)
+                window.scrollTo(0, 1)
+            else
+                window.scrollTo(0, 0)
+        }
         //
         if (visible)
             window.Telegram.WebApp.expand()
