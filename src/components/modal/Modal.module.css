@@ -53,4 +53,5 @@
     border-radius: 50%;
     background: var(--tg-theme-bg-color);
     color: var(--tg-theme-text-color);
+    font-size: var(--font-size-lg);
 }

@@ -1,13 +1,8 @@
-.btnWrapper {
-    position: relative;
-    background: #f4f4f4;
-    border: 1px solid rgba(0, 0, 0, .04);
-    border-radius: 100px;
-    display: grid;
-    justify-items: center;
-    font-weight: 600;
+.label {
     font-size: var(--font-size-sm);
-    line-height: 18px;
+    color: var(--tg-theme-hint-color);
+    line-height: 14px;
+    font-weight: 400;
 }
 
 .chooseBlock {
@@ -24,20 +19,29 @@
     transition: all .3s ease;
 }
 
-.btnWrapper .text {
+.container {
     position: relative;
-    z-index: 1;
+    background: #f4f4f4;
+    border: 1px solid rgba(0, 0, 0, .04);
+    border-radius: 100px;
+    display: grid;
+    justify-items: center;
     font-weight: 600;
+    margin: .5em 0 1.25em 0;
+    font-size: var(--font-size-sm);
     line-height: 18px;
-    color: #828282;
-    padding: 10px 0;
 }
 
-.textActive {
+.container .section {
     position: relative;
     z-index: 1;
     font-weight: 600;
     line-height: 18px;
-    color: #000000;
+    color: var(--tg-theme-hint-color);
     padding: 10px 0;
+    text-transform: capitalize;
+}
+
+.container .section.active {
+    color: var(--tg-theme-text-color);
 }
