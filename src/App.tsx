@@ -25,6 +25,7 @@ function App() {
             window.Telegram.WebApp.sendData({
                 products
             })
+            window.Telegram.WebApp.close()
         })
 
         // Загрузка меню
