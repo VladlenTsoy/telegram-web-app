@@ -22,9 +22,7 @@ function App() {
         window.Telegram.WebApp.ready()
         // Кнопка
         window.Telegram.WebApp.MainButton.onClick(() => {
-            window.Telegram.WebApp.sendData({
-                products
-            })
+            window.Telegram.WebApp.sendData("test")
             window.Telegram.WebApp.close()
         })
 
