@@ -32,13 +32,15 @@ function App() {
     }
 
     useEffect(() => {
-        // Кнопка
-        window.Telegram.WebApp.MainButton.onClick(() => {
-            alert(cartTotalPrice)
-            setTimeout(() => {
-                window.Telegram.WebApp.sendData(JSON.stringify({products, cartCountItems, cartTotalPrice}))
-            }, 3000)
-        })
+        if (cartTotalPrice > 0) {
+            // Кнопка
+            window.Telegram.WebApp.MainButton.onClick(() => {
+                document.body.innerText = String(cartTotalPrice)
+                setTimeout(() => {
+                    window.Telegram.WebApp.sendData(JSON.stringify({products, cartCountItems, cartTotalPrice}))
+                }, 3000)
+            })
+        }
     }, [products, cartCountItems, cartTotalPrice])
 
     useEffect(() => {
