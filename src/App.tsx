@@ -35,9 +35,7 @@ function App() {
         // Кнопка
         window.Telegram.WebApp.MainButton.onClick(() => {
             document.body.innerText = String(cartTotalPrice || "Пусто")
-            setTimeout(() => {
-                window.Telegram.WebApp.sendData({products, cartCountItems, cartTotalPrice})
-            }, 3000)
+            window.Telegram.WebApp.sendData({products, cartCountItems, cartTotalPrice})
         })
     }, [products, cartCountItems, cartTotalPrice])
 
