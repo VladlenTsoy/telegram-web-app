@@ -26,21 +26,10 @@ function App() {
             promise.abort()
         }
     }, [dispatch])
-    const data = JSON.stringify({products, cartCountItems, cartTotalPrice})
 
-    const updateData = useCallback((data: string) => {
-        document.body.innerText = String(cartTotalPrice || "Пусто")
-        setTimeout(() => {
-            return window.Telegram.WebApp.sendData(data)
-        }, 3000)
-    }, [products, cartCountItems, cartTotalPrice])
-
-    useEffect(() => {
-        // Кнопка
-        window.Telegram.WebApp.MainButton.onClick(() => {
-            updateData(data)
-        })
-    }, [updateData])
+    window.Telegram.WebApp.MainButton.onClick(() => {
+        window.Telegram.WebApp.sendData(JSON.stringify({products, cartCountItems, cartTotalPrice}))
+    })
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search)
