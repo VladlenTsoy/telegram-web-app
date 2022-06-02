@@ -26,6 +26,7 @@ function App() {
             promise.abort()
         }
     }, [dispatch])
+    const data = JSON.stringify({products, cartCountItems, cartTotalPrice})
 
     const updateData = useCallback((data: string) => {
         document.body.innerText = String(cartTotalPrice || "Пусто")
@@ -35,7 +36,6 @@ function App() {
     }, [products, cartCountItems, cartTotalPrice])
 
     useEffect(() => {
-        const data = JSON.stringify({products, cartCountItems, cartTotalPrice})
         // Кнопка
         window.Telegram.WebApp.MainButton.onClick(() => {
             updateData(data)
