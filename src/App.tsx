@@ -29,14 +29,11 @@ function App() {
 
     useEffect(() => {
         // Кнопка
-        // window.Telegram.WebApp.MainButton.onClick(() => {
-        //     window.Telegram.WebApp.sendData(data)
-        // })
-
-        window.Telegram.WebApp.onEvent("mainButtonClicked", () => {
-            const data = JSON.stringify({products, cartCountItems, cartTotalPrice})
-            window.Telegram.WebApp.sendData(data)
-        })
+        if (products.length)
+            window.Telegram.WebApp.MainButton.onClick(() => {
+                const data = JSON.stringify({products, cartCountItems, cartTotalPrice})
+                window.Telegram.WebApp.sendData(data)
+            })
     }, [products, cartCountItems, cartTotalPrice])
 
     useEffect(() => {
