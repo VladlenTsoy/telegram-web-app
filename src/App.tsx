@@ -30,7 +30,11 @@ function App() {
     useEffect(() => {
         const data = JSON.stringify({products})
         // Кнопка
-        window.Telegram.WebApp.MainButton.onClick(() => {
+        // window.Telegram.WebApp.MainButton.onClick(() => {
+        //     window.Telegram.WebApp.sendData(data)
+        // })
+
+        window.Telegram.WebApp.onEvent("mainButtonClicked", () => {
             window.Telegram.WebApp.sendData(data)
         })
     }, [products])
