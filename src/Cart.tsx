@@ -10,11 +10,15 @@ const Cart = () => {
     useEffect(() => {
         window.Telegram.WebApp.MainButton.text = "Оплатить"
         window.Telegram.WebApp.MainButton.onClick(() => {
-            window.Telegram.WebApp.sendData(JSON.stringify({
-                cartProducts,
-                cartTotalPrice,
-                cartCountItems
-            }))
+            try {
+                window.Telegram.WebApp.sendData(JSON.stringify({
+                    cartProducts,
+                    cartTotalPrice,
+                    cartCountItems
+                }))
+            } catch (e: any) {
+                document.body.innerText = e.message
+            }
         })
     }, [cartCountItems, cartTotalPrice, cartProducts])
 
