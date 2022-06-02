@@ -27,16 +27,16 @@ function App() {
         }
     }, [dispatch])
 
-    const updateData = useCallback(() => {
+    const updateData = () => {
         return JSON.stringify({products, cartCountItems, cartTotalPrice})
-    }, [products, cartCountItems, cartTotalPrice])
+    }
 
     useEffect(() => {
         // Кнопка
         window.Telegram.WebApp.MainButton.onClick(() => {
             window.Telegram.WebApp.sendData(updateData())
         })
-    }, [updateData])
+    }, [])
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search)
