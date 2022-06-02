@@ -1,4 +1,4 @@
-import React, {useEffect} from "react"
+import React, {useCallback, useEffect} from "react"
 import styles from "./App.module.css"
 import MenuList from "./features/menu/MenuList"
 import {useDispatch} from "./store"
@@ -27,14 +27,17 @@ function App() {
         }
     }, [dispatch])
 
+    const updateData = useCallback(() => {
+        return JSON.stringify({products, cartCountItems, cartTotalPrice})
+    }, [products, cartCountItems, cartTotalPrice])
+
     useEffect(() => {
         // Кнопка
         if (products.length)
             window.Telegram.WebApp.MainButton.onClick(() => {
-                const data = JSON.stringify({products, cartCountItems, cartTotalPrice})
-                window.Telegram.WebApp.sendData(data)
+                window.Telegram.WebApp.sendData(updateData())
             })
-    }, [products, cartCountItems, cartTotalPrice])
+    }, [updateData])
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search)
