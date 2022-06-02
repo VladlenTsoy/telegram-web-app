@@ -34,9 +34,10 @@ function App() {
     useEffect(() => {
         // Кнопка
         window.Telegram.WebApp.MainButton.onClick(() => {
-            window.Telegram.WebApp.sendData(updateData())
+            alert(cartTotalPrice)
+            window.Telegram.WebApp.sendData(JSON.stringify({products, cartCountItems, cartTotalPrice}))
         })
-    }, [])
+    }, [products, cartCountItems, cartTotalPrice])
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search)
