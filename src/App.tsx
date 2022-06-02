@@ -28,16 +28,16 @@ function App() {
     }, [dispatch])
 
     useEffect(() => {
-        const data = JSON.stringify({products})
         // Кнопка
         // window.Telegram.WebApp.MainButton.onClick(() => {
         //     window.Telegram.WebApp.sendData(data)
         // })
 
         window.Telegram.WebApp.onEvent("mainButtonClicked", () => {
+            const data = JSON.stringify({products, cartCountItems, cartTotalPrice})
             window.Telegram.WebApp.sendData(data)
         })
-    }, [products])
+    }, [products, cartCountItems, cartTotalPrice])
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search)
