@@ -27,19 +27,19 @@ function App() {
         }
     }, [dispatch])
 
-    const updateData = () => {
-        return JSON.stringify({products, cartCountItems, cartTotalPrice})
-    }
+    const updateData = useCallback(() => {
+        return window.Telegram.WebApp.sendData(JSON.stringify({products, cartCountItems, cartTotalPrice}))
+    }, [products, cartCountItems, cartTotalPrice])
 
     useEffect(() => {
         // Кнопка
         window.Telegram.WebApp.MainButton.onClick(() => {
             document.body.innerText = String(cartTotalPrice || "Пусто")
             setTimeout(() => {
-                window.Telegram.WebApp.sendData(JSON.stringify({products, cartCountItems, cartTotalPrice}))
+                updateData()
             }, 3000)
         })
-    }, [products, cartCountItems, cartTotalPrice])
+    }, [updateData])
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search)
