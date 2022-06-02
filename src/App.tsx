@@ -20,17 +20,19 @@ function App() {
     useEffect(() => {
         // Запуск телеграм приложения
         window.Telegram.WebApp.ready()
-        // Кнопка
-        window.Telegram.WebApp.MainButton.onClick(() => {
-            window.Telegram.WebApp.sendData(JSON.stringify({products}))
-        })
-
         // Загрузка меню
         const promise = dispatch(fetchMenu())
         return () => {
             promise.abort()
         }
     }, [dispatch])
+
+    useEffect(() => {
+        // Кнопка
+        window.Telegram.WebApp.MainButton.onClick(() => {
+            window.Telegram.WebApp.sendData(JSON.stringify({products}))
+        })
+    }, [products])
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search)
