@@ -33,10 +33,9 @@ function App() {
 
     useEffect(() => {
         // Кнопка
-        if (products.length)
-            window.Telegram.WebApp.MainButton.onClick(() => {
-                window.Telegram.WebApp.sendData(updateData())
-            })
+        window.Telegram.WebApp.MainButton.onClick(() => {
+            window.Telegram.WebApp.sendData(updateData())
+        })
     }, [updateData])
 
     useEffect(() => {
