@@ -27,9 +27,11 @@ function App() {
         }
     }, [dispatch])
 
-    window.Telegram.WebApp.MainButton.onClick(() => {
-        window.Telegram.WebApp.sendData(JSON.stringify({products, cartCountItems, cartTotalPrice}))
-    })
+    useEffect(() => {
+        window.Telegram.WebApp.MainButton.onClick(() => {
+            window.Telegram.WebApp.sendData(JSON.stringify({cartCountItems, cartTotalPrice}))
+        })
+    }, [cartCountItems, cartTotalPrice])
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search)
