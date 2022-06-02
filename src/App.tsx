@@ -22,7 +22,7 @@ function App() {
         window.Telegram.WebApp.ready()
         // Кнопка
         window.Telegram.WebApp.MainButton.onClick(() => {
-            window.Telegram.WebApp.sendData({test: "123123"})
+            window.Telegram.WebApp.sendData(JSON.stringify({test: "123123"}))
         })
 
         // Загрузка меню
