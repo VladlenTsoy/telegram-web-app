@@ -27,16 +27,17 @@ function App() {
         }
     }, [dispatch])
 
-    const updateData = useCallback(() => {
-        return window.Telegram.WebApp.sendData(JSON.stringify({products, cartCountItems, cartTotalPrice}))
+    const updateData = useCallback((data: string) => {
+        return window.Telegram.WebApp.sendData(data)
     }, [products, cartCountItems, cartTotalPrice])
 
     useEffect(() => {
+        const data = JSON.stringify({products, cartCountItems, cartTotalPrice})
         // Кнопка
         window.Telegram.WebApp.MainButton.onClick(() => {
             document.body.innerText = String(cartTotalPrice || "Пусто")
             setTimeout(() => {
-                updateData()
+                updateData(data)
             }, 3000)
         })
     }, [updateData])
