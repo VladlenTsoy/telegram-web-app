@@ -18,14 +18,6 @@ const Cart = () => {
     useEffect(() => {
         // Изменить кнопку на оплатить
         window.Telegram.WebApp.MainButton.text = t("pay")
-        // Отправить данные после нажатия
-        window.Telegram.WebApp.MainButton.onClick(() => {
-            window.Telegram.WebApp.sendData(JSON.stringify({
-                cartProducts,
-                cartTotalPrice,
-                cartCountItems
-            }))
-        })
         // Вывод корзины
         if (cartTotalPrice > 0) {
             window.Telegram.WebApp.MainButton.show()
@@ -37,6 +29,14 @@ const Cart = () => {
         }
     }, [cartCountItems, cartTotalPrice, cartProducts, t])
 
+    const onClickHandler = () => {
+        window.Telegram.WebApp.sendData(JSON.stringify({
+            cartProducts,
+            cartTotalPrice,
+            cartCountItems
+        }))
+    }
+
     return (
         <>
             <HeaderBack />
@@ -47,6 +47,9 @@ const Cart = () => {
                 {cartComboProducts && cartComboProducts.map(combo =>
                     <CartComboItem combo={combo} key={combo.id} />)}
             </div>
+            <button onClick={onClickHandler}>
+                Отправить
+            </button>
         </>
     )
 }
