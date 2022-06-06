@@ -29,15 +29,18 @@ function App() {
             window.Telegram.WebApp.MainButton.hide()
     }, [cartTotalPrice, t, cartCountItems])
 
+    useEffect(() => {
+        // Тема для приложения
+        document.body.dataset.theme = window?.Telegram?.WebApp?.colorScheme || "light"
+    }, [])
+
     return (
-        <div data-theme={window?.Telegram?.WebApp?.colorScheme || "light"}>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<MenuList />} />
-                    <Route path="/cart" element={<Cart />} />
-                </Routes>
-            </BrowserRouter>
-        </div>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<MenuList />} />
+                <Route path="/cart" element={<Cart />} />
+            </Routes>
+        </BrowserRouter>
     )
 }
 
