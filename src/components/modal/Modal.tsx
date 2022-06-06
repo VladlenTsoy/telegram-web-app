@@ -40,7 +40,7 @@ const Modal: React.FC<ModalProps> = ({visible, onClose, children}) => {
     }, [visible])
 
     const onDragListener = () => {
-        if (y.get() >= 50) onClose()
+        if (y.get() >= 25) onClose()
     }
 
     const onDragEndListener = () => {

@@ -1,14 +1,10 @@
 import React from "react"
 import styles from "./CartProductItem.module.css"
 import {formatPrice} from "utils/formatPrice"
-import Counter from "components/counter/Counter"
 import cn from "classnames"
 import {TranslationTitle} from "types/Menu"
-import Button from "components/button/Button"
-import {AiFillDelete} from "react-icons/ai"
-import {useDispatch} from "store"
-import {removeFromCart} from "features/cart/cartSlice"
 import {useLanguage} from "utils/i18n.config"
+import ProductCounter from "../product-counter/ProductCounter"
 
 interface CartProductItemProps {
     id: string
@@ -45,41 +41,37 @@ const CartProductItem: React.FC<CartProductItemProps> = (
     }
 ) => {
     const {lang, t} = useLanguage()
-    const dispatch = useDispatch()
 
-    const removeHandler = () => {
-        dispatch(removeFromCart(uid))
-    }
+    const totalPrice = !notPrice && (checkStop
+        ? t("notEnough")
+        : positionId
+            ? t("free")
+            : formatPrice(price * amount) + " " + t("sum"))
+
 
     return (
-        <div className={styles.cartItem} id={id}>
-            <div className={styles.image}>
-                {image && <img src={image} alt="" />}
-            </div>
-            <div className={styles.details}>
-                <div className={styles.info}>
-                    <div className={styles.title}>{(title && title[lang]) || defaultTitle}</div>
-                    {desc && <div className={styles.desc}>{desc.substring(0, 60)}{desc.length > 60 ? "..." : ""}</div>}
+        <div className={cn(styles.mainWrapper, {[styles.giftWrapper]: false})} id={id}>
+            <div className={styles.productInfoBlock}>
+                <div className={styles.imgWrapper}>
+                    <img src={image || "/images/default-image.png"} alt={defaultTitle} />
                 </div>
-                <div className={styles.actions}>
-                    <span className={cn(styles.price, {[styles.red]: checkStop})}>
-                        {
-                            !notPrice && (checkStop
-                                ? t("notEnough")
-                                : positionId
-                                    ? t("free")
-                                    : formatPrice(price * amount) + " " + t("sum"))
-                        }
-                    </span>
-                    {
-                        control ?
-                            <Counter amount={amount} decrement={control.decrement} increment={control.increment} /> :
-                            <span>{amount} {t("count")}</span>
-                    }
-                    {
-                        checkStop &&
-                        <Button size="small" danger ghost icon={<AiFillDelete />} onClick={removeHandler} />
-                    }
+                <div className={styles.textBlock}>
+                    <h3 className={styles.productName}>
+                        {(title && title[lang]) || defaultTitle}
+                    </h3>
+                    {desc && <div className={styles.productDescription}>
+                        {desc.substring(0, 60)}{desc.length > 60 ? "..." : ""}
+                    </div>}
+                </div>
+            </div>
+            <div className={styles.counterBlock}>
+                {control && <ProductCounter
+                    amount={amount}
+                    increment={control.increment}
+                    decrement={control.decrement}
+                />}
+                <div className={styles.currPrice}>
+                    {totalPrice}
                 </div>
             </div>
         </div>
