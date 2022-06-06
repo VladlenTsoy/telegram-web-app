@@ -5,6 +5,7 @@ import cn from "classnames"
 import PizzaList from "./pizza/PizzaList"
 import ProductList from "./product/ProductList"
 import {useLanguage} from "../../utils/i18n.config"
+import {useNavigate} from "react-router-dom"
 
 const obj: {[key: string]: string} = {
     "4b328756-a3c4-4362-af84-9b029ee20c57": "🍕",
@@ -19,6 +20,7 @@ const MenuList: React.FC = () => {
     const categories = useGetMenu()
     const {lang} = useLanguage()
     const [selectCategoryId, setSelectCategoryId] = useState<string>()
+    const navigate = useNavigate()
 
     const onClickHandler = (categoryId: string) => {
         // Открыть приложение полностью
@@ -27,6 +29,16 @@ const MenuList: React.FC = () => {
         // Выбрать категорию
         setSelectCategoryId(categoryId)
     }
+
+
+    useEffect(() => {
+        // Запуск телеграм приложения
+        window.Telegram.WebApp.ready()
+        // Корзина
+        window.Telegram.WebApp.MainButton.onClick(() => {
+            navigate("/cart")
+        })
+    }, [navigate])
 
     useEffect(() => {
         if (categories.length) {

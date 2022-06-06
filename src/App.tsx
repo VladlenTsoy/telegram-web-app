@@ -7,7 +7,7 @@ import {useGetMenuLoading} from "./features/menu/menuSlice"
 import {useTranslation} from "react-i18next"
 import {useCartCountItems, useCartTotalPrice} from "./features/cart/cartSlice"
 import Cart from "./features/cart/Cart"
-import {BrowserRouter, Route, Routes, useNavigate} from "react-router-dom"
+import {BrowserRouter, Route, Routes} from "react-router-dom"
 
 function App() {
     const isLoading = useGetMenuLoading()
@@ -15,15 +15,8 @@ function App() {
     const {i18n} = useTranslation()
     const cartTotalPrice = useCartTotalPrice()
     const cartCountItems = useCartCountItems()
-    const navigate = useNavigate()
 
     useEffect(() => {
-        // Запуск телеграм приложения
-        window.Telegram.WebApp.ready()
-        // Корзина
-        window.Telegram.WebApp.MainButton.onClick(() => {
-            navigate("/cart")
-        })
         // Загрузка меню
         const promise = dispatch(fetchMenu())
         return () => {
