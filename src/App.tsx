@@ -11,6 +11,13 @@ function App() {
     const cartCountItems = useCartCountItems()
 
     useEffect(() => {
+        // Запуск телеграм приложения
+        window.Telegram.WebApp.ready()
+        // Тема для приложения
+        document.body.dataset.theme = window?.Telegram?.WebApp?.colorScheme || "light"
+    }, [])
+
+    useEffect(() => {
         // Определить язык
         const urlParams = new URLSearchParams(window.location.search)
         const lang = urlParams.get("lang")
@@ -28,11 +35,6 @@ function App() {
         } else
             window.Telegram.WebApp.MainButton.hide()
     }, [cartTotalPrice, t, cartCountItems])
-
-    useEffect(() => {
-        // Тема для приложения
-        document.body.dataset.theme = window?.Telegram?.WebApp?.colorScheme || "light"
-    }, [])
 
     return (
         <BrowserRouter>

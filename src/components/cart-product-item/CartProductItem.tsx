@@ -54,7 +54,7 @@ const CartProductItem: React.FC<CartProductItemProps> = (
     return (
         <div className={styles.cartItem} id={id}>
             <div className={styles.image}>
-                {image && <img src={image} width="170" height="120"  alt=""/>}
+                {image && <img src={image} alt="" />}
             </div>
             <div className={styles.details}>
                 <div className={styles.info}>

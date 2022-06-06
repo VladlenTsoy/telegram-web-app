@@ -11,5 +11,7 @@
   "sum": "so’m",
   "pay": "To'lov",
   "addToCart": "Qo'shish",
-  "basket": "Savatcha"
+  "basket": "Savatcha",
+  "emptyCart": "Hozircha sizning savatchangiz boʻsh \uD83D\uDE15",
+  "back": "Orqaga"
 }

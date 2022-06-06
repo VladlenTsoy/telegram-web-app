@@ -36,8 +36,6 @@ const MenuList: React.FC = () => {
     }, [dispatch])
 
     useEffect(() => {
-        // Запуск телеграм приложения
-        window.Telegram.WebApp.ready()
         // Корзина
         window.Telegram.WebApp.MainButton.onClick(() => {
             navigate("/cart")
@@ -45,12 +43,12 @@ const MenuList: React.FC = () => {
     }, [navigate])
 
     useEffect(() => {
-        if (categories.length) {
+        // Выбрать категорию по дефолту
+        if (categories.length)
             setSelectCategoryId(categories[0].id)
-        }
     }, [categories])
 
-    if (isLoading)
+    if (isLoading && !categories.length)
         return <Loader />
 
     return <div className={styles.container}>

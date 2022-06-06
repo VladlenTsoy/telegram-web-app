@@ -1,6 +1,7 @@
 .cartItem {
     width: 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: 90px 1fr;
     align-items: center;
     justify-content: space-between;
     position: relative;
@@ -14,8 +15,8 @@
 
 .cartItem .image {
     position: relative;
-    width: 130px;
-    height: 50px;
+    width: 90px;
+    height: 90px;
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -23,9 +24,10 @@
 }
 
 .cartItem .image img {
-    width: 130px;
-    height: 50px;
+    width: 90px;
+    height: 90px;
     object-fit: contain;
+    transform: scale(1.5);
 }
 
 .cartItem .details {
