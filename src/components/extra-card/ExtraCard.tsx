@@ -2,18 +2,25 @@ import React from "react"
 import styles from "./ExtraCard.module.css"
 import {Group} from "types/Menu"
 import cn from "classnames"
-import {useLanguage} from "../../utils/i18n.config"
+import {useLanguage} from "utils/i18n.config"
+import {useNavigate} from "react-router-dom"
 
 interface ConstructorCardProps {
     item: Group
+    link?: string
     type: "constructor" | "half"
 }
 
-const ExtraCard: React.FC<ConstructorCardProps> = ({item, type}) => {
+const ExtraCard: React.FC<ConstructorCardProps> = ({item, type, link}) => {
     const {lang} = useLanguage()
+    let navigate = useNavigate()
+
+    const clickHandler = () => {
+        if (link) navigate(link)
+    }
 
     return (
-        <div className={cn(styles.card, styles[type])}>
+        <div className={cn(styles.card, styles[type])} onClick={clickHandler}>
             <div className={styles.icon}>{type === "constructor" ? "👷" : "🌓"}</div>
             <div className={styles.title}>
                 {item.translations.title[lang]}

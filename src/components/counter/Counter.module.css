@@ -1,0 +1,38 @@
+.counter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    background: #e8fff0;
+    border-radius: 100px;
+}
+
+.counter .button {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.counter .button > .icon {
+    display: block;
+    width: 13px;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+.counter .button > .sub {
+    position: absolute;
+    transform: rotateZ(90deg);
+    height: 3px;
+}
+
+.text {
+    margin: 0 .5rem;
+}

@@ -1,14 +1,13 @@
-import React, {useEffect, useState} from "react"
-import styles from "./App.module.css"
+import React, {useEffect} from "react"
 import MenuList from "./features/menu/MenuList"
 import {useDispatch} from "./store"
 import {fetchMenu} from "./features/menu/fetchMenu"
 import Loader from "./components/loader/Loader"
 import {useGetMenuLoading} from "./features/menu/menuSlice"
-import cn from "classnames"
 import {useTranslation} from "react-i18next"
 import {useCartCountItems, useCartTotalPrice} from "./features/cart/cartSlice"
-import Cart from "./Cart"
+import Cart from "./features/cart/Cart"
+import {BrowserRouter, Route, Routes, useNavigate} from "react-router-dom"
 
 function App() {
     const isLoading = useGetMenuLoading()
@@ -16,14 +15,14 @@ function App() {
     const {i18n} = useTranslation()
     const cartTotalPrice = useCartTotalPrice()
     const cartCountItems = useCartCountItems()
-    const [visible, setVisible] = useState<"menu" | "cart">("menu")
+    const navigate = useNavigate()
 
     useEffect(() => {
         // Запуск телеграм приложения
         window.Telegram.WebApp.ready()
         // Корзина
         window.Telegram.WebApp.MainButton.onClick(() => {
-            setVisible("cart")
+            navigate("/cart")
         })
         // Загрузка меню
         const promise = dispatch(fetchMenu())
@@ -53,9 +52,13 @@ function App() {
         return <Loader />
 
     return (
-        <div className={cn(styles.app)} data-theme={window?.Telegram?.WebApp?.colorScheme || "light"}>
-            {visible === "menu" && <MenuList />}
-            {visible === "cart" && <Cart />}
+        <div data-theme={window?.Telegram?.WebApp?.colorScheme || "light"}>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<MenuList />} />
+                    <Route path="/cart" element={<Cart />} />
+                </Routes>
+            </BrowserRouter>
         </div>
     )
 }

@@ -1,0 +1,82 @@
+.button {
+    background: var(--primary-color);
+    border-radius: 100px;
+    border: 0;
+    color: #ffffff;
+    font-size: var(--font-size-lg);
+    transition: all .3s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.button:disabled {
+    cursor: not-allowed;
+    opacity: .5;
+}
+
+.button .icon {
+    line-height: 0;
+}
+
+.button .rIcon {
+    line-height: 0;
+}
+
+.button.small {
+    font-size: var(--font-size-sm);
+    padding: .45rem 1rem;
+}
+
+.button.middle {
+    padding: 1rem 1.5rem;
+}
+
+.button.block {
+    width: 100%;
+}
+
+.button.circle {
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    padding: 0;
+}
+
+.button.outlined {
+    background: var(--tg-theme-bg-color);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    box-shadow: none;
+}
+
+.button.ghost {
+    border: 0;
+    box-shadow: none;
+    background: var(--tg-theme-bg-color);
+    color: var(--primary-color);
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.button.danger {
+    background: var(--danger-color);
+}
+
+.button.danger.ghost {
+    border: 0;
+    box-shadow: none;
+    background: var(--tg-theme-bg-color);
+    color: var(--danger-color);
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+
+.button {
+    overflow: hidden;
+    position: relative;
+}
