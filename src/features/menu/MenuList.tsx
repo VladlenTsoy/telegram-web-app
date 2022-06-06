@@ -1,11 +1,14 @@
 import React, {useEffect, useState} from "react"
 import styles from "./MenuList.module.css"
-import {useGetMenu} from "./menuSlice"
+import {useGetMenu, useGetMenuLoading} from "./menuSlice"
 import cn from "classnames"
 import PizzaList from "./pizza/PizzaList"
 import ProductList from "./product/ProductList"
 import {useLanguage} from "../../utils/i18n.config"
 import {useNavigate} from "react-router-dom"
+import {fetchMenu} from "./fetchMenu"
+import {useDispatch} from "../../store"
+import Loader from "../../components/loader/Loader"
 
 const obj: {[key: string]: string} = {
     "4b328756-a3c4-4362-af84-9b029ee20c57": "🍕",
@@ -21,6 +24,8 @@ const MenuList: React.FC = () => {
     const {lang} = useLanguage()
     const [selectCategoryId, setSelectCategoryId] = useState<string>()
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const isLoading = useGetMenuLoading()
 
     const onClickHandler = (categoryId: string) => {
         // Открыть приложение полностью
@@ -30,6 +35,14 @@ const MenuList: React.FC = () => {
         setSelectCategoryId(categoryId)
     }
 
+
+    useEffect(() => {
+        // Загрузка меню
+        const promise = dispatch(fetchMenu())
+        return () => {
+            promise.abort()
+        }
+    }, [dispatch])
 
     useEffect(() => {
         // Запуск телеграм приложения
@@ -46,6 +59,8 @@ const MenuList: React.FC = () => {
         }
     }, [categories])
 
+    if (isLoading)
+        return <Loader />
 
     return <div className={styles.container}>
         <div className={styles.list}>
