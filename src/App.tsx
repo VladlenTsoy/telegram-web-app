@@ -1,14 +1,11 @@
 import React, {useEffect} from "react"
 import MenuList from "./features/menu/MenuList"
 import {useTranslation} from "react-i18next"
-import {useCartCountItems, useCartTotalPrice} from "./features/cart/cartSlice"
 import Cart from "./features/cart/Cart"
 import {BrowserRouter, Route, Routes} from "react-router-dom"
 
 function App() {
-    const {i18n, t} = useTranslation()
-    const cartTotalPrice = useCartTotalPrice()
-    const cartCountItems = useCartCountItems()
+    const {i18n} = useTranslation()
 
     useEffect(() => {
         // Запуск телеграм приложения
@@ -26,15 +23,6 @@ function App() {
             await i18n.changeLanguage(lang || "uz")
         })()
     }, [i18n])
-
-    useEffect(() => {
-        // Вывод корзины
-        if (cartTotalPrice > 0) {
-            window.Telegram.WebApp.MainButton.text = `${t("basket")} (${cartCountItems})`
-            window.Telegram.WebApp.MainButton.show()
-        } else
-            window.Telegram.WebApp.MainButton.hide()
-    }, [cartTotalPrice, t, cartCountItems])
 
     return (
         <BrowserRouter>

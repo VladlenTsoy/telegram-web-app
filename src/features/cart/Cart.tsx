@@ -26,6 +26,15 @@ const Cart = () => {
                 cartCountItems
             }))
         })
+        // Вывод корзины
+        if (cartTotalPrice > 0) {
+            window.Telegram.WebApp.MainButton.show()
+        } else
+            window.Telegram.WebApp.MainButton.hide()
+        return () => {
+            window.Telegram.WebApp.MainButton.hide()
+            window.Telegram.WebApp.MainButton.onClick(() => null)
+        }
     }, [cartCountItems, cartTotalPrice, cartProducts, t])
 
     return (
