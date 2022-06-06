@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react"
+import React, {useCallback, useEffect, useState} from "react"
 import SwitchButtons from "components/switch-buttons/SwitchButtons"
 import styles from "./ProductMore.module.css"
 import {formatPrice} from "utils/formatPrice"
@@ -25,7 +25,7 @@ const CrustAndAction: React.FC<CrustsSelectProps> = ({productSize, sizes, select
     // Модификаторы (Тесто? )
     const [modifier, setModifier] = useState<CartProductModifier>()
 
-    const selectModifier = (modifierId: string) => {
+    const selectModifier = useCallback((modifierId: string) => {
         const _modifier = productSize.crusts.products.find(product => product.id === modifierId)
         if (_modifier)
             setModifier({
@@ -36,7 +36,7 @@ const CrustAndAction: React.FC<CrustsSelectProps> = ({productSize, sizes, select
                 productGroupId: _modifier.parentGroup,
                 type: "crust"
             })
-    }
+    }, [productSize])
 
     useEffect(() => {
         const switchCrusts = (JSON.parse(JSON.stringify(productSize.crusts.products)) as CrustProduct[])
@@ -51,7 +51,7 @@ const CrustAndAction: React.FC<CrustsSelectProps> = ({productSize, sizes, select
             setCrusts(switchCrusts)
             selectModifier(switchCrusts[0].id)
         }
-    }, [productSize, lang])
+    }, [productSize, lang, selectModifier])
 
     // Добавление в корзину
     const onClickAddHandler = () => {
@@ -97,7 +97,7 @@ const CrustAndAction: React.FC<CrustsSelectProps> = ({productSize, sizes, select
                     className={styles.action}
                     onClick={onClickAddHandler}
                 >
-                    Добавить в корзину
+                    {t("addToCart")}
                 </button>
             </div>
         </>
