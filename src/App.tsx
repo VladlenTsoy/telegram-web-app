@@ -8,7 +8,6 @@ import Loader from "./components/loader/Loader"
 const MenuList = React.lazy(() => import("./features/menu/MenuList"))
 const Cart = React.lazy(() => import("./features/cart/Cart"))
 
-
 function App() {
     const {i18n} = useTranslation()
     const dispatch = useDispatch()
