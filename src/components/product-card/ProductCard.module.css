@@ -32,7 +32,9 @@
     align-items: center;
     justify-content: center;
     background-color: var(--warning-color);
-    background-image: var(--warning-gradient);
+    /*background-image: var(--warning-gradient);*/
+    /*background-color: var(--primary-color);*/
+    /*background-image: var(--primary-gradient);*/
     color: white;
     border-radius: 50%;
     font-weight: bold;

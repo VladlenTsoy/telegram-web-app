@@ -5,6 +5,7 @@ import {icons} from "utils/variables"
 import {Category} from "types/Menu"
 import {useLanguage} from "utils/i18n.config"
 import {useCartQtyItems} from "features/cart/cartSlice"
+import {useNavigate} from "react-router-dom"
 
 interface HeaderMenuProps {
     categories: Category[]
@@ -15,6 +16,9 @@ interface HeaderMenuProps {
 const HeaderMenu: React.FC<HeaderMenuProps> = ({categories, selectCategoryId, onClickHandler}) => {
     const {lang} = useLanguage()
     const cartCountItems = useCartQtyItems()
+    const navigate = useNavigate()
+
+    const toCartHandler = () => navigate("/cart")
 
     return (
         <>
@@ -39,15 +43,15 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({categories, selectCategoryId, on
                     onClick={() => onClickHandler("promotions")}
                 >
                     <span className={styles.icon}>🎉</span>
-                    <div className={styles.title}>Акции</div>
+                    <div>
+                        <div className={styles.title}>Новые</div>
+                        <div className={styles.count}>Акции</div>
+                    </div>
                 </div>
                 <div
                     key="cart"
-                    className={cn(styles.cart, {
-                        [styles.active]: "cart" === selectCategoryId,
-                        [styles.disabled]: !cartCountItems
-                    })}
-                    onClick={() => onClickHandler("cart")}
+                    className={cn(styles.cart, {[styles.disabled]: !cartCountItems})}
+                    onClick={toCartHandler}
                 >
                     <div>
                         <div className={styles.title}>Корзина</div>

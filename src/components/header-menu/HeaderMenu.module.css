@@ -20,7 +20,8 @@
 }
 
 .list .card.active {
-    background: var(--tg-theme-button-color);
+    background: linear-gradient(160deg, rgb(160 230 255), rgb(0 163 255));
+    /*background: var(--tg-theme-button-color);*/
     color: white;
 }
 
@@ -94,16 +95,27 @@
 }
 
 .extra .promotions {
+}
+
+.extra .promotions.active {
     background: linear-gradient(160deg, rgb(160 230 255), rgb(0 163 255));
 }
 
 .extra .promotions .title {
+    font-size: var(--font-size-md);
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.extra .promotions .count {
+    font-size: 25px;
     font-weight: bolder;
-    font-size: 20px;
+    line-height: 1;
+    text-align: right;
 }
 
 .extra .promotions .icon {
-    font-size: 40px;
+    font-size: 45px;
 }
 
 @media (max-width: 400px) {
