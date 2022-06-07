@@ -1,10 +1,10 @@
 import React from "react"
 import styles from "./HeaderMenu.module.css"
 import cn from "classnames"
-import {icons} from "utils/variables"
+import {icons, successPriceCart} from "utils/variables"
 import {Category} from "types/Menu"
 import {useLanguage} from "utils/i18n.config"
-import {useCartQtyItems} from "features/cart/cartSlice"
+import {useCartQtyItems, useCartTotalPrice} from "features/cart/cartSlice"
 import {useNavigate} from "react-router-dom"
 
 interface HeaderMenuProps {
@@ -16,9 +16,13 @@ interface HeaderMenuProps {
 const HeaderMenu: React.FC<HeaderMenuProps> = ({categories, selectCategoryId, onClickHandler}) => {
     const {lang} = useLanguage()
     const cartCountItems = useCartQtyItems()
+    const cartTotalPrice = useCartTotalPrice()
     const navigate = useNavigate()
 
     const toCartHandler = () => navigate("/cart")
+
+    const cartGradient = (cartTotalPrice / successPriceCart) * 100
+    const totalCartGradient = cartGradient > 100 ? 100 : cartGradient
 
     return (
         <>
@@ -50,7 +54,8 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({categories, selectCategoryId, on
                 </div>
                 <div
                     key="cart"
-                    className={cn(styles.cart, {[styles.disabled]: !cartCountItems})}
+                    className={cn(styles.cart)}
+                    style={{backgroundPosition: `${totalCartGradient}% 50%`}}
                     onClick={toCartHandler}
                 >
                     <div>

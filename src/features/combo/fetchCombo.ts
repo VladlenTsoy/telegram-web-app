@@ -16,5 +16,10 @@ export const fetchCombo = createAsyncThunk<ReturnedType, undefined, ThunkProps>(
             },
             signal
         })
+    }, {
+        condition(_: undefined, {getState}) {
+            const {combo} = getState()
+            return !combo.ids.length
+        }
     }
 )

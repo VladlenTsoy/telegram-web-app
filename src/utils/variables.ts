@@ -18,3 +18,6 @@ export const scales: any = {
     "Dessert": "1.8",
     "Sauce": "1.1"
 }
+
+// export const successPriceCart = 120000
+export const successPriceCart = 180000

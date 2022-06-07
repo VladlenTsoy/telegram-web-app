@@ -9,6 +9,45 @@
     justify-content: center;
 }
 
+.content {
+}
+
+.icons {
+    font-size: 35px;
+    position: relative;
+    height: 40px;
+    margin-bottom: .5rem;
+}
+
+.icon {
+    display: none;
+    text-align: center;
+}
+
+.icon.active {
+    display: block;
+    animation-name: loading;
+    animation-duration: 1.5s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes loading {
+    0% {
+        transform: scale(0) translateX(200%);
+    }
+    45% {
+        transform: scale(1);
+    }
+    55% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0) translateX(-200%);
+    }
+}
+
 .text {
     font-size: 20px;
 }

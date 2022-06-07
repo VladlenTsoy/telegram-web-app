@@ -13,5 +13,6 @@
   "addToCart": "Qo'shish",
   "basket": "Savatcha",
   "emptyCart": "Hozircha sizning savatchangiz boʻsh \uD83D\uDE15",
-  "back": "Orqaga"
+  "back": "Orqaga",
+  "loading": "Yuklanmoqda..."
 }

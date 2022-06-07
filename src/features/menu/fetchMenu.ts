@@ -16,5 +16,11 @@ export const fetchMenu = createAsyncThunk<ReturnedType, undefined, ThunkProps>(
             },
             signal
         })
+    },
+    {
+        condition(_: undefined, {getState}) {
+            const {menu} = getState()
+            return !menu.ids.length
+        }
     }
 )

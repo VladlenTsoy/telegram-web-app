@@ -5,17 +5,16 @@ import cn from "classnames"
 import PizzaList from "./pizza/PizzaList"
 import ProductList from "./product/ProductList"
 import {useNavigate} from "react-router-dom"
-import {fetchMenu} from "./fetchMenu"
-import {useDispatch} from "store"
 import Loader from "components/loader/Loader"
 import HeaderMenu from "../../components/header-menu/HeaderMenu"
 import ComboList from "../combo/ComboList"
+import {useLanguage} from "../../utils/i18n.config"
 
 const MenuList: React.FC = () => {
+    const {t} = useLanguage()
     const categories = useGetMenu()
     const [selectCategoryId, setSelectCategoryId] = useState<string>()
     const navigate = useNavigate()
-    const dispatch = useDispatch()
     const isLoading = useGetMenuLoading()
 
     const onClickHandler = (categoryId: string) => {
@@ -25,14 +24,6 @@ const MenuList: React.FC = () => {
         // Выбрать категорию
         setSelectCategoryId(categoryId)
     }
-
-    useEffect(() => {
-        // Загрузка меню
-        const promise = dispatch(fetchMenu())
-        return () => {
-            promise.abort()
-        }
-    }, [dispatch])
 
     useEffect(() => {
         // Корзина
@@ -47,8 +38,8 @@ const MenuList: React.FC = () => {
             setSelectCategoryId(categories[0].id)
     }, [categories])
 
-    if (isLoading && !categories.length)
-        return <Loader />
+    if (isLoading || !categories.length)
+        return <Loader text={t("loading")} />
 
     return <div className={styles.container}>
         <HeaderMenu categories={categories} selectCategoryId={selectCategoryId} onClickHandler={onClickHandler} />

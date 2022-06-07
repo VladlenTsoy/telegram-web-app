@@ -1,11 +1,17 @@
 import React, {useEffect} from "react"
-import MenuList from "./features/menu/MenuList"
 import {useTranslation} from "react-i18next"
-import Cart from "./features/cart/Cart"
 import {BrowserRouter, Route, Routes} from "react-router-dom"
+import {fetchMenu} from "./features/menu/fetchMenu"
+import {useDispatch} from "./store"
+import Loader from "./components/loader/Loader"
+
+const MenuList = React.lazy(() => import("./features/menu/MenuList"))
+const Cart = React.lazy(() => import("./features/cart/Cart"))
+
 
 function App() {
     const {i18n} = useTranslation()
+    const dispatch = useDispatch()
 
     useEffect(() => {
         // Запуск телеграм приложения
@@ -24,13 +30,23 @@ function App() {
         })()
     }, [i18n])
 
+    useEffect(() => {
+        // Загрузка меню
+        const promise = dispatch(fetchMenu())
+        return () => {
+            promise.abort()
+        }
+    }, [dispatch])
+
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<MenuList />} />
-                <Route path="/cart" element={<Cart />} />
-            </Routes>
-        </BrowserRouter>
+        <React.Suspense fallback={<Loader />}>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<MenuList />} />
+                    <Route path="/cart" element={<Cart />} />
+                </Routes>
+            </BrowserRouter>
+        </React.Suspense>
     )
 }
 
