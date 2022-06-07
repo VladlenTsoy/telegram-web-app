@@ -4,47 +4,9 @@
     padding: 0 .5rem;
 }
 
-.container .list {
-    padding: .5rem .5rem 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: .5rem;
-}
-
-[data-theme="light"] .container .list {
-    padding: .5rem .5rem 1rem;
-}
-
-.container .list .card {
-    padding: .25rem 1rem;
-    border-radius: var(--border-radius);
-    text-transform: none;
-    text-decoration: none;
-    white-space: nowrap;
-    color: var(--tg-theme-text-color);
-    text-align: center;
-}
-
-.container .list .card.active {
-    background: var(--tg-theme-button-color);
-    /*background-color: var(--primary-color);*/
-    /*background-image: var(--primary-gradient);*/
-    color: white;
-}
-
-.container .list .card .icon {
-    font-size: 35px;
-
-}
-
-.container .list .card .title {
-    font-size: var(--font-size-md);
-}
-
 .content {
     overflow: hidden;
     padding: 1rem .5rem;
-
 }
 
 [data-theme="light"] .content {

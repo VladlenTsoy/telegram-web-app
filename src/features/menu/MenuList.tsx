@@ -4,16 +4,14 @@ import {useGetMenu, useGetMenuLoading} from "./menuSlice"
 import cn from "classnames"
 import PizzaList from "./pizza/PizzaList"
 import ProductList from "./product/ProductList"
-import {useLanguage} from "utils/i18n.config"
 import {useNavigate} from "react-router-dom"
 import {fetchMenu} from "./fetchMenu"
 import {useDispatch} from "store"
 import Loader from "components/loader/Loader"
-import {icons} from "utils/variables"
+import HeaderMenu from "../../components/header-menu/HeaderMenu"
 
 const MenuList: React.FC = () => {
     const categories = useGetMenu()
-    const {lang} = useLanguage()
     const [selectCategoryId, setSelectCategoryId] = useState<string>()
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -52,20 +50,7 @@ const MenuList: React.FC = () => {
         return <Loader />
 
     return <div className={styles.container}>
-        <div className={styles.list}>
-            {
-                categories.map(category =>
-                    <div
-                        key={category.id}
-                        className={cn(styles.card, {[styles.active]: category.id === selectCategoryId})}
-                        onClick={() => onClickHandler(category.id)}
-                    >
-                        <span className={styles.icon}>{icons[category.id]}</span>
-                        <div className={styles.title}>{category.translations.title[lang] || category.name}</div>
-                    </div>
-                )
-            }
-        </div>
+        <HeaderMenu categories={categories} selectCategoryId={selectCategoryId} onClickHandler={onClickHandler} />
         <div className={cn(styles.content, {[styles.light]: window?.Telegram?.WebApp?.colorScheme === "light"})}>
             {selectCategoryId === "4b328756-a3c4-4362-af84-9b029ee20c57" && <PizzaList />}
             {selectCategoryId === "2a8e8de6-1e21-451d-ad46-56d2bfdd3db4" && <ProductList type="Drinks" scale="2" />}

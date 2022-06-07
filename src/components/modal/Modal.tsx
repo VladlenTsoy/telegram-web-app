@@ -33,11 +33,7 @@ const Modal: React.FC<ModalProps> = ({visible, onClose, children}) => {
         //
         if (visible)
             window.Telegram.WebApp.expand()
-    }, [visible])
-
-    useEffect(() => {
-
-    }, [visible])
+    }, [visible, mainButtonIsVisible])
 
     const onDragListener = () => {
         if (y.get() >= 25) onClose()

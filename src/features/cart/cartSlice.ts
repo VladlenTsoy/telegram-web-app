@@ -226,6 +226,12 @@ export const useCartPaymentUrl = () => useSelector((state: StoreState) => state.
 // Кол-во в корзине
 export const useCartCountItems = () =>
     useSelector((state: StoreState) => state.cart.ids.length + state.cart.combos.length)
+// Кол-во в корзине (общее)
+export const useCartQtyItems = () =>
+    useSelector((state: StoreState) =>
+        Object.values<any>(state.cart.entities).reduce<number>((acc, item) => acc + item.amount, 0) +
+        state.cart.combos.reduce((acc, item) => acc + item.amount, 0)
+    )
 // Вывод всех комбо
 export const useCartCombos = () => useSelector((state: StoreState) => state.cart.combos)
 // Вывод комбо продуктов по ID

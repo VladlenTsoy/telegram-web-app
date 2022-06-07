@@ -35,7 +35,7 @@ const ProductMore: React.FC<ProductMoreProps> = ({group, onClose}) => {
         }))
         setProductSize(_sizes[0])
         setSizes(__sizes)
-    }, [group])
+    }, [group, lang, t])
 
     return (
         <>

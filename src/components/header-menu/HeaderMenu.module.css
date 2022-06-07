@@ -1,0 +1,119 @@
+.list {
+    padding: .5rem .5rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: .5rem;
+}
+
+[data-theme="light"] .list {
+    padding: .5rem .5rem 0;
+}
+
+.list .card {
+    padding: .25rem 1rem;
+    border-radius: var(--border-radius);
+    text-transform: none;
+    text-decoration: none;
+    white-space: nowrap;
+    color: var(--tg-theme-text-color);
+    text-align: center;
+}
+
+.list .card.active {
+    background: var(--tg-theme-button-color);
+    color: white;
+}
+
+.list .card .icon {
+    font-size: 35px;
+}
+
+.list .card .title {
+    font-size: var(--font-size-md);
+}
+
+.extra .promotions {
+    background: var(--warning-gradient);
+    color: white;
+    padding: .25rem 1rem;
+    border-radius: var(--border-radius);
+    text-transform: none;
+    text-decoration: none;
+    white-space: nowrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.extra {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: .5rem .5rem 0;
+    gap: .5rem;
+}
+
+[data-theme="light"] .extra {
+    padding: .5rem .5rem 1rem;
+}
+
+.extra .cart {
+    background: linear-gradient(160deg, rgb(255 205 115), rgb(255 160 42));
+    color: white;
+    padding: .25rem 1rem;
+    border-radius: var(--border-radius);
+    text-transform: none;
+    text-decoration: none;
+    white-space: nowrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    transition: all .3s ease-in-out;
+}
+
+.extra .cart.disabled {
+    filter: grayscale(1);
+}
+
+.extra .cart .title {
+    font-size: var(--font-size-md);
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.extra .cart .count {
+    font-size: 25px;
+    font-weight: bolder;
+    line-height: 1;
+    text-align: right;
+}
+
+.extra .cart .icon {
+    font-size: 45px;
+}
+
+.extra .promotions {
+    background: linear-gradient(160deg, rgb(160 230 255), rgb(0 163 255));
+}
+
+.extra .promotions .title {
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.extra .promotions .icon {
+    font-size: 40px;
+}
+
+@media (max-width: 400px) {
+    .list {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .extra .cart {
+    }
+
+    .extra .promotions {
+    }
+}
