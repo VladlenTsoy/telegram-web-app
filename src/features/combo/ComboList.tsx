@@ -2,15 +2,17 @@ import React, {useEffect} from "react"
 import {useDispatch} from "store"
 import {fetchCombo} from "./fetchCombo"
 import {useGetCombos, useGetCombosLoading} from "./comboSlice"
-// import {useLanguage} from "utils/i18n.config"
 import styles from "./ComboList.module.css"
 import LoadingBlock from "../../components/loading-block/LoadingBlock"
+import {useNavigate} from "react-router-dom"
 
 const ComboList = () => {
-    // const {lang} = useLanguage()
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const combos = useGetCombos()
     const loading = useGetCombosLoading()
+
+    const onClickHandler = (id: string) => navigate(`combo/${id}`)
 
     useEffect(() => {
         const promise = dispatch(fetchCombo())
@@ -25,7 +27,11 @@ const ComboList = () => {
     return (
         <div className={styles.container}>
             {combos.map(combo =>
-                <div key={combo.sourceActionId} className={styles.combo}>
+                <div
+                    key={combo.sourceActionId}
+                    className={styles.combo}
+                    onClick={() => onClickHandler(combo.sourceActionId)}
+                >
                     <div className={styles.image}>
                         {combo.image && <img src={combo.image} alt={combo.name} />}
                     </div>
