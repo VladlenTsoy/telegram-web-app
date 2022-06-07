@@ -9,6 +9,7 @@ import {fetchMenu} from "./fetchMenu"
 import {useDispatch} from "store"
 import Loader from "components/loader/Loader"
 import HeaderMenu from "../../components/header-menu/HeaderMenu"
+import ComboList from "../combo/ComboList"
 
 const MenuList: React.FC = () => {
     const categories = useGetMenu()
@@ -58,6 +59,7 @@ const MenuList: React.FC = () => {
             {selectCategoryId === "34b23388-aa3d-4a24-9820-892dc731b6eb" && <ProductList type="Salad" scale="2" />}
             {selectCategoryId === "f5927e50-d95c-454f-bdb8-c1b6e335d066" && <ProductList type="Dessert" scale="1.8" />}
             {selectCategoryId === "0e86aeb7-d000-4253-82b4-7982bd39bd59" && <ProductList type="Sauce" scale="1.1" />}
+            {selectCategoryId === "promotions" && <ComboList />}
         </div>
     </div>
 }

@@ -1,0 +1,36 @@
+.container {
+    display: grid;
+    gap: 1rem .5rem;
+}
+
+.combo {
+    grid-template-columns: 150px 1fr;
+    align-items: center;
+}
+
+.combo .image {
+    overflow: hidden;
+    margin: 0 auto .5rem;
+    border-radius: var(--border-radius);
+}
+
+.combo .image img {
+    border-radius: var(--border-radius);
+    width: 100%;
+    object-fit: contain;
+}
+
+.combo .details {
+
+}
+
+.combo .details h4 {
+    margin: 0 0 .5rem;
+    font-weight: 400;
+    font-size: var(--font-size-md);
+}
+
+.combo .details .desc {
+    font-size: var(--font-size-sm);
+    color: var(--tg-theme-hint-color);
+}

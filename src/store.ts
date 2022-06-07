@@ -2,11 +2,13 @@ import {configureStore} from "@reduxjs/toolkit"
 import {useDispatch as useDefaultDispatch} from "react-redux"
 import menu from "features/menu/menuSlice"
 import cart from "features/cart/cartSlice"
+import combo from "features/combo/comboSlice"
 
 export const store = configureStore({
     reducer: {
         menu,
-        cart
+        cart,
+        combo
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({immutableCheck: false})

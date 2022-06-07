@@ -38,7 +38,7 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({categories, selectCategoryId, on
                     className={cn(styles.promotions, {[styles.active]: "promotions" === selectCategoryId})}
                     onClick={() => onClickHandler("promotions")}
                 >
-                    <span className={styles.icon}>{icons["promotions"]}</span>
+                    <span className={styles.icon}>🎉</span>
                     <div className={styles.title}>Акции</div>
                 </div>
                 <div
@@ -53,7 +53,7 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({categories, selectCategoryId, on
                         <div className={styles.title}>Корзина</div>
                         <div className={styles.count}>{cartCountItems} шт.</div>
                     </div>
-                    <div className={styles.icon}>{icons["cart"]}</div>
+                    <div className={styles.icon}>🛒</div>
                 </div>
             </div>
         </>

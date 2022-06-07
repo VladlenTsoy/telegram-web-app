@@ -7,8 +7,6 @@ export const icons: {[key: string]: string} = {
     "34b23388-aa3d-4a24-9820-892dc731b6eb": "🥗",
     "f5927e50-d95c-454f-bdb8-c1b6e335d066": "🍰",
     "0e86aeb7-d000-4253-82b4-7982bd39bd59": "😋",
-    "promotions": "🎉",
-    "cart": "🛒"
 }
 
 export const constructorId = "3d8d6a24-5595-4116-a19a-997ad6b27a60"
