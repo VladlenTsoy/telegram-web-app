@@ -1,0 +1,28 @@
+.container {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 60px 1fr 40px;
+    gap: .5rem;
+}
+
+.container .image {
+    position: relative;
+    border-radius: var(--component-border-radius);
+    background: var(--layout-color);
+    height: 60px;
+}
+
+.container .details {
+    display: grid;
+    gap: .5rem;
+}
+
+.container .details .title {
+    font-weight: var(--font-weight-bold);
+    display: inline-block;
+}
+
+.container .details .desc {
+    font-size: var(--font-size-sm);
+    color: var(--secondary-color);
+}

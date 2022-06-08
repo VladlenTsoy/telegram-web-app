@@ -5,7 +5,8 @@ import {icons, successPriceCart} from "utils/variables"
 import {Category} from "types/Menu"
 import {useLanguage} from "utils/i18n.config"
 import {useCartQtyItems, useCartTotalPrice} from "features/cart/cartSlice"
-import {useNavigate} from "react-router-dom"
+import {navigate} from "features/app/appSlice"
+import {useDispatch} from "store"
 
 interface HeaderMenuProps {
     categories: Category[]
@@ -15,11 +16,11 @@ interface HeaderMenuProps {
 
 const HeaderMenu: React.FC<HeaderMenuProps> = ({categories, selectCategoryId, onClickHandler}) => {
     const {lang} = useLanguage()
+    const dispatch = useDispatch()
     const cartCountItems = useCartQtyItems()
     const cartTotalPrice = useCartTotalPrice()
-    const navigate = useNavigate()
 
-    const toCartHandler = () => navigate("/cart")
+    const toCartHandler = () => dispatch(navigate("cart"))
 
     const cartGradient = (cartTotalPrice / successPriceCart) * 100
     const totalCartGradient = cartGradient > 100 ? 100 : cartGradient

@@ -1,0 +1,25 @@
+.card {
+    margin-bottom: 1rem;
+}
+
+.card .item {
+    padding: 1rem;
+}
+
+.card .item:not(:last-child) {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.card .item .edit .title {
+    margin-bottom: .5rem;
+}
+
+.card .item .desc {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card .item .desc .title {
+    margin-bottom: 0;
+}

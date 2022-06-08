@@ -9,7 +9,7 @@ import ProductCounter from "../product-counter/ProductCounter"
 interface CartProductItemProps {
     id: string
     uid: string
-    image?: string
+    image?: string | null
     title?: TranslationTitle
     defaultTitle: string
     desc?: string

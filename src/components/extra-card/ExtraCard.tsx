@@ -3,7 +3,7 @@ import styles from "./ExtraCard.module.css"
 import {Group} from "types/Menu"
 import cn from "classnames"
 import {useLanguage} from "utils/i18n.config"
-import {useNavigate} from "react-router-dom"
+import {navigate} from "../../features/app/appSlice"
 
 interface ConstructorCardProps {
     item: Group
@@ -13,7 +13,6 @@ interface ConstructorCardProps {
 
 const ExtraCard: React.FC<ConstructorCardProps> = ({item, type, link}) => {
     const {lang} = useLanguage()
-    let navigate = useNavigate()
 
     const clickHandler = () => {
         if (link) navigate(link)

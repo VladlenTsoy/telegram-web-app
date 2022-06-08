@@ -4,15 +4,14 @@ import {fetchCombo} from "./fetchCombo"
 import {useGetCombos, useGetCombosLoading} from "./comboSlice"
 import styles from "./ComboList.module.css"
 import LoadingBlock from "../../components/loading-block/LoadingBlock"
-import {useNavigate} from "react-router-dom"
+import {navigate} from "../app/appSlice"
 
 const ComboList = () => {
-    const navigate = useNavigate()
     const dispatch = useDispatch()
     const combos = useGetCombos()
     const loading = useGetCombosLoading()
 
-    const onClickHandler = (id: string) => navigate(`combo/${id}`)
+    const onClickHandler = (id: string) => dispatch(navigate(`combo/${id}`))
 
     useEffect(() => {
         const promise = dispatch(fetchCombo())

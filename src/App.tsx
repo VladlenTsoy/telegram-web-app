@@ -1,14 +1,17 @@
 import React, {useEffect} from "react"
 import {useTranslation} from "react-i18next"
-import {BrowserRouter, Route, Routes} from "react-router-dom"
 import {fetchMenu} from "./features/menu/fetchMenu"
 import {useDispatch} from "./store"
 import Loader from "./components/loader/Loader"
+import {getCookie, setCookie} from "./utils/cookie"
+import {useApp} from "./features/app/appSlice"
 
 const MenuList = React.lazy(() => import("./features/menu/MenuList"))
 const Cart = React.lazy(() => import("./features/cart/Cart"))
+const ComboMore = React.lazy(() => import("./features/combo/combo-more/ComboMore"))
 
 function App() {
+    const {router} = useApp()
     const {i18n} = useTranslation()
     const dispatch = useDispatch()
 
@@ -23,9 +26,10 @@ function App() {
         // Определить язык
         const urlParams = new URLSearchParams(window.location.search)
         const lang = urlParams.get("lang")
-            // Смена языка
+        lang && setCookie("lang", lang)
+        // Смена языка
         ;(async () => {
-            await i18n.changeLanguage(lang || "uz")
+            await i18n.changeLanguage(lang || getCookie("lang") || "uz")
         })()
     }, [i18n])
 
@@ -39,12 +43,9 @@ function App() {
 
     return (
         <React.Suspense fallback={<Loader />}>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<MenuList />} />
-                    <Route path="/cart" element={<Cart />} />
-                </Routes>
-            </BrowserRouter>
+            {router === "menu" && <MenuList />}
+            {router === "cart" && <Cart />}
+            {router.includes("combo") && <ComboMore />}
         </React.Suspense>
     )
 }

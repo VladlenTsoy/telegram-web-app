@@ -41,5 +41,7 @@ const {selectAll} = comboAdapter.getSelectors<StoreState>(state => state.combo)
 export const useGetCombos = () => useSelector(selectAll)
 // Вывод загрузки
 export const useGetCombosLoading = () => useSelector((state: StoreState) => state.combo.loading)
+// Вывод комбо
+export const useGetComboById = (id: string) => useSelector((state: StoreState) => state.combo.entities[id])
 
 export default comboSlice.reducer

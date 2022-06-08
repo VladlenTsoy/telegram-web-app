@@ -1,5 +1,6 @@
-import {TranslationTitle} from "./Menu"
+import {Product, ProductSize, TranslationTitle} from "./Menu"
 
+// Комбо
 export interface CartCombo {
     // Основные для сделки
     id: string
@@ -8,10 +9,18 @@ export interface CartCombo {
     price: number
     sourceId: string
     // Дополнительные параметры для сайта
-    image: string
+    image: string | null
     title: TranslationTitle
 }
 
+// Продукты комбо
+export type CartComboProduct = (ProductSize | Product) & {
+    comboParentGroup: string
+    modifiers?: CartProductModifier[]
+    selectCrust?: string
+}
+
+// Продукт
 export interface CartProduct {
     // Для redux
     uid: string
@@ -19,22 +28,21 @@ export interface CartProduct {
     productId: string // id
     amount: number // Кол-во
     price: number // Цена за единицу
-    modifiers: CartProductModifier[] // Модицикаторы
+    modifiers: CartProductModifier[] // Модификаторы
     positionId?: string // Если комбо
-    comboInformation: ComboInformation | null // Если комбо
+    comboInformation: {
+        comboId: string
+        comboSourceId: string
+        comboGroupId: string
+    } | null // Если комбо
     // Дополнительные параметры для сайта
     type: "pizza" | "dish"
-    image: string
+    image: string | null
     title: TranslationTitle
     defaultTitle: string
 }
 
-export interface ComboInformation {
-    comboId: string
-    comboSourceId: string
-    comboGroupId: string
-}
-
+// Модификаторы пиццы
 export interface CartProductModifier {
     // Обязательные для сделки
     productId: string // id
@@ -45,51 +53,4 @@ export interface CartProductModifier {
     // Дополнительные параметры для сайта
     title: TranslationTitle
     type: "crust" | "half" | "topping"
-    // type: string
-    // image: string | null
-    // label?: string
 }
-
-// export interface Modifier {
-//     id: string
-//     code: string
-//     name: string
-//     name_ru: string
-//     name_uz: string
-//     amount: number
-//     price: number
-//     sum: number
-//     groupId: string
-// }
-
-// export interface _CartProduct {
-//     id: string
-//     type: string
-//     image: string
-//     modifiers?: Modifier[]
-//     comboInformation?: any
-// }
-
-// interface Product {
-//     id: string
-//     name: string
-//     code: string | null
-//     parentGroup: string | null
-//     type: "Dish" | "Good" | "Modifier" | null
-//     orderItemType: "Product" | "Compound"
-//     price: number
-//     productId: string
-//     translations: {
-//         title: {
-//             ru: string
-//             uz: string
-//         }
-//         desc: []
-//     }
-//     image: null
-//     image2: null
-//     imagePng: null
-//     crusts: null
-//     toppings: null
-//     halfs: null
-// }

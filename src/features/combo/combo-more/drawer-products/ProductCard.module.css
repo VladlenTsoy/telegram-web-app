@@ -1,0 +1,35 @@
+.card {
+    cursor: pointer;
+    width: 160px;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    margin: 0 10px 10px 0;
+    box-sizing: content-box;
+    padding: 0.5rem 0;
+}
+
+.card.active {
+    background: var(--primary-background);
+    border: 1px solid var(--primary-color);
+}
+
+
+.card .image {
+    height: 140px;
+    width: 164px;
+    /*background: ${Colors.white};*/
+    position: relative;
+}
+
+.card .title {
+    /*font-size: 16px;*/
+    text-align: center;
+    margin: 0;
+    padding: 0 8px;
+}
+
+.card .desc {
+    font-size: var(--font-size-sm);
+    padding: 0 8px;
+}

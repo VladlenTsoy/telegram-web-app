@@ -3,7 +3,7 @@ import styles from "./SwitchButtons.module.css"
 import cn from "classnames"
 
 interface SwitchButtonsProps {
-    label: string
+    label?: string
     data: {
         id: string
         title: string
@@ -41,7 +41,7 @@ const SwitchButtons: React.FC<SwitchButtonsProps> = (
 
     return (
         <>
-            <div className={styles.label}>{label}</div>
+            {label && <div className={styles.label}>{label}</div>}
             <div className={styles.container}
                  style={{gridTemplateColumns: `repeat(3, calc(100%/${data.length}))`}}>
                 {

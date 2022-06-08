@@ -1,14 +1,15 @@
 import React from "react"
 import styles from "./HeaderBack.module.css"
 import {FiArrowLeft} from "react-icons/fi"
-import {useNavigate} from "react-router-dom"
-import {useLanguage} from "../../utils/i18n.config"
+import {useLanguage} from "utils/i18n.config"
+import {navigate} from "features/app/appSlice"
+import {useDispatch} from "store"
 
 const HeaderBack = () => {
-    const navigate = useNavigate()
+    const dispatch = useDispatch()
     const {t} = useLanguage()
 
-    const onClickHandler = () => navigate("/")
+    const onClickHandler = () => dispatch(navigate("menu"))
 
     return (
         <div className={styles.header} onClick={onClickHandler}>

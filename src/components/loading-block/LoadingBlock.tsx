@@ -19,7 +19,7 @@ const LoadingBlock = () => {
         <div className={styles.loading}>
             <div className={styles.icons}>
                 {Object.values(icons).map((item, key) =>
-                    <span className={cn(styles.icon, {[styles.active]: key === visible})}>{item}</span>
+                    <span key={key} className={cn(styles.icon, {[styles.active]: key === visible})}>{item}</span>
                 )}
             </div>
         </div>
