@@ -27,7 +27,7 @@ const Modal: React.FC<ModalProps> = ({visible, onClose, children}) => {
 
     // Перетаскивание
     const onDragListener = () => {
-        if (y.get() >= 25) onClose()
+        // if (y.get() >= 25) onClose()
     }
 
     // Отпускание
@@ -63,7 +63,7 @@ const Modal: React.FC<ModalProps> = ({visible, onClose, children}) => {
                                 onDragEnd={onDragEndListener}
                                 dragElastic={{
                                     top: 0,
-                                    bottom: .3
+                                    bottom: 1
                                 }}
                                 dragConstraints={{
                                     top: 0,
