@@ -6,12 +6,14 @@ import Modal from "../modal/Modal"
 import {motion} from "framer-motion"
 import ProductMore from "../product-more/ProductMore"
 import {useLanguage} from "../../utils/i18n.config"
+import {useTranslation} from "react-i18next"
 
 interface PizzaCardProps {
     pizza: Group
 }
 
 const PizzaCard: React.FC<PizzaCardProps> = ({pizza}) => {
+    const {t} = useTranslation()
     const {lang} = useLanguage()
     const [visible, setVisible] = useState(false)
 
@@ -37,7 +39,7 @@ const PizzaCard: React.FC<PizzaCardProps> = ({pizza}) => {
                     <div className={styles.desc}>{pizza.translations.desc[lang]}</div>
                     <div className={styles.priceAndButton}>
                         <div className={styles.price}>
-                            от<span>{formatPrice(pizza.price)}</span>сум
+                            {lang === "ru" && "от"}<span>{formatPrice(pizza.price)}</span>{t("sum")}
                         </div>
                         <motion.button
                             className={styles.action}

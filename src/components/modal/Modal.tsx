@@ -26,7 +26,7 @@ const Modal: React.FC<ModalProps> = ({visible, onClose, children}) => {
         //
         if (window.scrollY === 0) {
             if (visible)
-                window.scrollTo(0, 100)
+                window.scrollTo(0, 20)
             else
                 window.scrollTo(0, 0)
         }
