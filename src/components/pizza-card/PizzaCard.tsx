@@ -30,7 +30,7 @@ const PizzaCard: React.FC<PizzaCardProps> = ({pizza}) => {
             <Modal visible={visible} onClose={onCloseHandler}>
                 <ProductMore group={pizza} onClose={onCloseHandler} />
             </Modal>
-            <div key={pizza.id} className={styles.card}>
+            <div key={pizza.id} className={styles.card} onClick={onClickHandler}>
                 <div className={styles.image}>
                     <img src={pizza.image} alt={pizza.name} />
                 </div>
@@ -44,7 +44,6 @@ const PizzaCard: React.FC<PizzaCardProps> = ({pizza}) => {
                         <motion.button
                             className={styles.action}
                             layoutId={`card-container-${pizza.id}`}
-                            onClick={onClickHandler}
                         >
                             +
                         </motion.button>
