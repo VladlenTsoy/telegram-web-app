@@ -15,30 +15,27 @@ const Modal: React.FC<ModalProps> = ({visible, onClose, children}) => {
     const [mainButtonIsVisible] = useState(window.Telegram.WebApp.MainButton.isVisible)
 
     useEffect(() => {
+        // Нет возможности скролить body
         document.body.style.overflow = visible ? "hidden" : "auto"
-        //
-        if (mainButtonIsVisible) {
-            if (visible)
-                window.Telegram.WebApp.MainButton.hide()
-            else
-                window.Telegram.WebApp.MainButton.show()
-        }
-        //
+        // Отступ 5px при открытии окна
         if (window.scrollY === 0 && visible)
             window.scrollTo(0, 5)
-        //
+        // Если вывод окна, то открыть на всю высоту
         if (visible)
             window.Telegram.WebApp.expand()
     }, [visible, mainButtonIsVisible])
 
+    // Перетаскивание
     const onDragListener = () => {
         if (y.get() >= 25) onClose()
     }
 
+    // Отпускание
     const onDragEndListener = () => {
         if (y.get() >= 100) onClose()
     }
 
+    // Закрыть
     const onCloseHandler = () => {
         onClose()
     }
@@ -48,9 +45,9 @@ const Modal: React.FC<ModalProps> = ({visible, onClose, children}) => {
             {visible &&
                 <>
                     <motion.div
-                        initial={{opacity: 1}}
+                        initial={{opacity: 0}}
                         animate={{opacity: 1}}
-                        exit={{opacity: 1, transition: {duration: 0.075}}}
+                        exit={{opacity: 0, transition: {duration: 0.075}}}
                         transition={{duration: 0.1, delay: 0.075}}
                         style={{pointerEvents: "auto"}}
                         className={styles.overlay}
