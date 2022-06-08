@@ -1,6 +1,6 @@
 import React from "react"
 import styles from "./CartEmpty.module.css"
-import EmptyImage from "assets/images/empty.svg"
+import EmptyCartImage from "assets/images/empty-cart.svg"
 import {useLanguage} from "utils/i18n.config"
 
 const CartEmpty = () => {
@@ -8,7 +8,7 @@ const CartEmpty = () => {
 
     return (
         <div className={styles.container}>
-            <img src={EmptyImage} alt={t("emptyCart")} />
+            <img src={EmptyCartImage} alt={t("emptyCart")} />
             {t("emptyCart")}
         </div>
     )

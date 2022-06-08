@@ -40,16 +40,22 @@ const Cart = () => {
     return (
         <>
             <HeaderBack />
-            {!(cartProducts.length || cartComboProducts.length) && <CartEmpty />}
-            <div className={styles.container}>
-                {cartProducts && cartProducts.map(product =>
-                    <CartProductItem Component={ProductItem} product={product} key={product.uid} />)}
-                {cartComboProducts && cartComboProducts.map(combo =>
-                    <CartComboItem combo={combo} key={combo.id} />)}
-            </div>
-            <button onClick={onClickHandler}>
-                Отправить
-            </button>
+            {
+                !(cartProducts.length || cartComboProducts.length) ?
+                    <CartEmpty /> :
+                    <>
+                        <div className={styles.container}>
+                            {cartProducts && cartProducts.map(product =>
+                                <CartProductItem Component={ProductItem} product={product} key={product.uid} />)}
+                            {cartComboProducts && cartComboProducts.map(combo =>
+                                <CartComboItem combo={combo} key={combo.id} />)}
+                        </div>
+                        <button onClick={onClickHandler}>
+                            Отправить
+                        </button>
+                    </>
+            }
+
         </>
     )
 }
