@@ -58,7 +58,7 @@ const Modal: React.FC<ModalProps> = ({visible, onClose, children}) => {
                         <div className={styles.wrapper}>
                             <motion.div
                                 className={styles.card}
-                                drag="y"
+                                drag={"y"}
                                 onDrag={onDragListener}
                                 onDragEnd={onDragEndListener}
                                 dragElastic={{
