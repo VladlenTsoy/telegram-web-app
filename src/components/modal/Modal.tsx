@@ -24,12 +24,8 @@ const Modal: React.FC<ModalProps> = ({visible, onClose, children}) => {
                 window.Telegram.WebApp.MainButton.show()
         }
         //
-        if (window.scrollY === 0) {
-            if (visible)
-                window.scrollTo(0, 10)
-            else
-                window.scrollTo(0, 0)
-        }
+        if (window.scrollY === 0 && visible)
+            window.scrollTo(0, 5)
         //
         if (visible)
             window.Telegram.WebApp.expand()
@@ -52,9 +48,9 @@ const Modal: React.FC<ModalProps> = ({visible, onClose, children}) => {
             {visible &&
                 <>
                     <motion.div
-                        initial={{opacity: 0}}
+                        initial={{opacity: 1}}
                         animate={{opacity: 1}}
-                        exit={{opacity: 0, transition: {duration: 0.075}}}
+                        exit={{opacity: 1, transition: {duration: 0.075}}}
                         transition={{duration: 0.1, delay: 0.075}}
                         style={{pointerEvents: "auto"}}
                         className={styles.overlay}
