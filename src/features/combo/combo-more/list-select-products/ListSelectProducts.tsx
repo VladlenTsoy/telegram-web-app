@@ -5,6 +5,7 @@ import SelectedComboProduct from "./SelectedComboProduct"
 // import Button from "components/button/Button"
 // import {AiOutlineRight} from "react-icons/ai"
 import {CartComboProduct} from "types/Cart"
+import {useTranslation} from "react-i18next"
 
 interface SelectProductProps {
     combo: Combo
@@ -21,6 +22,7 @@ const ListSelectProducts: React.FC<SelectProductProps> = (
         changeType
     }
 ) => {
+    const {t} = useTranslation()
     return (
         <div className={styles.card}>
             {combo.items.map(comboItem => {
@@ -32,14 +34,14 @@ const ListSelectProducts: React.FC<SelectProductProps> = (
                             if (!e.target.closest(".crusts-types")) onClickComboGroup(comboItem)
                         }}
                     >
-                        {selectedProduct ? (
-                            <SelectedComboProduct item={selectedProduct} changeType={changeType} />
-                        ) : (
-                            <div className={styles.desc}>
-                                <h3 className={styles.title}>{comboItem.name}</h3>
-                                {/*<Button size="small" ghost rIcon={<AiOutlineRight />}>{t("select")}</Button>*/}
-                            </div>
-                        )}
+                        {
+                            selectedProduct ?
+                                <SelectedComboProduct item={selectedProduct} changeType={changeType} /> :
+                                <div className={styles.details}>
+                                    <div className={styles.desc}>{t("select")}</div>
+                                    <div className={styles.title}>{comboItem.name}</div>
+                                </div>
+                        }
                     </div>
                 }
             )}

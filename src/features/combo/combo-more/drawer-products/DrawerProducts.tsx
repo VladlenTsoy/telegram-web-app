@@ -3,7 +3,7 @@ import {Combo} from "types/Combo"
 import ComboProductCard from "./ProductCard"
 import styles from "./DrawerProducts.module.css"
 import {ProductSize} from "types/Menu"
-import Modal from "../../../../components/modal/Modal"
+import Modal from "components/modal/Modal"
 
 interface GridProductsProps {
     show: string | null

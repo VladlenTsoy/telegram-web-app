@@ -1,15 +1,22 @@
 .container {
     display: grid;
     align-items: center;
-    grid-template-columns: 60px 1fr 40px;
+    grid-template-columns: 60px 1fr;
     gap: .5rem;
 }
 
 .container .image {
     position: relative;
-    border-radius: var(--component-border-radius);
-    background: var(--layout-color);
+    border-radius: var(--border-radius);
+    background: var(--tg-theme-bg-color);
     height: 60px;
+    width: 60px;
+}
+
+.container .image img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
 }
 
 .container .details {
@@ -18,11 +25,12 @@
 }
 
 .container .details .title {
-    font-weight: var(--font-weight-bold);
+    font-weight: 600;
     display: inline-block;
+    margin: 0;
 }
 
 .container .details .desc {
     font-size: var(--font-size-sm);
-    color: var(--secondary-color);
+    color: var(--tg-theme-hint-color);
 }

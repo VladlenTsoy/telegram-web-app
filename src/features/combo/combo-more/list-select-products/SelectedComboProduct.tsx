@@ -27,33 +27,33 @@ const SelectedComboProduct: React.FC<SelectedComboProductProps> = ({item, change
         <>
             <div className={styles.container}>
                 <div className={styles.image}>
-                    <img src={item.image} width="60px" height="60px"  alt=""/>
+                    <img src={item.image} width="60px" height="60px" alt={item?.translations.title[lang] || item.name}/>
                 </div>
                 <div className={styles.details}>
                     <h3 className={styles.title}>{item?.translations.title[lang] || item.name}</h3>
                     {item?.translations.desc[lang] && (
                         <div className={styles.desc}>{item?.translations.desc[lang]}</div>
                     )}
+                    <div className="crusts-types">
+                        {crusts && (
+                            <SwitchButtons
+                                value={crusts[0]?.id}
+                                onClick={id => changeType(id, item)}
+                                // @ts-ignore
+                                data={crusts.map(crust => ({
+                                    id: crust.id,
+                                    title: crust.translations.title[lang] || crust.name,
+                                    groupId: crust.parentGroup,
+                                    amount: 1,
+                                    code: crust.code,
+                                    price: crust.price,
+                                    type: "crust"
+                                }))}
+                            />
+                        )}
+                    </div>
                 </div>
                 {/*<Button icon={<AiFillEdit />} ghost />*/}
-            </div>
-            <div className="crusts-types">
-                {crusts && (
-                    <SwitchButtons
-                        value={crusts[0]?.id}
-                        onClick={id => changeType(id, item)}
-                        // @ts-ignore
-                        data={crusts.map(crust => ({
-                            id: crust.id,
-                            label: crust.translations.title[lang] || crust.name,
-                            groupId: crust.parentGroup,
-                            amount: 1,
-                            code: crust.code,
-                            price: crust.price,
-                            type: "crust"
-                        }))}
-                    />
-                )}
             </div>
         </>
     )

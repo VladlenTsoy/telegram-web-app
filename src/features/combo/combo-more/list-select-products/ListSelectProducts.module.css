@@ -4,22 +4,33 @@
 
 .card .item {
     padding: 1rem;
+    box-shadow: 5px 2px 30px rgba(211, 209, 216, 0.25);
+    border-radius: var(--border-radius);
 }
 
 .card .item:not(:last-child) {
-    border-bottom: 1px solid var(--border-color);
+    margin-bottom: .5rem;
+    /*border-bottom: 1px solid #f5f5f5;*/
 }
 
 .card .item .edit .title {
     margin-bottom: .5rem;
 }
 
-.card .item .desc {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.card .item .details {
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: space-between;*/
 }
 
-.card .item .desc .title {
-    margin-bottom: 0;
+
+.card .item .details .desc {
+    margin-bottom: .25rem;
 }
+
+.card .item .details .title {
+    margin: 0;
+    font-weight: bold;
+    font-size: var(--font-size-lg);
+}
+

@@ -20,25 +20,26 @@ const ComboMore = () => {
     const onClickHandler = () =>
         dispatch(navigate("menu"))
 
-    // if (combo)
+    if (!combo)
         return <EmptyPage back="menu" title={t("promotions")} />
-    // return (
-    //     <>
-    //         <div className={styles.backAndImage}>
-    //             <button className={styles.back} onClick={onClickHandler}>
-    //                 <FiArrowLeft />
-    //             </button>
-    //             <div className={styles.image}>
-    //                 {combo.image && <img src={combo.image} alt={combo.image} />}
-    //             </div>
-    //         </div>
-    //         <div className={styles.container}>
-    //             <h2 className={styles.title}>{combo.translations.title[lang] || combo.name}</h2>
-    //             <p className={styles.desc}>{combo.translations.desc[lang]}</p>
-    //             <ComboMoreActions combo={combo} />
-    //         </div>
-    //     </>
-    // )
+
+    return (
+        <>
+            <div className={styles.backAndImage}>
+                <button className={styles.back} onClick={onClickHandler}>
+                    <FiArrowLeft />
+                </button>
+                <div className={styles.image}>
+                    {combo.image && <img src={combo.image} alt={combo.image} />}
+                </div>
+            </div>
+            <div className={styles.container}>
+                <h2 className={styles.title}>{combo.translations.title[lang] || combo.name}</h2>
+                <p className={styles.desc}>{combo.translations.desc[lang]}</p>
+                <ComboMoreActions combo={combo} />
+            </div>
+        </>
+    )
 }
 
 export default ComboMore
