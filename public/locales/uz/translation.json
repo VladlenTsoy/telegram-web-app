@@ -14,5 +14,8 @@
   "basket": "Savatcha",
   "emptyCart": "Hozircha sizning savatchangiz boʻsh \uD83D\uDE15",
   "back": "Orqaga",
-  "loading": "Yuklanmoqda..."
+  "loading": "Yuklanmoqda...",
+  "empty": "Bo'sh",
+  "promotions": "Aksiyalar",
+  "cart": "Savat"
 }

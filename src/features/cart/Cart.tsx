@@ -7,6 +7,7 @@ import ProductItem from "components/cart-product-item/CartProductItem"
 import styles from "./Cart.module.css"
 import HeaderBack from "../../components/header-back/HeaderBack"
 import CartEmpty from "../../components/cart-empty/CartEmpty"
+import EmptyPage from "../../components/empty-page/EmptyPage"
 
 const Cart = () => {
     const {t} = useLanguage()
@@ -37,25 +38,21 @@ const Cart = () => {
         }))
     }
 
+    if (!(cartProducts.length || cartComboProducts.length))
+        return <EmptyPage type="cart" title={t("cart")} back="menu" />
+
     return (
         <>
             <HeaderBack />
-            {
-                !(cartProducts.length || cartComboProducts.length) ?
-                    <CartEmpty /> :
-                    <>
-                        <div className={styles.container}>
-                            {cartProducts && cartProducts.map(product =>
-                                <CartProductItem Component={ProductItem} product={product} key={product.uid} />)}
-                            {cartComboProducts && cartComboProducts.map(combo =>
-                                <CartComboItem combo={combo} key={combo.id} />)}
-                        </div>
-                        <button onClick={onClickHandler}>
-                            Отправить
-                        </button>
-                    </>
-            }
-
+            <div className={styles.container}>
+                {cartProducts && cartProducts.map(product =>
+                    <CartProductItem Component={ProductItem} product={product} key={product.uid} />)}
+                {cartComboProducts && cartComboProducts.map(combo =>
+                    <CartComboItem combo={combo} key={combo.id} />)}
+            </div>
+            <button onClick={onClickHandler}>
+                Отправить
+            </button>
         </>
     )
 }
