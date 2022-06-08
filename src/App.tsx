@@ -5,15 +5,19 @@ import {useDispatch} from "./store"
 import Loader from "./components/loader/Loader"
 import {getCookie, setCookie} from "./utils/cookie"
 import {useApp} from "./features/app/appSlice"
+import {useGetMenu, useGetMenuLoading} from "./features/menu/menuSlice"
 
 const MenuList = React.lazy(() => import("./features/menu/MenuList"))
 const Cart = React.lazy(() => import("./features/cart/Cart"))
 const ComboMore = React.lazy(() => import("./features/combo/combo-more/ComboMore"))
 
 function App() {
+    const {t} = useTranslation()
     const {router} = useApp()
     const {i18n} = useTranslation()
     const dispatch = useDispatch()
+    const categories = useGetMenu()
+    const isLoading = useGetMenuLoading()
 
     useEffect(() => {
         // Запуск телеграм приложения
@@ -41,8 +45,12 @@ function App() {
         }
     }, [dispatch])
 
+
+    if (isLoading || !categories.length)
+        return <Loader text={t("loading")} />
+
     return (
-        <React.Suspense fallback={<Loader />}>
+        <React.Suspense fallback={<Loader text={t("loading")} />}>
             {router === "menu" && <MenuList />}
             {router === "cart" && <Cart />}
             {router.includes("combo") && <ComboMore />}

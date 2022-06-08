@@ -9,7 +9,7 @@ const CartEmpty = () => {
     return (
         <div className={styles.container}>
             <img src={EmptyCartImage} alt={t("emptyCart")} />
-            {t("emptyCart")}
+            <div className={styles.text}>{t("emptyCart")}</div>
         </div>
     )
 }

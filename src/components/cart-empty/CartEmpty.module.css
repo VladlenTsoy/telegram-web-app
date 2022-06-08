@@ -4,10 +4,17 @@
     align-items: center;
     justify-content: center;
     min-height: 200px;
+    height: 100%;
     padding: 2rem 0;
     color: var(--tg-theme-hint-color);
 }
 
 .container img {
+    min-height: 210px;
+    min-width: 210px;
     margin-bottom: 1rem;
+}
+
+.text {
+    font-size: var(--font-size-lg);
 }

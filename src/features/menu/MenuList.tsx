@@ -1,13 +1,11 @@
 import React from "react"
 import styles from "./MenuList.module.css"
-import {useGetMenu, useGetMenuLoading} from "./menuSlice"
+import {useGetMenu} from "./menuSlice"
 import cn from "classnames"
 import PizzaList from "./pizza/PizzaList"
-import Loader from "components/loader/Loader"
 import HeaderMenu from "components/header-menu/HeaderMenu"
-import {useLanguage} from "utils/i18n.config"
-import LoadingBlock from "../../components/loading-block/LoadingBlock"
-import {useApp, selectCategoryId} from "../app/appSlice"
+import LoadingBlock from "components/loading-block/LoadingBlock"
+import {selectCategoryId, useApp} from "../app/appSlice"
 import {useDispatch} from "store"
 
 const ComboList = React.lazy(() => import("../combo/ComboList"))
@@ -16,9 +14,7 @@ const ProductList = React.lazy(() => import("./product/ProductList"))
 const MenuList: React.FC = () => {
     const {categoryId} = useApp()
     const dispatch = useDispatch()
-    const {t} = useLanguage()
     const categories = useGetMenu()
-    const isLoading = useGetMenuLoading()
 
     const onClickHandler = (categoryId: string) => {
         // Открыть приложение полностью
@@ -27,9 +23,6 @@ const MenuList: React.FC = () => {
         // Выбрать категорию
         dispatch(selectCategoryId(categoryId))
     }
-
-    if (isLoading || !categories.length)
-        return <Loader text={t("loading")} />
 
     return <div className={styles.container}>
         <HeaderMenu categories={categories} selectCategoryId={categoryId} onClickHandler={onClickHandler} />
