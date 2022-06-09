@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react"
+import React, {useEffect} from "react"
 import styles from "./Modal.module.css"
 import Portal from "components/portal/Portal"
 import {GrClose} from "react-icons/gr"
@@ -12,7 +12,6 @@ interface ModalProps {
 
 const Modal: React.FC<ModalProps> = ({visible, onClose, children}) => {
     const y = useMotionValue(0)
-    const [mainButtonIsVisible] = useState(window.Telegram.WebApp.MainButton.isVisible)
 
     useEffect(() => {
         // Нет возможности скролить body
@@ -23,12 +22,7 @@ const Modal: React.FC<ModalProps> = ({visible, onClose, children}) => {
         // Если вывод окна, то открыть на всю высоту
         if (visible)
             window.Telegram.WebApp.expand()
-    }, [visible, mainButtonIsVisible])
-
-    // Перетаскивание
-    const onDragListener = () => {
-        // if (y.get() >= 25) onClose()
-    }
+    }, [visible])
 
     // Отпускание
     const onDragEndListener = () => {
@@ -59,7 +53,6 @@ const Modal: React.FC<ModalProps> = ({visible, onClose, children}) => {
                             <motion.div
                                 className={styles.card}
                                 drag={"y"}
-                                onDrag={onDragListener}
                                 onDragEnd={onDragEndListener}
                                 dragElastic={{
                                     top: 0,
