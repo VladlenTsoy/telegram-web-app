@@ -29,9 +29,6 @@ const ProductCard: React.FC<ComboProductCardProps> = ({comboProduct, selected, i
                 />
             </div>
             <div className={styles.title}>{comboProduct.translations.title[lang] || comboProduct.name}</div>
-            {comboProduct.translations.desc[lang] && (
-                <div className={styles.desc}>{comboProduct.translations.desc[lang]}</div>
-            )}
         </div>
     )
 }

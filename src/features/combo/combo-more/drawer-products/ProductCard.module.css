@@ -2,7 +2,6 @@
     cursor: pointer;
     width: 160px;
     border-radius: 16px;
-    border: 1px solid var(--border-color);
     overflow: hidden;
     margin: 0 10px 10px 0;
     box-sizing: content-box;
@@ -10,7 +9,7 @@
 }
 
 .card.active {
-    background: var(--primary-background);
+    background: var(--tg-theme-bg-color);
     border: 1px solid var(--primary-color);
 }
 
@@ -20,6 +19,10 @@
     width: 164px;
     /*background: ${Colors.white};*/
     position: relative;
+}
+
+.card .image img {
+    object-fit: contain;
 }
 
 .card .title {
@@ -32,4 +35,6 @@
 .card .desc {
     font-size: var(--font-size-sm);
     padding: 0 8px;
+    color: var(--tg-theme-hint-color);
+    text-align: center;
 }
