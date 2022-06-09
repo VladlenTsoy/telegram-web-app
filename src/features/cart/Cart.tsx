@@ -1,5 +1,11 @@
 import React from "react"
-import {useCartCombos, useCartCountItems, useCartProducts, useCartTotalPrice} from "./cartSlice"
+import {
+    useCartCombos,
+    useCartCountItems,
+    useCartEntitiesProducts,
+    useCartProducts,
+    useCartTotalPrice
+} from "./cartSlice"
 import {useLanguage} from "../../utils/i18n.config"
 import CartProductItem from "./CartProductItem"
 import CartComboItem from "./CartComboItem"
@@ -10,6 +16,7 @@ import EmptyPage from "../../components/empty-page/EmptyPage"
 
 const Cart = () => {
     const {t} = useLanguage()
+    const cartEntitiesProducts = useCartEntitiesProducts()
     const cartProducts = useCartProducts()
     const cartTotalPrice = useCartTotalPrice()
     const cartCountItems = useCartCountItems()
@@ -17,7 +24,7 @@ const Cart = () => {
 
     const onClickHandler = () => {
         window.Telegram.WebApp.sendData(JSON.stringify({
-            cartProducts,
+            cartEntitiesProducts,
             cartTotalPrice,
             cartCountItems
         }))

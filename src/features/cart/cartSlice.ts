@@ -212,6 +212,8 @@ export const {
 const {selectAll, selectById} = cartAdapter.getSelectors<StoreState>(state => state.cart)
 // Вывод продуктов в корзине
 export const useCartProducts = () => useSelector(selectAll)
+// Вывод корзины
+export const useCartEntitiesProducts = () => useSelector((state: StoreState) => state.cart.entities)
 // Вывод общую стоимость корзины
 export const useCartTotalPrice = () => useSelector((state: StoreState) => state.cart.totalPrice)
 // Закончившиеся продукты
