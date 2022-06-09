@@ -9,6 +9,7 @@ import {useDispatch} from "store"
 import {CartProductModifier} from "types/Cart"
 import {addToCart} from "../../features/cart/cartSlice"
 import CrustSelect from "./CrustSelect"
+import md5 from "md5"
 
 interface CrustsSelectProps {
     onClose: () => void
@@ -58,7 +59,7 @@ const CrustAndAction: React.FC<CrustsSelectProps> = ({productSize, sizes, select
         // Добавить в корзину
         dispatch(
             addToCart({
-                uid: productSize.id + modifier?.productId,
+                uid: md5(productSize.id + modifier?.productId),
                 productId: productSize.id,
                 type: "pizza",
                 title: productSize.translations.title,
