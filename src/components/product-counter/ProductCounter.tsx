@@ -13,9 +13,9 @@ const ProductCounter: React.FC<ProductCounterProps> = ({amount, decrement, incre
             <div onClick={decrement} className={styles.decrementBlock}>
                 <span />
             </div>
-            <p className={styles.amount}>
+            <span className={styles.amount}>
                 {amount}
-            </p>
+            </span>
             <div onClick={increment} className={styles.incrementBlock}>
                 <span />
                 <span />

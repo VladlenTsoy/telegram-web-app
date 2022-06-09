@@ -1,20 +1,29 @@
 import React from "react"
 import styles from "./HeaderBack.module.css"
-import {FiArrowLeft} from "react-icons/fi"
-import {useLanguage} from "utils/i18n.config"
 import {navigate} from "features/app/appSlice"
 import {useDispatch} from "store"
+import {BsChevronLeft} from "react-icons/bs"
 
-const HeaderBack = () => {
+interface HeaderBackProps {
+    title?: string
+    back?: string
+}
+
+const HeaderBack: React.FC<HeaderBackProps> = ({title, back}) => {
     const dispatch = useDispatch()
-    const {t} = useLanguage()
 
-    const onClickHandler = () => dispatch(navigate("menu"))
+    const onBackHandler = () => {
+        dispatch(navigate(back || "menu"))
+    }
 
     return (
-        <div className={styles.header} onClick={onClickHandler}>
-            <FiArrowLeft className={styles.icon} />
-            <span className={styles.text}>{t("back")}</span>
+        <div className={styles.header}>
+            {!!back && <div className={styles.back} onClick={onBackHandler}>
+                <BsChevronLeft className={styles.icon} />
+            </div>}
+            {!!title && <div className={styles.title}>
+                {title}
+            </div>}
         </div>
     )
 }

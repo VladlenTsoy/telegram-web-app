@@ -4,7 +4,7 @@ import EmptyImage from "assets/images/empty.svg"
 import EmptyCartImage from "assets/images/empty-cart.svg"
 import {useLanguage} from "utils/i18n.config"
 import {useDispatch} from "store"
-import {navigate, useApp} from "features/app/appSlice"
+import {navigate} from "features/app/appSlice"
 import {BsChevronLeft} from "react-icons/bs"
 
 interface EmptyPageProps {
@@ -16,7 +16,6 @@ interface EmptyPageProps {
 const EmptyPage: React.FC<EmptyPageProps> = ({type = "page", title, back}) => {
     const {t} = useLanguage()
     const dispatch = useDispatch()
-    const {router} = useApp()
 
     const onBackHandler = () => {
         dispatch(navigate(back || "menu"))
