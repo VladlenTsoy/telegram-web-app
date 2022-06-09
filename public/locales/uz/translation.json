@@ -18,5 +18,6 @@
   "empty": "Bo'sh",
   "promotions": "Aksiyalar",
   "cart": "Savat",
-  "select": "Tanlash"
+  "select": "Tanlash",
+  "addedCart": " savatchaga qo'shildi"
 }

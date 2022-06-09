@@ -1,0 +1,19 @@
+.message {
+    position: fixed;
+    top: 1rem;
+    right: .5rem;
+    left: .5rem;
+    z-index: 20;
+    background: var(--tg-theme-bg-color);
+    padding: .75rem 1rem;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 5px 2px 30px rgb(0 0 0 / 11%);
+}
+
+.message .icon {
+    font-size: 30px;
+
+}
