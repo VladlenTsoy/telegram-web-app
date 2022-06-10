@@ -19,12 +19,12 @@ const Message: React.FC<MessageProps> = ({content, duration, onDestroy}) => {
 
     // Движение
     const onDragListener = () => {
-        if (y.get() >= -10) setVisible(false)
+        if (y.get() >= -5) setVisible(false)
     }
 
     // Отпускание
     const onDragEndListener = () => {
-        if (y.get() >= -10) setVisible(false)
+        if (y.get() >= -5) setVisible(false)
     }
 
     useEffect(() => {
