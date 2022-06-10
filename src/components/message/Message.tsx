@@ -17,6 +17,11 @@ const Message: React.FC<MessageProps> = ({content, duration, onDestroy}) => {
     // Скрыть окно
     const onCloseHandler = () => setVisible(false)
 
+    // Движение
+    const onDragListener = () => {
+        if (y.get() >= -10) setVisible(false)
+    }
+
     // Отпускание
     const onDragEndListener = () => {
         if (y.get() >= -10) setVisible(false)
@@ -41,6 +46,7 @@ const Message: React.FC<MessageProps> = ({content, duration, onDestroy}) => {
         <AnimatePresence>
             {visible && <motion.div
                 drag={"y"}
+                onDrag={onDragListener}
                 onDragEnd={onDragEndListener}
                 dragElastic={{
                     top: 1,
