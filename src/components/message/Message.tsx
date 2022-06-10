@@ -19,7 +19,7 @@ const Message: React.FC<MessageProps> = ({content, duration, onDestroy}) => {
 
     // Отпускание
     const onDragEndListener = () => {
-        if (y.get() >= -50) setVisible(false)
+        if (y.get() >= -10) setVisible(false)
     }
 
     useEffect(() => {

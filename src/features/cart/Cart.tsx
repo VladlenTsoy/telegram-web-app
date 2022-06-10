@@ -42,9 +42,11 @@ const Cart = () => {
                 {cartComboProducts && cartComboProducts.map(combo =>
                     <CartComboItem combo={combo} key={combo.id} />)}
             </div>
-            <button className={styles.button} onClick={onClickHandler}>
-                {t("pay")}
-            </button>
+            <div className={styles.actions}>
+                <button className={styles.button} onClick={onClickHandler}>
+                    {t("pay")}
+                </button>
+            </div>
         </>
     )
 }
