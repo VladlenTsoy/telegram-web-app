@@ -50,28 +50,33 @@ const CartProductItem: React.FC<CartProductItemProps> = (
 
 
     return (
-        <div className={cn(styles.mainWrapper, {[styles.giftWrapper]: false})} id={id}>
-            <div className={styles.productInfoBlock}>
-                <div className={styles.imgWrapper}>
+        <div className={cn(styles.container, {[styles.gift]: false})} id={id}>
+            <div className={styles.info}>
+                <div className={styles.image}>
                     <img src={image || "/images/default-image.png"} alt={defaultTitle} />
                 </div>
-                <div className={styles.textBlock}>
-                    <h3 className={styles.productName}>
+                <div className={styles.details}>
+                    <h3 className={styles.title}>
                         {(title && title[lang]) || defaultTitle}
                     </h3>
-                    {desc && <div className={styles.productDescription}>
+                    {desc && <div className={styles.desc}>
                         {desc.substring(0, 60)}{desc.length > 60 ? "..." : ""}
                     </div>}
                 </div>
             </div>
-            <div className={styles.counterBlock}>
+            <div className={styles.counter}>
                 {control && <ProductCounter
                     amount={amount}
                     increment={control.increment}
                     decrement={control.decrement}
                 />}
-                <div className={styles.currPrice}>
-                    {totalPrice}
+                <div className={styles.prices}>
+                    <div>
+
+                    </div>
+                    <div className={styles.price}>
+                        {totalPrice}
+                    </div>
                 </div>
             </div>
         </div>

@@ -13,6 +13,8 @@ import ProductItem from "components/cart-product-item/CartProductItem"
 import styles from "./Cart.module.css"
 import HeaderBack from "../../components/header-back/HeaderBack"
 import EmptyPage from "../../components/empty-page/EmptyPage"
+import {formatPrice} from "../../utils/formatPrice"
+import cn from "classnames"
 
 const Cart = () => {
     const {t} = useLanguage()
@@ -42,10 +44,44 @@ const Cart = () => {
                 {cartComboProducts && cartComboProducts.map(combo =>
                     <CartComboItem combo={combo} key={combo.id} />)}
             </div>
-            <div className={styles.actions}>
-                <button className={styles.button} onClick={onClickHandler}>
-                    {t("pay")}
-                </button>
+            <div className={styles.recommended}>
+                <div className={styles.card}>
+                    <div className={styles.icon}>🥤</div>
+                    <div className={styles.text}>Напитки</div>
+                </div>
+                <div className={styles.card}>
+                    <div className={styles.icon}>🍟</div>
+                    <div className={styles.text}>Закуски</div>
+                </div>
+                <div className={styles.card}>
+                    <div className={styles.icon}>🥗</div>
+                    <div className={styles.text}>Салаты</div>
+                </div>
+                <div className={styles.card}>
+                    <div className={styles.icon}>🍰</div>
+                    <div className={styles.text}>Десерты</div>
+                </div>
+                <div className={styles.card}>
+                    <div className={styles.icon}>😋</div>
+                    <div className={styles.text}>Соус</div>
+                </div>
+            </div>
+            <div className={styles.bottomInfo}>
+                <div className={styles.totalInfo}>
+                    <div className={styles.item}>
+                        <div className={styles.title}>Доставка</div>
+                        <div className={styles.value}>Бесплатно</div>
+                    </div>
+                    <div className={cn(styles.item, styles.totalPrice)}>
+                        <div className={styles.title}>К оплате</div>
+                        <div className={styles.value}>{formatPrice(cartTotalPrice)} {t("sum")}</div>
+                    </div>
+                </div>
+                <div className={styles.actions}>
+                    <button className={styles.button} onClick={onClickHandler}>
+                        {t("pay")}
+                    </button>
+                </div>
             </div>
         </>
     )
