@@ -31,8 +31,8 @@ const ComboMoreDetails: React.FC<ComboMoreDetailsProps> = ({combo}) => {
             <div className={styles.container}>
                 <h2 className={styles.title}>{combo.translations.title[lang] || combo.name}</h2>
                 <p className={styles.desc}>{combo.translations.desc[lang]}</p>
-                <ComboMoreActions combo={combo} />
             </div>
+            <ComboMoreActions combo={combo} />
         </div>
     )
 }

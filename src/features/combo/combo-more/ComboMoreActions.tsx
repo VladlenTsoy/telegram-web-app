@@ -11,8 +11,7 @@ import ListSelectProducts from "./list-select-products/ListSelectProducts"
 import ModalProducts from "./drawer-products/ModalProducts"
 import {navigate} from "features/app/appSlice"
 import {message} from "components/message/notice"
-import cn from "classnames"
-import {formatPrice} from "../../../utils/formatPrice"
+import {formatPrice} from "utils/formatPrice"
 
 interface ComboMoreActionsProps {
     combo: Combo
@@ -115,18 +114,11 @@ const ComboMoreActions: React.FC<ComboMoreActionsProps> = ({combo}) => {
                 changeType={changeType}
                 onClickComboGroup={onClickComboGroup}
             />
-            <div className={styles.bottomInfo}>
-                <div className={styles.totalInfo}>
-                    <div className={cn(styles.item, styles.totalPrice)}>
-                        <div className={styles.title}>К оплате</div>
-                        <div className={styles.value}>{formatPrice(combo.priceModification)} {t("sum")}</div>
-                    </div>
-                </div>
-                <div className={styles.actions}>
-                    <button className={styles.button}>
-                        {t("pay")}
-                    </button>
-                </div>
+            <div className={styles.actions}>
+                <div className={styles.price}>{formatPrice(combo.priceModification)} {t("sum")}</div>
+                <button className={styles.button} onClick={addToCart}>
+                    {t("addToCart")}
+                </button>
             </div>
             {/* Список продуктов */}
             <ModalProducts
