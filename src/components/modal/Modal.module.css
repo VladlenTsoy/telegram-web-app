@@ -43,10 +43,16 @@
     max-width: 700px;
 }
 
+.scroll {
+    max-height: 100vh;
+    overflow: scroll;
+}
+
 .close {
     position: absolute;
     top: .5rem;
     right: .5rem;
+    z-index: 2;
     height: 30px;
     width: 30px;
     display: flex;

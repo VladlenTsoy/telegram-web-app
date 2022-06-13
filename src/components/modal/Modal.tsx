@@ -71,7 +71,9 @@ const Modal: React.FC<ModalProps> = ({visible, onClose, children}) => {
                                 <div className={styles.close} onClick={onClose}>
                                     <GrClose />
                                 </div>
-                                {children}
+                                <div className={styles.scroll}>
+                                    {children}
+                                </div>
                             </motion.div>
                         </div>
                     </div>

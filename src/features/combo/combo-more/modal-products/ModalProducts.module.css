@@ -3,4 +3,5 @@
     grid-template-columns: 1fr 1fr;
     overflow: hidden;
     padding: .5rem;
+    gap: 1rem;
 }
