@@ -1,16 +1,17 @@
 import SwitchButtons from "components/switch-buttons/SwitchButtons"
 import React, {useEffect, useState} from "react"
 import styles from "./SelectedComboProduct.module.css"
-// import {AiFillEdit} from "react-icons/ai"
+import {AiOutlineDelete} from "react-icons/ai"
 import {CrustProduct, Product, ProductSize} from "types/Menu"
 import {useLanguage} from "utils/i18n.config"
 
 interface SelectedComboProductProps {
     item: ProductSize | Product
+    label: string
     changeType: (id: number | string, item: ProductSize | Product) => void
 }
 
-const SelectedComboProduct: React.FC<SelectedComboProductProps> = ({item, changeType}) => {
+const SelectedComboProduct: React.FC<SelectedComboProductProps> = ({item, label, changeType}) => {
     const {lang} = useLanguage()
     const [crusts, setCrusts] = useState<any[] | null>(null)
 
@@ -25,35 +26,38 @@ const SelectedComboProduct: React.FC<SelectedComboProductProps> = ({item, change
 
     return (
         <>
+            <div className={styles.labelAndAction}>
+                <div className={styles.label}>{label}</div>
+                <div className={styles.action}><AiOutlineDelete /></div>
+            </div>
             <div className={styles.container}>
                 <div className={styles.image}>
-                    <img src={item.image} width="60px" height="60px" alt={item?.translations.title[lang] || item.name}/>
+                    <img src={item.image} alt={item?.translations.title[lang] || item.name} />
                 </div>
                 <div className={styles.details}>
-                    <h3 className={styles.title}>{item?.translations.title[lang] || item.name}</h3>
-                    {item?.translations.desc[lang] && (
-                        <div className={styles.desc}>{item?.translations.desc[lang]}</div>
-                    )}
-                    <div className="crusts-types">
-                        {crusts && (
-                            <SwitchButtons
-                                value={crusts[0]?.id}
-                                onClick={id => changeType(id, item)}
-                                // @ts-ignore
-                                data={crusts.map(crust => ({
-                                    id: crust.id,
-                                    title: crust.translations.title[lang] || crust.name,
-                                    groupId: crust.parentGroup,
-                                    amount: 1,
-                                    code: crust.code,
-                                    price: crust.price,
-                                    type: "crust"
-                                }))}
-                            />
+                    <div className={styles.info}>
+                        <h3 className={styles.title}>{item?.translations.title[lang] || item.name}</h3>
+                        {item?.translations.desc[lang] && (
+                            <div className={styles.desc}>{item?.translations.desc[lang]}</div>
                         )}
                     </div>
+                    {crusts && (
+                        <SwitchButtons
+                            value={crusts[0]?.id}
+                            onClick={id => changeType(id, item)}
+                            margin="0"
+                            data={crusts.map(crust => ({
+                                id: crust.id,
+                                title: crust.translations.title[lang] || crust.name,
+                                groupId: crust.parentGroup,
+                                amount: 1,
+                                code: crust.code,
+                                price: crust.price,
+                                type: "crust"
+                            }))}
+                        />
+                    )}
                 </div>
-                {/*<Button icon={<AiFillEdit />} ghost />*/}
             </div>
         </>
     )

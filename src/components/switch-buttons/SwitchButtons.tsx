@@ -15,6 +15,7 @@ interface SwitchButtonsProps {
     }[]
     onClick: (id: string) => void
     value?: string | number
+    margin?: string
 }
 
 const SwitchButtons: React.FC<SwitchButtonsProps> = (
@@ -22,7 +23,8 @@ const SwitchButtons: React.FC<SwitchButtonsProps> = (
         label,
         data,
         value,
-        onClick
+        onClick,
+        margin
     }
 ) => {
     const [choose, setChoose] = useState(0)
@@ -43,7 +45,10 @@ const SwitchButtons: React.FC<SwitchButtonsProps> = (
         <>
             {label && <div className={styles.label}>{label}</div>}
             <div className={styles.container}
-                 style={{gridTemplateColumns: `repeat(3, calc(100%/${data.length}))`}}>
+                 style={{
+                     gridTemplateColumns: `repeat(3, calc(100%/${data.length}))`,
+                     margin
+                 }}>
                 {
                     data.map((i, index) =>
                         <div

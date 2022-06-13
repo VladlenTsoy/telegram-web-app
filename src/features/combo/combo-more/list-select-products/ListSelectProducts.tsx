@@ -26,17 +26,15 @@ const ListSelectProducts: React.FC<SelectProductProps> = (
         <div className={styles.card}>
             {combo.items.map(comboItem => {
                 const selectedProduct = selectedProducts.find(item => item.comboParentGroup === comboItem.id)
-                return <div
-                    className={styles.item}
-                    key={comboItem.id}
-                    onClick={(e: any) => {
-                        if (!e.target.closest(".crusts-types")) onClickComboGroup(comboItem)
-                    }}
-                >
+                return <div className={styles.item} key={comboItem.id}>
                     {
                         selectedProduct ?
-                            <SelectedComboProduct item={selectedProduct} changeType={changeType} /> :
-                            <div className={styles.details}>
+                            <SelectedComboProduct
+                                item={selectedProduct}
+                                changeType={changeType}
+                                label={comboItem.name}
+                            /> :
+                            <div className={styles.details} onClick={() => onClickComboGroup(comboItem)}>
                                 <div className={styles.info}>
                                     <div className={styles.desc}>{t("select")}</div>
                                     <div className={styles.title}>{comboItem.name}</div>
