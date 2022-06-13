@@ -29,19 +29,21 @@ const ModalProducts: React.FC<ModalProductsProps> = (
 
     return (
         <Modal visible={visible} onClose={onClose}>
-            <div className={styles.container}>
-                {selectedGroup &&
-                    selectedGroup.products.map((product) =>
-                            product && (
-                                <ComboProductCard
-                                    key={product.id}
-                                    comboProduct={product as ProductSize}
-                                    items={selectedProducts}
-                                    addItem={addComboProduct}
-                                    selected={selectGroupId}
-                                />
-                            )
-                    )}
+            <div className={styles.scroll}>
+                <div className={styles.container}>
+                    {selectedGroup &&
+                        selectedGroup.products.map((product) =>
+                                product && (
+                                    <ComboProductCard
+                                        key={product.id}
+                                        comboProduct={product as ProductSize}
+                                        items={selectedProducts}
+                                        addItem={addComboProduct}
+                                        selected={selectGroupId}
+                                    />
+                                )
+                        )}
+                </div>
             </div>
         </Modal>
     )

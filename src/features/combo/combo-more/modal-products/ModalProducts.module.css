@@ -1,7 +1,13 @@
+.scroll {
+    min-height: 100vh;
+    height: 100vh;
+    overflow: scroll;
+    margin-top: 2rem;
+}
+
 .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    overflow: hidden;
     padding: .5rem;
     gap: 1rem;
 }
