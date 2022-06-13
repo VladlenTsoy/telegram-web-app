@@ -44,6 +44,9 @@ const ModalProducts: React.FC<ModalProductsProps> = (
                                 )
                         )}
                 </div>
+                <div className={styles.actions}>
+                    <button className={styles.button}>Добавить</button>
+                </div>
             </div>
         </Modal>
     )

@@ -4,6 +4,7 @@ import styles from "./ProductCard.module.css"
 import {ProductSize} from "types/Menu"
 import {CartComboProduct} from "types/Cart"
 import {useLanguage} from "utils/i18n.config"
+import {BsCheckLg} from "react-icons/bs"
 
 interface ComboProductCardProps {
     comboProduct: ProductSize
@@ -17,9 +18,12 @@ const ProductCard: React.FC<ComboProductCardProps> = ({comboProduct, selected, i
     const isActive = items.filter(item => item.comboParentGroup === selected && item.id === comboProduct.id)
 
     return (
-        <div id={`p-${comboProduct.productId}`}
-             className={cn(styles.card, {[styles.active]: !!isActive.length})}
-             onClick={() => addItem(comboProduct, selected)}>
+        <div
+            id={`p-${comboProduct.productId}`}
+            className={cn(styles.card, {[styles.active]: !!isActive.length})}
+            onClick={() => addItem(comboProduct, selected)}
+        >
+            {!!isActive.length && <div className={styles.check}><BsCheckLg /></div>}
             <div className={styles.image}>
                 <img
                     src={comboProduct.image}

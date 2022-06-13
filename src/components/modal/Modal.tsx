@@ -14,7 +14,6 @@ const Modal: React.FC<ModalProps> = ({visible, onClose, children}) => {
     const y = useMotionValue(0)
 
     useEffect(() => {
-        window.open('https://javascript.info/')
         // Нет возможности скролить body
         document.body.style.overflow = visible ? "hidden" : "auto"
         // Отступ 5px при открытии окна
@@ -72,9 +71,7 @@ const Modal: React.FC<ModalProps> = ({visible, onClose, children}) => {
                                 <div className={styles.close} onClick={onClose}>
                                     <GrClose />
                                 </div>
-                                <div className={styles.scroll}>
-                                    {children}
-                                </div>
+                                {children}
                             </motion.div>
                         </div>
                     </div>
