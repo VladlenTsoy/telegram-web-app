@@ -5,16 +5,19 @@ import SelectedComboProduct from "./SelectedComboProduct"
 import {CartComboProduct} from "types/Cart"
 import {useTranslation} from "react-i18next"
 import {FaChevronRight} from "react-icons/fa"
+import {Product, ProductSize} from "../../../../types/Menu"
 
 interface SelectProductProps {
     combo: Combo
     selectedProducts: CartComboProduct[]
+    clearGroup: (comboProduct: ProductSize | Product, groupId: string) => void
     onClickComboGroup: any
     changeType: any
 }
 
 const ListSelectProducts: React.FC<SelectProductProps> = (
     {
+        clearGroup,
         combo,
         selectedProducts,
         onClickComboGroup,
@@ -30,6 +33,8 @@ const ListSelectProducts: React.FC<SelectProductProps> = (
                     {
                         selectedProduct ?
                             <SelectedComboProduct
+                                groupId={comboItem.id}
+                                clearGroup={clearGroup}
                                 item={selectedProduct}
                                 changeType={changeType}
                                 label={comboItem.name}

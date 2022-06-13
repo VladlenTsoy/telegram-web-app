@@ -3,6 +3,7 @@
 }
 
 .bottomInfo {
+    background: var(--tg-theme-bg-color);
     position: fixed;
     left: 0;
     right: 0;

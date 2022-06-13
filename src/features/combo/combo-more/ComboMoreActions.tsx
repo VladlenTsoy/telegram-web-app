@@ -1,5 +1,5 @@
 import React, {useCallback, useState} from "react"
-// import styles from "./ComboMoreActions.module.css"
+import styles from "./ComboMoreActions.module.css"
 import {Combo, ComboProduct} from "types/Combo"
 import {useDispatch} from "store"
 import {useLanguage} from "utils/i18n.config"
@@ -8,20 +8,24 @@ import {Product, ProductSize} from "types/Menu"
 import {addComboToCart} from "features/cart/cartSlice"
 import {uuidv4} from "utils/uuid"
 import ListSelectProducts from "./list-select-products/ListSelectProducts"
-import DrawerProducts from "./drawer-products/DrawerProducts"
-import {navigate} from "../../app/appSlice"
+import ModalProducts from "./drawer-products/ModalProducts"
+import {navigate} from "features/app/appSlice"
+import {message} from "components/message/notice"
+import cn from "classnames"
+import {formatPrice} from "../../../utils/formatPrice"
 
 interface ComboMoreActionsProps {
     combo: Combo
 }
 
 const ComboMoreActions: React.FC<ComboMoreActionsProps> = ({combo}) => {
-    const {lang} = useLanguage()
+    const {lang, t} = useLanguage()
     const dispatch = useDispatch()
+    const [visible, setVisible] = useState(false)
     // Выбранные продукты
     const [selectedProducts, setSelectedProducts] = useState<CartComboProduct[]>([])
     //  Выбранная группа
-    const [selectedGroup, setSelectedGroup] = useState<ComboProduct["id"] | null>(null)
+    const [selectedGroupId, setSelectedGroupId] = useState<ComboProduct["id"] | null>(null)
     // Выбранное комбо для корзины
     const [selectedCombo, setSelectedCombo] = useState<CartCombo>({
         id: uuidv4(),
@@ -33,10 +37,16 @@ const ComboMoreActions: React.FC<ComboMoreActionsProps> = ({combo}) => {
         image: combo.image
     })
 
-    //
-    const mobileCloseProducts = useCallback(() => {
-        setSelectedGroup(null)
-        window?.scrollTo(0, 0)
+    // При нажатии на группу
+    const onClickComboGroup = useCallback((comboItem: ComboProduct) => {
+        setSelectedGroupId(comboItem.id)
+        setVisible(true)
+    }, [])
+
+    // Закрыть окно с продуктами
+    const onCloseProductsHandler = useCallback(() => {
+        setVisible(false)
+        setSelectedGroupId(null)
     }, [])
 
     // Добавить продукт в комбо
@@ -49,17 +59,17 @@ const ComboMoreActions: React.FC<ComboMoreActionsProps> = ({combo}) => {
                         item => !(item.comboParentGroup === groupId && item.id === comboProduct.id)
                     )
                 else if (prevState.find(item => item.comboParentGroup === groupId)) {
-                    mobileCloseProducts()
+                    onCloseProductsHandler()
                     return [
                         ...prevState.filter(item => item.comboParentGroup !== groupId),
                         {...comboProduct, comboParentGroup: groupId, selectCrust: crustId}
                     ]
                 }
-                mobileCloseProducts()
+                onCloseProductsHandler()
                 return [...prevState, {...comboProduct, comboParentGroup: groupId, selectCrust: crustId}]
             })
         },
-        [mobileCloseProducts]
+        [onCloseProductsHandler]
     )
 
     // Изменить тип
@@ -80,12 +90,7 @@ const ComboMoreActions: React.FC<ComboMoreActionsProps> = ({combo}) => {
 
     // Добавить в корзину
     const addToCart = useCallback(() => {
-        // dispatch(
-        //     showMessage({
-        //         image: combo.image,
-        //         title: combo.translations.title[locale] || combo.name
-        //     })
-        // )
+        message({content: combo.translations.title[lang] || combo.name})
         // Подготовить комбо для корзины
         const comboItems = comboToCart(selectedCombo, selectedProducts)
         // Отправить в корзину
@@ -100,24 +105,37 @@ const ComboMoreActions: React.FC<ComboMoreActionsProps> = ({combo}) => {
         dispatch(navigate("menu"))
     }, [dispatch, combo, selectedCombo, selectedProducts, lang])
 
-    // При нажатии на группу
-    const onClickComboGroup = useCallback((comboItem: ComboProduct) => setSelectedGroup(comboItem.id), [])
-
     return (
         <>
             {/* Блок выбранных продуктов */}
             <ListSelectProducts
+                clearGroup={addComboProductHandler}
                 selectedProducts={selectedProducts}
                 combo={combo}
                 changeType={changeType}
                 onClickComboGroup={onClickComboGroup}
             />
+            <div className={styles.bottomInfo}>
+                <div className={styles.totalInfo}>
+                    <div className={cn(styles.item, styles.totalPrice)}>
+                        <div className={styles.title}>К оплате</div>
+                        <div className={styles.value}>{formatPrice(combo.priceModification)} {t("sum")}</div>
+                    </div>
+                </div>
+                <div className={styles.actions}>
+                    <button className={styles.button}>
+                        {t("pay")}
+                    </button>
+                </div>
+            </div>
             {/* Список продуктов */}
-            <DrawerProducts
+            <ModalProducts
+                onClose={onCloseProductsHandler}
                 selectedProducts={selectedProducts}
                 combo={combo}
-                show={selectedGroup}
-                addComboProductHandler={addComboProductHandler}
+                selectGroupId={selectedGroupId}
+                visible={visible}
+                addComboProduct={addComboProductHandler}
             />
         </>
     )

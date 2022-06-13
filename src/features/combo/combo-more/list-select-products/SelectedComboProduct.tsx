@@ -6,14 +6,20 @@ import {CrustProduct, Product, ProductSize} from "types/Menu"
 import {useLanguage} from "utils/i18n.config"
 
 interface SelectedComboProductProps {
+    groupId: string
+    clearGroup: (comboProduct: ProductSize | Product, groupId: string) => void
     item: ProductSize | Product
     label: string
     changeType: (id: number | string, item: ProductSize | Product) => void
 }
 
-const SelectedComboProduct: React.FC<SelectedComboProductProps> = ({item, label, changeType}) => {
+const SelectedComboProduct: React.FC<SelectedComboProductProps> = ({item, label, changeType, clearGroup, groupId}) => {
     const {lang} = useLanguage()
     const [crusts, setCrusts] = useState<any[] | null>(null)
+
+    const onClearHandler = () => {
+        clearGroup(item, groupId)
+    }
 
     useEffect(() => {
         if (!!item?.crusts && !!item?.crusts?.products) {
@@ -28,7 +34,7 @@ const SelectedComboProduct: React.FC<SelectedComboProductProps> = ({item, label,
         <>
             <div className={styles.labelAndAction}>
                 <div className={styles.label}>{label}</div>
-                <div className={styles.action}><AiOutlineDelete /></div>
+                <div className={styles.action} onClick={onClearHandler}><AiOutlineDelete /></div>
             </div>
             <div className={styles.container}>
                 <div className={styles.image}>

@@ -1,29 +1,34 @@
 import React from "react"
 import {Combo} from "types/Combo"
 import ComboProductCard from "./ProductCard"
-import styles from "./DrawerProducts.module.css"
-import {ProductSize} from "types/Menu"
+import styles from "./ModalProducts.module.css"
+import {Product, ProductSize} from "types/Menu"
 import Modal from "components/modal/Modal"
+import {CartComboProduct} from "types/Cart"
 
-interface GridProductsProps {
-    show: string | null
+interface ModalProductsProps {
+    onClose: () => void
+    visible: boolean
+    selectGroupId: string | null
     combo: Combo
-    selectedProducts: any
-    addComboProductHandler: any
+    selectedProducts: CartComboProduct[]
+    addComboProduct: (comboProduct: ProductSize | Product, groupId: string) => void
 }
 
-const DrawerProducts: React.FC<GridProductsProps> = (
+const ModalProducts: React.FC<ModalProductsProps> = (
     {
-        show,
+        onClose,
+        visible,
+        selectGroupId,
         combo,
         selectedProducts,
-        addComboProductHandler
+        addComboProduct
     }
 ) => {
-    const selectedGroup = combo.items.find(g => g.id === show)
+    const selectedGroup = combo.items.find(g => g.id === selectGroupId)
 
     return (
-        <Modal visible={!!show} onClose={() => null}>
+        <Modal visible={visible} onClose={onClose}>
             <div className={styles.container}>
                 {selectedGroup &&
                     selectedGroup.products.map((product) =>
@@ -32,8 +37,8 @@ const DrawerProducts: React.FC<GridProductsProps> = (
                                     key={product.id}
                                     comboProduct={product as ProductSize}
                                     items={selectedProducts}
-                                    addItem={addComboProductHandler}
-                                    selected={show}
+                                    addItem={addComboProduct}
+                                    selected={selectGroupId}
                                 />
                             )
                     )}
@@ -42,4 +47,4 @@ const DrawerProducts: React.FC<GridProductsProps> = (
     )
 }
 
-export default DrawerProducts
+export default ModalProducts
