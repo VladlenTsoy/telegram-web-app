@@ -123,7 +123,6 @@ const ComboMoreActions: React.FC<ComboMoreActionsProps> = ({combo}) => {
             {/* Список продуктов */}
             <ModalProducts
                 onClose={onCloseProductsHandler}
-                selectedProducts={selectedProducts}
                 combo={combo}
                 selectGroupId={selectedGroupId}
                 visible={visible}

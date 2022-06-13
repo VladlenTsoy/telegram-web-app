@@ -10,6 +10,7 @@
     padding: .5rem;
     gap: 1rem;
     align-items: center;
+    z-index: 5;
 }
 
 .actions .price {

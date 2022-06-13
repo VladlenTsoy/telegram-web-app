@@ -5,6 +5,7 @@
     box-shadow: 5px 2px 30px rgba(211, 209, 216, 0.25);
     background: var(--tg-theme-bg-color);
     position: relative;
+    border: 2px solid transparent;
 }
 
 .card.active {

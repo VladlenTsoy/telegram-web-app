@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useCallback, useState} from "react"
 import {Combo} from "types/Combo"
 import ComboProductCard from "./ProductCard"
 import styles from "./ModalProducts.module.css"
@@ -11,7 +11,6 @@ interface ModalProductsProps {
     visible: boolean
     selectGroupId: string | null
     combo: Combo
-    selectedProducts: CartComboProduct[]
     addComboProduct: (comboProduct: ProductSize | Product, groupId: string) => void
 }
 
@@ -21,11 +20,19 @@ const ModalProducts: React.FC<ModalProductsProps> = (
         visible,
         selectGroupId,
         combo,
-        selectedProducts,
         addComboProduct
     }
 ) => {
     const selectedGroup = combo.items.find(g => g.id === selectGroupId)
+    const [selectedProduct, setSelectedProduct] = useState<CartComboProduct>()
+
+    const selectProduct = useCallback((product: CartComboProduct) => {
+        setSelectedProduct(product)
+    }, [])
+
+    const onClickHandler = () => {
+        selectGroupId && selectedProduct && addComboProduct(selectedProduct, selectGroupId)
+    }
 
     return (
         <Modal visible={visible} onClose={onClose}>
@@ -36,16 +43,15 @@ const ModalProducts: React.FC<ModalProductsProps> = (
                                 product && (
                                     <ComboProductCard
                                         key={product.id}
-                                        comboProduct={product as ProductSize}
-                                        items={selectedProducts}
-                                        addItem={addComboProduct}
-                                        selected={selectGroupId}
+                                        comboProduct={product as CartComboProduct}
+                                        selectedProduct={selectedProduct}
+                                        selectProduct={selectProduct}
                                     />
                                 )
                         )}
                 </div>
                 <div className={styles.actions}>
-                    <button className={styles.button}>Добавить</button>
+                    <button className={styles.button} onClick={onClickHandler}>Добавить</button>
                 </div>
             </div>
         </Modal>
