@@ -1,4 +1,6 @@
 .container {
+    width: 100%;
+    overflow: hidden;
     display: grid;
     align-items: center;
     grid-template-columns: 60px 1fr;

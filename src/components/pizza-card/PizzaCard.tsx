@@ -5,7 +5,7 @@ import {Group} from "types/Menu"
 import Modal from "../modal/Modal"
 import {motion} from "framer-motion"
 import ProductMore from "../product-more/ProductMore"
-import {useLanguage} from "../../utils/i18n.config"
+import {useLanguage} from "utils/i18n.config"
 import {useTranslation} from "react-i18next"
 
 interface PizzaCardProps {
