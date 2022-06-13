@@ -42,7 +42,7 @@ const SwitchButtons: React.FC<SwitchButtonsProps> = (
     }, [value])
 
     return (
-        <>
+        <div className={styles.switcher}>
             {label && <div className={styles.label}>{label}</div>}
             <div className={styles.container}
                  style={{
@@ -68,7 +68,7 @@ const SwitchButtons: React.FC<SwitchButtonsProps> = (
                     className={styles.chooseBlock}
                 />
             </div>
-        </>
+        </div>
     )
 }
 
