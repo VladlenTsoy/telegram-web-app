@@ -1,8 +1,5 @@
 .scroll {
-    /*min-height: 100vh;*/
-    height: calc(100vh - 200px);
     overflow: scroll;
-    margin-top: 2rem;
     position: relative;
 }
 

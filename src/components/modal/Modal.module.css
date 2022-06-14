@@ -34,7 +34,7 @@
 .card {
     position: relative;
     background: var(--tg-theme-bg-color);
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    border-radius: 28px 28px 0 0;
     overflow: hidden;
     margin: 0 auto;
     max-height: calc(100vh - 50px);
@@ -50,19 +50,42 @@
     overflow: hidden;
 }
 
-.close {
-    position: absolute;
-    top: .5rem;
-    right: .5rem;
-    z-index: 2;
-    height: 35px;
-    width: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: var(--tg-theme-bg-color);
-    color: var(--tg-theme-text-color);
-    font-size: var(--font-size-lg);
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.07);
+/*.close {*/
+/*    position: absolute;*/
+/*    top: .5rem;*/
+/*    right: .5rem;*/
+/*    z-index: 2;*/
+/*    height: 35px;*/
+/*    width: 35px;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    border-radius: 50%;*/
+/*    background: var(--tg-theme-bg-color);*/
+/*    color: var(--tg-theme-text-color);*/
+/*    font-size: var(--font-size-lg);*/
+/*    box-shadow: 0 0 4px rgba(0, 0, 0, 0.07);*/
+/*}*/
+
+.title {
+    font-size: 25px;
+    line-height: 25px;
+    font-weight: bolder;
+    margin-bottom: 1rem;
+    margin-left: .5rem;
+}
+
+.dragClose {
+    padding: 12px 0;
+    text-align: center;
+    line-height: 0;
+}
+
+.dragBorder {
+    line-height: 0;
+    display: inline-block;
+    width: 56px;
+    height: 4px;
+    background: #E3E3E3;
+    border-radius: 10px;
 }

@@ -116,7 +116,11 @@ const ComboMoreActions: React.FC<ComboMoreActionsProps> = ({combo}) => {
             />
             <div className={styles.actions}>
                 <div className={styles.price}>{formatPrice(combo.priceModification)} {t("sum")}</div>
-                <button className={styles.button} onClick={addToCart}>
+                <button
+                    className={styles.button}
+                    onClick={addToCart}
+                    disabled={selectedProducts.length < combo.items.length}
+                >
                     {t("addToCart")}
                 </button>
             </div>

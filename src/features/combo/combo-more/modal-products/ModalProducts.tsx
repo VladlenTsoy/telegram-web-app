@@ -35,10 +35,10 @@ const ModalProducts: React.FC<ModalProductsProps> = (
     }
 
     return (
-        <Modal visible={visible} onClose={onClose}>
+        <Modal visible={visible} onClose={onClose} title={selectedGroup?.name}>
             <div className={styles.scroll}>
                 <div className={styles.container}>
-                    {selectedGroup &&
+                    {selectedGroup && selectedGroup.products.length &&
                         selectedGroup.products.map((product) =>
                                 product && (
                                     <ComboProductCard

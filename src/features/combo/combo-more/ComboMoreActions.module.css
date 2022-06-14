@@ -29,3 +29,7 @@
     font-size: var(--font-size-lg);
     border-radius: 40px;
 }
+
+.actions .button:disabled {
+    opacity: .5;
+}

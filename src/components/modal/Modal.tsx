@@ -1,16 +1,23 @@
 import React, {useEffect} from "react"
 import styles from "./Modal.module.css"
 import Portal from "components/portal/Portal"
-import {GrClose} from "react-icons/gr"
 import {AnimatePresence, motion, useMotionValue} from "framer-motion"
 
 interface ModalProps {
     children?: React.ReactNode
+    title?: string
     visible: boolean
     onClose: () => void
 }
 
-const Modal: React.FC<ModalProps> = ({visible, onClose, children}) => {
+const Modal: React.FC<ModalProps> = (
+    {
+        title,
+        visible,
+        onClose,
+        children
+    }
+) => {
     const y = useMotionValue(0)
 
     useEffect(() => {
@@ -68,9 +75,13 @@ const Modal: React.FC<ModalProps> = ({visible, onClose, children}) => {
                                 transition={{ease: "linear", duration: 0.2}}
                                 exit={{opacity: 0, y: "100%"}}
                             >
-                                <div className={styles.close} onClick={onClose}>
-                                    <GrClose />
-                                </div>
+                                <motion.div className={styles.dragClose}>
+                                    <span className={styles.dragBorder} />
+                                </motion.div>
+                                {/*<div className={styles.close} onClick={onClose}>*/}
+                                {/*    <GrClose />*/}
+                                {/*</div>*/}
+                                {!!title && <div className={styles.title}>{title}</div>}
                                 {children}
                             </motion.div>
                         </div>
