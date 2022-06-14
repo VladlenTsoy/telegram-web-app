@@ -3,10 +3,12 @@ import {useDispatch} from "store"
 import {fetchCombo} from "./fetchCombo"
 import {useGetCombos, useGetCombosLoading} from "./comboSlice"
 import styles from "./ComboList.module.css"
-import LoadingBlock from "../../components/loading-block/LoadingBlock"
+import LoadingBlock from "components/loading-block/LoadingBlock"
 import {navigate} from "../app/appSlice"
+import {useLanguage} from "utils/i18n.config"
 
 const ComboList = () => {
+    const {t} = useLanguage()
     const dispatch = useDispatch()
     const combos = useGetCombos()
     const loading = useGetCombosLoading()
@@ -21,7 +23,7 @@ const ComboList = () => {
     }, [dispatch])
 
     if (loading || !combos.length)
-        return <LoadingBlock />
+        return <LoadingBlock text={t("loading")} />
 
     return (
         <div className={styles.container}>

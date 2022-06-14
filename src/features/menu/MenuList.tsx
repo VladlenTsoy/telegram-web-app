@@ -7,11 +7,13 @@ import HeaderMenu from "components/header-menu/HeaderMenu"
 import LoadingBlock from "components/loading-block/LoadingBlock"
 import {selectCategoryId, useApp} from "../app/appSlice"
 import {useDispatch} from "store"
+import {useLanguage} from "../../utils/i18n.config"
 
 const ComboList = React.lazy(() => import("../combo/ComboList"))
 const ProductList = React.lazy(() => import("./product/ProductList"))
 
 const MenuList: React.FC = () => {
+    const {t} = useLanguage()
     const {categoryId} = useApp()
     const dispatch = useDispatch()
     const categories = useGetMenu()
@@ -27,7 +29,7 @@ const MenuList: React.FC = () => {
     return <div className={styles.container}>
         <HeaderMenu categories={categories} selectCategoryId={categoryId} onClickHandler={onClickHandler} />
         <div className={cn(styles.content, {[styles.light]: window?.Telegram?.WebApp?.colorScheme === "light"})}>
-            <React.Suspense fallback={<LoadingBlock />}>
+            <React.Suspense fallback={<LoadingBlock text={t("loading")} />}>
                 {categoryId === "4b328756-a3c4-4362-af84-9b029ee20c57" &&
                     <PizzaList />}
                 {categoryId === "2a8e8de6-1e21-451d-ad46-56d2bfdd3db4" &&

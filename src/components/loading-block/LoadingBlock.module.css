@@ -42,3 +42,8 @@
         transform: scale(0) translateX(-200%);
     }
 }
+
+.text {
+    font-size: 20px;
+}
+

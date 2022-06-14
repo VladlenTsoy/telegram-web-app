@@ -4,14 +4,20 @@
 }
 
 .combo {
-    grid-template-columns: 150px 1fr;
-    align-items: center;
     position: relative;
+    padding-top: 66.67%;
+    background: #f5f5f5;
+    border-radius: var(--border-radius);
+    overflow: hidden;
 }
 
 .combo .image {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
     overflow: hidden;
-    /*margin: 0 auto .5rem;*/
     border-radius: var(--border-radius);
 }
 

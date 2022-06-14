@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react"
 import styles from "./Loader.module.css"
-import {icons} from "../../utils/variables"
+import {icons} from "utils/variables"
 import cn from "classnames"
 
 interface LoaderProps {
