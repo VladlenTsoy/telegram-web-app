@@ -1,7 +1,7 @@
 import React, {useEffect} from "react"
 import styles from "./Modal.module.css"
 import Portal from "components/portal/Portal"
-import {AnimatePresence, motion, useMotionValue} from "framer-motion"
+import {AnimatePresence, motion, useMotionValue, useTransform} from "framer-motion"
 
 interface ModalProps {
     children?: React.ReactNode
@@ -19,6 +19,8 @@ const Modal: React.FC<ModalProps> = (
     }
 ) => {
     const cardY = useMotionValue(0)
+    const y = useMotionValue(0)
+    const scale = useTransform(y, [0, 20], [1, 0])
 
     useEffect(() => {
         // Нет возможности скролить body
@@ -63,7 +65,7 @@ const Modal: React.FC<ModalProps> = (
                                 <motion.div
                                     drag={"y"}
                                     onDrag={(e, pan) => {
-                                        cardY.set(pan.offset.y)
+                                        pan.offset.y > 0 && cardY.set(pan.offset.y)
                                     }}
                                     onDragEnd={(e, pan) => {
                                         if (pan.offset.y >= 100) onClose()
@@ -78,6 +80,7 @@ const Modal: React.FC<ModalProps> = (
                                         bottom: 0
                                     }}
                                     className={styles.dragClose}
+                                    style={{y, scale}}
                                 >
                                     <span className={styles.dragBorder} />
                                 </motion.div>
