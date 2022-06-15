@@ -36,23 +36,21 @@ const ModalProducts: React.FC<ModalProductsProps> = (
 
     return (
         <Modal visible={visible} onClose={onClose} title={selectedGroup?.name}>
-            <div className={styles.scroll}>
-                <div className={styles.container}>
-                    {selectedGroup && selectedGroup.products.length &&
-                        selectedGroup.products.map((product) =>
-                                product && (
-                                    <ComboProductCard
-                                        key={product.id}
-                                        comboProduct={product as CartComboProduct}
-                                        selectedProduct={selectedProduct}
-                                        selectProduct={selectProduct}
-                                    />
-                                )
-                        )}
-                </div>
-                <div className={styles.actions}>
-                    <button className={styles.button} onClick={onClickHandler}>Добавить</button>
-                </div>
+            <div className={styles.container}>
+                {selectedGroup && selectedGroup.products.length &&
+                    selectedGroup.products.map((product) =>
+                            product && (
+                                <ComboProductCard
+                                    key={product.id}
+                                    comboProduct={product as CartComboProduct}
+                                    selectedProduct={selectedProduct}
+                                    selectProduct={selectProduct}
+                                />
+                            )
+                    )}
+            </div>
+            <div className={styles.actions}>
+                <button className={styles.button} onClick={onClickHandler}>Добавить</button>
             </div>
         </Modal>
     )

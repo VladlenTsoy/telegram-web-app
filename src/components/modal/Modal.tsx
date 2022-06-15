@@ -78,11 +78,10 @@ const Modal: React.FC<ModalProps> = (
                                 <motion.div className={styles.dragClose}>
                                     <span className={styles.dragBorder} />
                                 </motion.div>
-                                {/*<div className={styles.close} onClick={onClose}>*/}
-                                {/*    <GrClose />*/}
-                                {/*</div>*/}
                                 {!!title && <div className={styles.title}>{title}</div>}
-                                {children}
+                                <div className={styles.scroll}>
+                                    {children}
+                                </div>
                             </motion.div>
                         </div>
                     </div>

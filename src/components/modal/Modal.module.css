@@ -41,39 +41,24 @@
     height: auto;
     min-height: 100%;
     pointer-events: all;
-    max-width: 700px;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
 }
 
 .scroll {
-    max-height: calc(100vh - 20px);
-    height: 100%;
     overflow: hidden;
+    overflow-y: auto;
+    position: relative;
+    height: 100%;
 }
-
-/*.close {*/
-/*    position: absolute;*/
-/*    top: .5rem;*/
-/*    right: .5rem;*/
-/*    z-index: 2;*/
-/*    height: 35px;*/
-/*    width: 35px;*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    justify-content: center;*/
-/*    border-radius: 50%;*/
-/*    background: var(--tg-theme-bg-color);*/
-/*    color: var(--tg-theme-text-color);*/
-/*    font-size: var(--font-size-lg);*/
-/*    box-shadow: 0 0 4px rgba(0, 0, 0, 0.07);*/
-/*}*/
 
 .title {
     font-size: 25px;
     line-height: 25px;
     font-weight: bolder;
     margin-bottom: 1rem;
+    margin-top: .5rem;
     margin-left: .5rem;
 }
 
