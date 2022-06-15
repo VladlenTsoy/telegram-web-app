@@ -18,7 +18,7 @@ const Modal: React.FC<ModalProps> = (
         children
     }
 ) => {
-    const y = useMotionValue(0)
+    const cardY = useMotionValue(0)
 
     useEffect(() => {
         // Нет возможности скролить body
@@ -30,11 +30,6 @@ const Modal: React.FC<ModalProps> = (
         if (visible)
             window.Telegram.WebApp.expand()
     }, [visible])
-
-    // Отпускание
-    const onDragEndListener = () => {
-        if (y.get() >= 100) onClose()
-    }
 
     // Закрыть
     const onCloseHandler = () => {
@@ -59,29 +54,33 @@ const Modal: React.FC<ModalProps> = (
                         <div className={styles.wrapper}>
                             <motion.div
                                 className={styles.card}
-                                drag={"y"}
-                                onDrag={(e, pan) => {
-                                    console.log(e, pan)
-                                    return null
-                                }}
-                                onDragEnd={onDragEndListener}
                                 initial={{opacity: 0, y: "100%"}}
                                 animate={{opacity: 1, y: 0}}
                                 transition={{ease: "linear", duration: 0.2}}
                                 exit={{opacity: 0, y: "100%"}}
-                                style={{y}}
-                                dragElastic={{
-                                    top: 0,
-                                    bottom: 1
-                                }}
-                                dragConstraints={{
-                                    top: 0,
-                                    bottom: 0
-                                }}
+                                style={{y: cardY}}
                             >
-                                <div className={styles.dragClose}>
+                                <motion.div
+                                    drag={"y"}
+                                    onDrag={(e, pan) => {
+                                        cardY.set(pan.offset.y)
+                                    }}
+                                    onDragEnd={(e, pan) => {
+                                        if (pan.offset.y >= 100) onClose()
+                                        else cardY.set(0)
+                                    }}
+                                    dragElastic={{
+                                        top: 0,
+                                        bottom: 1
+                                    }}
+                                    dragConstraints={{
+                                        top: 0,
+                                        bottom: 0
+                                    }}
+                                    className={styles.dragClose}
+                                >
                                     <span className={styles.dragBorder} />
-                                </div>
+                                </motion.div>
                                 <div className={styles.scroll}>
                                     {!!title && <div className={styles.title}>{title}</div>}
                                     {children}
