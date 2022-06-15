@@ -60,6 +60,15 @@ const Modal: React.FC<ModalProps> = (
                             <motion.div
                                 className={styles.card}
                                 drag={"y"}
+                                onDrag={(event, pan) => {
+                                    // console.log(event, pan)
+                                    console.log(pan.velocity.y > 0)
+                                    if (pan.velocity.y > 0) {
+
+                                    } else {
+                                        return false
+                                    }
+                                }}
                                 onDragEnd={onDragEndListener}
                                 dragElastic={{
                                     top: 0,
