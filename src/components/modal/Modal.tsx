@@ -2,7 +2,6 @@ import React, {useEffect} from "react"
 import styles from "./Modal.module.css"
 import Portal from "components/portal/Portal"
 import {AnimatePresence, motion, useMotionValue} from "framer-motion"
-import Sheet from "react-modal-sheet"
 
 interface ModalProps {
     children?: React.ReactNode
@@ -41,18 +40,6 @@ const Modal: React.FC<ModalProps> = (
     const onCloseHandler = () => {
         onClose()
     }
-
-    return <Sheet isOpen={visible} onClose={onClose}>
-        {/*// @ts-ignore*/}
-        <Sheet.Container>
-            {/*// @ts-ignore*/}
-            <Sheet.Header />
-            {/*// @ts-ignore*/}
-            <Sheet.Content>{children}</Sheet.Content>
-        </Sheet.Container>
-        {/*// @ts-ignore*/}
-        <Sheet.Backdrop />
-    </Sheet>
 
     return <Portal visible={visible} destroyOnClose>
         <AnimatePresence>
