@@ -19,6 +19,7 @@ const Modal: React.FC<ModalProps> = (
     }
 ) => {
     const y = useMotionValue(0)
+    const scrollY = useMotionValue(0)
 
     useEffect(() => {
         // Нет возможности скролить body
@@ -58,17 +59,9 @@ const Modal: React.FC<ModalProps> = (
                     <div className={styles.container}>
                         <div className={styles.wrapper}>
                             <motion.div
+                                whileTap={{cursor: "grabbing"}}
                                 className={styles.card}
                                 drag={"y"}
-                                onDrag={(event, pan) => {
-                                    // console.log(event, pan)
-                                    console.log(pan.velocity.y > 0)
-                                    if (pan.velocity.y > 0) {
-
-                                    } else {
-                                        return false
-                                    }
-                                }}
                                 onDragEnd={onDragEndListener}
                                 dragElastic={{
                                     top: 0,
@@ -88,9 +81,12 @@ const Modal: React.FC<ModalProps> = (
                                     <span className={styles.dragBorder} />
                                 </motion.div>
                                 {!!title && <div className={styles.title}>{title}</div>}
-                                <div className={styles.scroll}>
+                                <motion.div
+                                    className={styles.scroll}
+                                    style={{y: scrollY}}
+                                >
                                     {children}
-                                </div>
+                                </motion.div>
                             </motion.div>
                         </div>
                     </div>
