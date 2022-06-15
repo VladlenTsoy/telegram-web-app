@@ -2,6 +2,7 @@ import React, {useEffect} from "react"
 import styles from "./Modal.module.css"
 import Portal from "components/portal/Portal"
 import {AnimatePresence, motion, useMotionValue} from "framer-motion"
+import Sheet from "react-modal-sheet"
 
 interface ModalProps {
     children?: React.ReactNode
@@ -19,7 +20,6 @@ const Modal: React.FC<ModalProps> = (
     }
 ) => {
     const y = useMotionValue(0)
-    const scrollY = useMotionValue(0)
 
     useEffect(() => {
         // Нет возможности скролить body
@@ -42,6 +42,18 @@ const Modal: React.FC<ModalProps> = (
         onClose()
     }
 
+    return <Sheet isOpen={visible} onClose={onClose}>
+        {/*// @ts-ignore*/}
+        <Sheet.Container>
+            {/*// @ts-ignore*/}
+            <Sheet.Header />
+            {/*// @ts-ignore*/}
+            <Sheet.Content>{children}</Sheet.Content>
+        </Sheet.Container>
+        {/*// @ts-ignore*/}
+        <Sheet.Backdrop />
+    </Sheet>
+
     return <Portal visible={visible} destroyOnClose>
         <AnimatePresence>
             {visible &&
@@ -59,10 +71,18 @@ const Modal: React.FC<ModalProps> = (
                     <div className={styles.container}>
                         <div className={styles.wrapper}>
                             <motion.div
-                                whileTap={{cursor: "grabbing"}}
                                 className={styles.card}
                                 drag={"y"}
+                                onDrag={(e, pan) => {
+                                    console.log(e, pan)
+                                    return null
+                                }}
                                 onDragEnd={onDragEndListener}
+                                initial={{opacity: 0, y: "100%"}}
+                                animate={{opacity: 1, y: 0}}
+                                transition={{ease: "linear", duration: 0.2}}
+                                exit={{opacity: 0, y: "100%"}}
+                                style={{y}}
                                 dragElastic={{
                                     top: 0,
                                     bottom: 1
@@ -71,22 +91,14 @@ const Modal: React.FC<ModalProps> = (
                                     top: 0,
                                     bottom: 0
                                 }}
-                                style={{y}}
-                                initial={{opacity: 0, y: "100%"}}
-                                animate={{opacity: 1, y: 0}}
-                                transition={{ease: "linear", duration: 0.2}}
-                                exit={{opacity: 0, y: "100%"}}
                             >
-                                <motion.div className={styles.dragClose}>
+                                <div className={styles.dragClose}>
                                     <span className={styles.dragBorder} />
-                                </motion.div>
-                                {!!title && <div className={styles.title}>{title}</div>}
-                                <motion.div
-                                    className={styles.scroll}
-                                    style={{y: scrollY}}
-                                >
+                                </div>
+                                <div className={styles.scroll}>
+                                    {!!title && <div className={styles.title}>{title}</div>}
                                     {children}
-                                </motion.div>
+                                </div>
                             </motion.div>
                         </div>
                     </div>
