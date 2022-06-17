@@ -12,6 +12,7 @@ import ModalProducts from "./modal-products/ModalProducts"
 import {navigate} from "features/app/appSlice"
 import {message} from "components/message/notice"
 import {formatPrice} from "utils/formatPrice"
+import Button from "components/button/Button"
 
 interface ComboMoreActionsProps {
     combo: Combo
@@ -116,13 +117,12 @@ const ComboMoreActions: React.FC<ComboMoreActionsProps> = ({combo}) => {
             />
             <div className={styles.actions}>
                 <div className={styles.price}>{formatPrice(combo.priceModification)} {t("sum")}</div>
-                <button
-                    className={styles.button}
+                <Button
                     onClick={addToCart}
                     disabled={selectedProducts.length < combo.items.length}
                 >
                     {t("addToCart")}
-                </button>
+                </Button>
             </div>
             {/* Список продуктов */}
             <ModalProducts

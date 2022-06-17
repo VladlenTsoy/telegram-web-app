@@ -1,0 +1,22 @@
+.button {
+    font-weight: bolder;
+    width: 100%;
+    border: 0;
+    background: var(--primary-gradient);
+    color: white;
+    padding: .75rem 1rem;
+    font-size: var(--font-size-lg);
+    border-radius: 40px;
+}
+
+.button:disabled {
+    opacity: .5;
+}
+
+.button.primary {
+    background: var(--primary-gradient);
+}
+
+.button.secondary {
+    background: #262A2C;
+}

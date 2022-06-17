@@ -4,6 +4,11 @@ import {formatPrice} from "../../../utils/formatPrice"
 import {CartProductModifier} from "../../../types/Cart"
 import {ProductSize} from "../../../types/Menu"
 import {useDispatch} from "../../../store"
+import Button from "../../../components/button/Button"
+import {addToCart} from "../../cart/cartSlice"
+import {message} from "../../../components/message/notice"
+import {useLanguage} from "../../../utils/i18n.config"
+import {navigate} from "../../app/appSlice"
 
 interface ConstructorPageBtnProps {
     modifiers: CartProductModifier[]
@@ -12,8 +17,7 @@ interface ConstructorPageBtnProps {
 
 const ConstructorPageBtn: React.FC<ConstructorPageBtnProps> = ({modifiers, selectedConstructor}) => {
     const dispatch = useDispatch()
-    // const {locale, push} = useRouter()
-    // const {t} = useTranslation()
+    const {lang} = useLanguage()
     const countTopping = modifiers.filter(mod => mod.type === "topping").length
     const isDisabled = countTopping < 1 || countTopping > 10
     const totalPrice = selectedConstructor.price +
@@ -26,48 +30,35 @@ const ConstructorPageBtn: React.FC<ConstructorPageBtnProps> = ({modifiers, selec
         )
 
     const onClickHandler = () => {
-        // if (selectedConstructor && modifiers.length) {
-        //     // Добавление в корзину
-        //     dispatch(
-        //         addToCart({
-        //             uid: selectedConstructor.id + modifiers.reduce((acc, val) => (acc + val.productId), ""),
-        //             productId: selectedConstructor.productId,
-        //             title: selectedConstructor.translations.title,
-        //             defaultTitle: selectedConstructor.name,
-        //             comboInformation: null,
-        //             amount: 1,
-        //             image: selectedConstructor.image,
-        //             price: selectedConstructor.price,
-        //             modifiers,
-        //             type: "pizza"
-        //         })
-        //     )
-        //     // Вывод сообщения
-        //     dispatch(
-        //         showMessage({
-        //             title: selectedConstructor.translations.title[locale] || selectedConstructor.name,
-        //             image: selectedConstructor.image
-        //         })
-        //     )
-        // }
-        // //
-        // ConstructorAddToCart({
-        //     productId: selectedConstructor.id,
-        //     title: selectedConstructor.name,
-        //     amount: 1,
-        //     price: totalPrice,
-        //     sizeTitle: selectedConstructor.translations.title.ru.replace(" конструктор", "")
-        // }, modifiers)
-        // //
-        // push("/")
+        if (selectedConstructor && modifiers.length) {
+            // Добавление в корзину
+            dispatch(
+                addToCart({
+                    uid: selectedConstructor.id + modifiers.reduce((acc, val) => (acc + val.productId), ""),
+                    productId: selectedConstructor.productId,
+                    title: selectedConstructor.translations.title,
+                    defaultTitle: selectedConstructor.name,
+                    comboInformation: null,
+                    amount: 1,
+                    image: selectedConstructor.image,
+                    price: selectedConstructor.price,
+                    modifiers,
+                    type: "pizza"
+                })
+            )
+            // Вывод сообщения
+            message({content: selectedConstructor.translations.title[lang] || selectedConstructor.name})
+            //
+            dispatch(navigate("menu"))
+        }
     }
 
     return (
-        <div className={styles.btnPriceWrapper}>
-            <p className={styles.price}>
+        <div className={styles.actions}>
+            <div className={styles.price}>
                 {formatPrice(totalPrice)} сум
-            </p>
-            {/*<LabelBtn type={"primary"} margin={"0"} fillW>Добавить в корзину</LabelBtn>*/}
+            </div>
+            <Button onClick={onClickHandler} disabled={isDisabled}>Добавить</Button>
         </div>
     )
 }

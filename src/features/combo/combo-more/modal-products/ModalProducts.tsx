@@ -5,6 +5,7 @@ import styles from "./ModalProducts.module.css"
 import {Product, ProductSize} from "types/Menu"
 import Modal from "components/modal/Modal"
 import {CartComboProduct} from "types/Cart"
+import Button from "../../../../components/button/Button"
 
 interface ModalProductsProps {
     onClose: () => void
@@ -50,7 +51,7 @@ const ModalProducts: React.FC<ModalProductsProps> = (
                     )}
             </div>
             <div className={styles.actions}>
-                <button className={styles.button} onClick={onClickHandler}>Добавить</button>
+                <Button type="secondary" onClick={onClickHandler}>Добавить</Button>
             </div>
         </Modal>
     )
