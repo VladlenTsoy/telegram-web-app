@@ -1,14 +1,14 @@
 import React from "react"
 import styles from "./ConstructorPageBtn.module.css"
-import {formatPrice} from "../../../utils/formatPrice"
-import {CartProductModifier} from "../../../types/Cart"
-import {ProductSize} from "../../../types/Menu"
-import {useDispatch} from "../../../store"
-import Button from "../../../components/button/Button"
-import {addToCart} from "../../cart/cartSlice"
-import {message} from "../../../components/message/notice"
-import {useLanguage} from "../../../utils/i18n.config"
-import {navigate} from "../../app/appSlice"
+import {formatPrice} from "utils/formatPrice"
+import {CartProductModifier} from "types/Cart"
+import {ProductSize} from "types/Menu"
+import {useDispatch} from "store"
+import Button from "components/button/Button"
+import {addToCart} from "features/cart/cartSlice"
+import {message} from "components/message/notice"
+import {useLanguage} from "utils/i18n.config"
+import {navigate} from "features/app/appSlice"
 
 interface ConstructorPageBtnProps {
     modifiers: CartProductModifier[]
@@ -58,7 +58,7 @@ const ConstructorPageBtn: React.FC<ConstructorPageBtnProps> = ({modifiers, selec
             <div className={styles.price}>
                 {formatPrice(totalPrice)} сум
             </div>
-            <Button onClick={onClickHandler} disabled={isDisabled}>Добавить</Button>
+            <Button type="secondary" onClick={onClickHandler} disabled={isDisabled}>Добавить</Button>
         </div>
     )
 }

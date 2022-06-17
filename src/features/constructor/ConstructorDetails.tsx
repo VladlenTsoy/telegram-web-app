@@ -7,7 +7,7 @@ import SwitchButtons from "../../components/switch-buttons/SwitchButtons"
 import ConstructorPageBtn from "./constructor-page-btn/ConstructorPageBtn"
 import {useLanguage} from "../../utils/i18n.config"
 import styles from "./ConstructorDetails.module.css"
-import AddedModifiers from "./added-modifiers/AddedModifiers"
+// import AddedModifiers from "./added-modifiers/AddedModifiers"
 import ModificatorBlock from "./modificator-block/ModificatorBlock"
 
 interface Crust {
@@ -194,13 +194,14 @@ const ConstructorDetails: React.FC<ConstructorDetailsProps> = ({constructorGroup
                 {
                     mods &&
                     mods.length > 0 &&
-                    mods.map((item, index) =>
+                    mods.map((item) =>
                         <ModificatorBlock
                             key={item.id}
                             id={item.id}
                             title={item.label}
                             price={item.price}
                             image={item.image}
+                            modifiers={modifiers}
                             onAddToppingHandler={onAddToppingHandler}
                         />
                     )

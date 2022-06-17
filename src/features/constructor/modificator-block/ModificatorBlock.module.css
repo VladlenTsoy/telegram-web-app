@@ -1,4 +1,4 @@
-.modificatorBlock {
+.modify {
     padding: 18px 10px 10px 10px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
     border-radius: 15px;
@@ -13,30 +13,31 @@
     position: relative;
 }
 
-.modificatorBlock:last-child {
-    margin-right: 0;
-}
-
-.modificatorBlock h3 {
+.modify .title {
     margin-top: 8px;
+    margin-bottom: 8px;
     font-size: var(--font-size-md);
     line-height: 19px;
     font-weight: 600;
     color: #000000;
 }
 
-.modificatorBlock p {
+.modify p {
     font-size: var(--font-size-sm);
     line-height: 19px;
     font-weight: 400;
 }
 
-.modificatorBlock button {
+.bottomBlock {
+    width: 100%;
+}
+
+.button {
+    background: #F2F2F2;
+    color: var(--tg-theme-text-color);
     width: 100%;
     padding: 2px;
     border-radius: 100px;
-    background: var(--primary-color);
-    color: white;
     text-align: center;
     border: none;
     margin-top: 5px;
@@ -44,6 +45,7 @@
     line-height: 100%;
 }
 
-.bottomBlock {
-    width: 100%;
+.button.active {
+    background: var(--primary-color);
+    color: white;
 }
