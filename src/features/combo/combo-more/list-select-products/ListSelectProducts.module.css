@@ -5,8 +5,12 @@
 
 .card .item {
     padding: .75rem .5rem;
-    box-shadow: 5px 2px 30px rgba(211, 209, 216, 0.25);
     border-radius: var(--border-radius);
+    background: var(--card-bg-color);
+}
+
+[data-theme="light"] .card {
+    box-shadow: 5px 2px 30px rgba(211, 209, 216, 0.25);
 }
 
 .card .item:not(:last-child) {

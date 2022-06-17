@@ -14,7 +14,7 @@
     position: absolute;
     border-radius: 100px;
     width: calc(50% - 3px);
-    background: #fff;
+    background: var(--active-bg-color);
     top: 3px;
     bottom: 3px;
     left: 3px;
@@ -26,7 +26,6 @@
 
 .container {
     position: relative;
-    background: #f4f4f4;
     border: 1px solid rgba(0, 0, 0, .04);
     border-radius: 100px;
     display: grid;
@@ -35,6 +34,7 @@
     margin: .5em 0 1.25em 0;
     font-size: var(--font-size-sm);
     line-height: 18px;
+    background: var(--card-bg-color);
 }
 
 .container .section {
@@ -48,5 +48,13 @@
 }
 
 .container .section.active {
-    color: var(--tg-theme-text-color);
+    color: black;
+}
+
+[data-theme="light"] .container {
+    background: #f4f4f4;
+}
+
+[data-theme="light"] .chooseBlock {
+    color: var(--tg-theme-bg-color);
 }

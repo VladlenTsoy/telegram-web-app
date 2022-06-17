@@ -15,6 +15,8 @@ import HeaderBack from "../../components/header-back/HeaderBack"
 import EmptyPage from "../../components/empty-page/EmptyPage"
 import {formatPrice} from "../../utils/formatPrice"
 import cn from "classnames"
+import Button from "../../components/button/Button"
+import Recommended from "./recommended/Recommended"
 
 const Cart = () => {
     const {t} = useLanguage()
@@ -36,7 +38,7 @@ const Cart = () => {
         return <EmptyPage type="cart" title={t("cart")} back="menu" />
 
     return (
-        <>
+        <div className={styles.wrapper}>
             <HeaderBack back="menu" title={t("cart")} />
             <div className={styles.container}>
                 {cartProducts && cartProducts.map(product =>
@@ -44,28 +46,7 @@ const Cart = () => {
                 {cartComboProducts && cartComboProducts.map(combo =>
                     <CartComboItem combo={combo} key={combo.id} />)}
             </div>
-            <div className={styles.recommended}>
-                <div className={styles.card}>
-                    <div className={styles.icon}>🥤</div>
-                    <div className={styles.text}>Напитки</div>
-                </div>
-                <div className={styles.card}>
-                    <div className={styles.icon}>🍟</div>
-                    <div className={styles.text}>Закуски</div>
-                </div>
-                <div className={styles.card}>
-                    <div className={styles.icon}>🥗</div>
-                    <div className={styles.text}>Салаты</div>
-                </div>
-                <div className={styles.card}>
-                    <div className={styles.icon}>🍰</div>
-                    <div className={styles.text}>Десерты</div>
-                </div>
-                <div className={styles.card}>
-                    <div className={styles.icon}>😋</div>
-                    <div className={styles.text}>Соус</div>
-                </div>
-            </div>
+            <Recommended />
             <div className={styles.bottomInfo}>
                 <div className={styles.totalInfo}>
                     <div className={styles.item}>
@@ -77,13 +58,21 @@ const Cart = () => {
                         <div className={styles.value}>{formatPrice(cartTotalPrice)} {t("sum")}</div>
                     </div>
                 </div>
-                <div className={styles.actions}>
-                    <button className={styles.button} onClick={onClickHandler}>
-                        {t("pay")}
-                    </button>
-                </div>
             </div>
-        </>
+
+            <div className={styles.actions}>
+                <Button onClick={onClickHandler}>
+                    <div className={styles.button}>
+                        <div className={styles.left}>
+                            Оформить заказ
+                        </div>
+                        <div className={styles.right}>
+                            {formatPrice(cartTotalPrice)} {t("sum")}
+                        </div>
+                    </div>
+                </Button>
+            </div>
+        </div>
     )
 }
 

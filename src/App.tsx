@@ -25,7 +25,8 @@ function App() {
         // Запуск телеграм приложения
         window.Telegram.WebApp.ready()
         // Тема для приложения
-        document.body.dataset.theme = window?.Telegram?.WebApp?.colorScheme || "light"
+        // document.body.dataset.theme = window?.Telegram?.WebApp?.colorScheme || "light"
+        document.body.dataset.theme = "dark"
     }, [])
 
     useEffect(() => {

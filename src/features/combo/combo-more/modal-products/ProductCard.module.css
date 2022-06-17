@@ -2,10 +2,13 @@
     border-radius: var(--border-radius);
     padding: 1rem;
     /*overflow: hidden;*/
-    box-shadow: 5px 2px 30px rgba(211, 209, 216, 0.25);
-    background: var(--tg-theme-bg-color);
+    background: var(--card-bg-color);
     position: relative;
     border: 2px solid transparent;
+}
+
+[data-theme="light"] .card {
+    box-shadow: 5px 2px 30px rgba(211, 209, 216, 0.25);
 }
 
 .card.active {

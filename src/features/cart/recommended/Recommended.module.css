@@ -1,0 +1,29 @@
+.container {
+
+}
+
+.container h3 {
+    margin: 1rem;
+}
+
+.recommended {
+    padding: 0 .5rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.recommended .card {
+    width: 87px;
+    height: 76px;
+    background: #FFFFFF;
+    box-shadow: 5px 2px 10px rgba(223, 223, 223, 0.88);
+    border-radius: 14px;
+    text-align: center;
+    font-size: var(--font-size-sm);
+}
+
+.recommended .card .icon {
+    font-size: 35px;
+}
+

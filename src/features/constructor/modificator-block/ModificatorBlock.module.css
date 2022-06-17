@@ -1,6 +1,5 @@
 .modify {
     padding: 18px 10px 10px 10px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -11,6 +10,12 @@
     /*height: 100%;*/
     text-align: center;
     position: relative;
+    background: var(--card-bg-color);
+}
+
+[data-theme="light"] .modify {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    background: var(--tg-theme-bg-color);
 }
 
 .modify .title {
@@ -19,7 +24,7 @@
     font-size: var(--font-size-md);
     line-height: 19px;
     font-weight: 600;
-    color: #000000;
+    color: var(--tg-theme-text-color);
 }
 
 .modify p {
@@ -33,8 +38,7 @@
 }
 
 .button {
-    background: #F2F2F2;
-    color: var(--tg-theme-text-color);
+    background: var(--warning-gradient);
     width: 100%;
     padding: 2px;
     border-radius: 100px;
@@ -48,4 +52,9 @@
 .button.active {
     background: var(--primary-color);
     color: white;
+}
+
+[data-theme="light"] .button {
+    background: #F2F2F2;
+    color: var(--tg-theme-text-color);
 }
