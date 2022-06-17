@@ -7,6 +7,7 @@ import {getCookie, setCookie} from "./utils/cookie"
 import {useApp} from "./features/app/appSlice"
 import {useGetMenu, useGetMenuLoading} from "./features/menu/menuSlice"
 import Constructor from "./features/constructor/constructor"
+import PizzaHalf from "./features/pizza-half/PizzaHalf"
 
 const MenuList = React.lazy(() => import("./features/menu/MenuList"))
 const Cart = React.lazy(() => import("./features/cart/Cart"))
@@ -55,7 +56,7 @@ function App() {
             {router === "menu" && <MenuList />}
             {router === "cart" && <Cart />}
             {router === "constructor" && <Constructor />}
-            {router === "half" && <Cart />}
+            {router === "half" && <PizzaHalf />}
             {router.includes("combo") && <ComboMore />}
         </React.Suspense>
     )

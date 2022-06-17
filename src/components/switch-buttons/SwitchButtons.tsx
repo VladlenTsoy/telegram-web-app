@@ -13,7 +13,7 @@ interface SwitchButtonsProps {
         price?: number
         type?: string
     }[]
-    onClick: (id: string) => void
+    onClick?: (id: string) => void
     value?: string | number
     margin?: string
 }

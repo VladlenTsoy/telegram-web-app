@@ -58,5 +58,14 @@ export const useGetConstructor = () => {
     if (!group) return null
     return group
 }
+// Вывод пицца половинки
+export const useGetHalf = () => {
+    const categories = useGetMenu()
+    const category = categories.find(category => category.menuType === "pizza")
+    if (!category) return null
+    const group = category.groups.find(group => group.menuType === "half")
+    if (!group) return null
+    return group.products[0]
+}
 
 export default menuSlice.reducer
