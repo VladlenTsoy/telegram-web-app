@@ -1,0 +1,22 @@
+.mainWrapper {
+    margin: 1em;
+    padding: 12px 23px;
+    display: flex;
+    background: #CE000C;
+    border-radius: 26px;
+}
+
+.mainWrapper p {
+    /*font-size: var(--constructor-added-modifier-fs);*/
+    /*font-weight: var(--constructor-added-modifier-fw);*/
+    /*line-height: var(--constructor-added-modifier-height);*/
+    /*color: var(--constructor-added-modifier-color);*/
+}
+
+.mainWrapper p:after {
+    content: ', \00a0';
+}
+
+.mainWrapper p:last-child:after {
+    content: none;
+}

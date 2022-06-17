@@ -49,5 +49,14 @@ export const useGetById = (key: string) => {
     const categories = useGetMenu()
     return categories.find(category => category.menuType === key || category.icon === key)?.products
 }
+// Вывод конструктора
+export const useGetConstructor = () => {
+    const categories = useGetMenu()
+    const category = categories.find(category => category.menuType === "pizza")
+    if (!category) return null
+    const group = category.groups.find(group => group.menuType === "constructor")
+    if (!group) return null
+    return group
+}
 
 export default menuSlice.reducer

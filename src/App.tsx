@@ -6,6 +6,7 @@ import Loader from "./components/loader/Loader"
 import {getCookie, setCookie} from "./utils/cookie"
 import {useApp} from "./features/app/appSlice"
 import {useGetMenu, useGetMenuLoading} from "./features/menu/menuSlice"
+import Constructor from "./features/constructor/constructor"
 
 const MenuList = React.lazy(() => import("./features/menu/MenuList"))
 const Cart = React.lazy(() => import("./features/cart/Cart"))
@@ -53,6 +54,8 @@ function App() {
         <React.Suspense fallback={<Loader text={t("loading")} />}>
             {router === "menu" && <MenuList />}
             {router === "cart" && <Cart />}
+            {router === "constructor" && <Constructor />}
+            {router === "half" && <Cart />}
             {router.includes("combo") && <ComboMore />}
         </React.Suspense>
     )

@@ -1,0 +1,15 @@
+.container {
+    position: relative;
+}
+
+.actions {
+    padding: 0 .5rem;
+}
+
+.modifiers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0 .5rem;
+    grid-gap: .5rem;
+    margin-bottom: 1rem;
+}

@@ -1,4 +1,4 @@
-import React, {useEffect} from "react"
+import React, {useEffect, useRef} from "react"
 import styles from "./Modal.module.css"
 import Portal from "components/portal/Portal"
 import {AnimatePresence, motion, useMotionValue, useTransform} from "framer-motion"
@@ -18,6 +18,7 @@ const Modal: React.FC<ModalProps> = (
         children
     }
 ) => {
+    const ref = useRef<HTMLDivElement>(null)
     const cardY = useMotionValue(0)
     const y = useMotionValue(0)
     const scale = useTransform(y, [0, 20], [1, 0])
@@ -37,6 +38,10 @@ const Modal: React.FC<ModalProps> = (
     const onCloseHandler = () => {
         onClose()
     }
+
+    useEffect(() => {
+        ref.current && console.log(ref.current)
+    }, [ref])
 
     return <Portal visible={visible} destroyOnClose>
         <AnimatePresence>
@@ -84,7 +89,7 @@ const Modal: React.FC<ModalProps> = (
                                 >
                                     <span className={styles.dragBorder} />
                                 </motion.div>
-                                <div className={styles.scroll}>
+                                <div className={styles.scroll} ref={ref}>
                                     {!!title && <div className={styles.title}>{title}</div>}
                                     {children}
                                 </div>

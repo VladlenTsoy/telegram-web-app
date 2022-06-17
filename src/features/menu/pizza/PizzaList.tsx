@@ -14,8 +14,8 @@ const PizzaList = () => {
     return (
         <div className={styles.container}>
             <div className={styles.extra}>
-                {constructor && <ExtraCard item={constructor} type="constructor" link="cart" />}
-                {halfPizza && <ExtraCard item={halfPizza} type="half" link="cart" />}
+                {constructor && <ExtraCard item={constructor} type="constructor" link="constructor" />}
+                {halfPizza && <ExtraCard item={halfPizza} type="half" link="half" />}
             </div>
             {pizza && pizza
                 .filter(item => item.id !== constructorId && item.id !== halfPizzaId)

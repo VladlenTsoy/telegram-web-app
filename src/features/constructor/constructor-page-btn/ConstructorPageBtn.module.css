@@ -1,0 +1,23 @@
+.btnPriceWrapper {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    align-items: center;
+    padding: 15px 25px;
+    box-shadow: 0 -6px 4px rgba(0, 0, 0, 0.06);
+    position: sticky;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    z-index: 2;
+}
+
+.price {
+    font-weight: 700;
+    font-size: calc(var(--font-size-lg) + 1px);
+    line-height: 19px;
+}
+
+.btnPriceWrapper button {
+    font-size: calc(var(--font-size-lg) + 1px);
+}
