@@ -26,7 +26,6 @@
 
 .container {
     position: relative;
-    border: 1px solid rgba(0, 0, 0, .04);
     border-radius: 100px;
     display: grid;
     justify-items: center;
@@ -56,5 +55,5 @@
 }
 
 [data-theme="light"] .chooseBlock {
-    color: var(--tg-theme-bg-color);
+    background: var(--tg-theme-bg-color);
 }

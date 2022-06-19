@@ -40,21 +40,20 @@
 .button {
     background: var(--warning-gradient);
     width: 100%;
-    padding: 2px;
     border-radius: 100px;
     text-align: center;
     border: none;
     margin-top: 5px;
-    font-size: 22px;
+    padding: .25rem;
     line-height: 100%;
-}
-
-.button.active {
-    background: var(--primary-color);
-    color: white;
 }
 
 [data-theme="light"] .button {
     background: #F2F2F2;
     color: var(--tg-theme-text-color);
+}
+
+.button.active {
+    background: var(--primary-color);
+    color: white;
 }
