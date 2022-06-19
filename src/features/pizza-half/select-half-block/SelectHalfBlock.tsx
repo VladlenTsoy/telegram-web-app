@@ -42,7 +42,7 @@ const SelectHalfBlock: React.FC<SelectHalfBlockProps> = (
         <div onClick={() => setVisible(true)} className={styles.wrapper}>
             <div className={styles.title}>{title}</div>
             <div className={styles.mainBlock}>
-                <div className={styles.label}>{selectedProduct?.title[lang] || "deqwe"}</div>
+                <div className={styles.label}>{selectedProduct?.title[lang] || t("select")}</div>
                 <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fillRule="evenodd" clipRule="evenodd"
                           d="M1.41421 0C0.523309 0 0.0771422 1.07714 0.707107 1.70711L4.29289 5.29289C4.68342 5.68342 5.31658 5.68342 5.70711 5.29289L9.29289 1.70711C9.92286 1.07714 9.47669 0 8.58579 0H1.41421Z"

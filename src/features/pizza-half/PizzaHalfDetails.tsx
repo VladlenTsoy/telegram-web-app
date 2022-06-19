@@ -58,7 +58,6 @@ const PizzaHalfDetails: React.FC<PizzaHalfDetailsProps> = ({half}) => {
             ])
     }
 
-
     useEffect(() => {
         if (half && half.halfs) {
             if (half.halfs.products.length)
@@ -105,6 +104,11 @@ const PizzaHalfDetails: React.FC<PizzaHalfDetailsProps> = ({half}) => {
             ])
     }, [half, dispatch])
 
+    useEffect(() => {
+        if (halfs.length) {
+            setSelected({right: halfs[0], left: halfs[1]})
+        }
+    }, [halfs])
 
     const onClickHandler = useCallback(() => {
         if (selected.left && selected.right) {
@@ -147,7 +151,7 @@ const PizzaHalfDetails: React.FC<PizzaHalfDetailsProps> = ({half}) => {
                 dispatch(navigate(`menu`))
             }
         }
-    }, [half, selected])
+    }, [half, selected, dispatch, lang, modifiers])
 
     const selectProduct = useCallback((selectHalf: SelectedHalf, left?: boolean) => {
         setSelected(prevState => ({...prevState, [left ? "left" : "right"]: selectHalf}))
@@ -181,10 +185,10 @@ const PizzaHalfDetails: React.FC<PizzaHalfDetailsProps> = ({half}) => {
             </div>
             <div className={styles.actions}>
                 <div className={styles.price}>
-                    {formatPrice(half.price)} сум
+                    {formatPrice(half.price)} {t("sum")}
                 </div>
                 <Button type="secondary" onClick={onClickHandler}
-                        disabled={!(selected.left && selected.right)}>Добавить</Button>
+                        disabled={!(selected.left && selected.right)}>{t("addToCart")}</Button>
             </div>
         </div>
     )
