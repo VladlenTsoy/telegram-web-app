@@ -1,5 +1,6 @@
 import React from "react"
 import {
+    useCartComboProducts,
     useCartCombos,
     useCartCountItems,
     useCartEntitiesProducts,
@@ -16,7 +17,9 @@ import EmptyPage from "../../components/empty-page/EmptyPage"
 import {formatPrice} from "../../utils/formatPrice"
 import cn from "classnames"
 import Button from "../../components/button/Button"
-import Recommended from "./recommended/Recommended"
+// import Recommended from "./recommended/Recommended"
+import Promocode from "./promocode/cart-promocode/Promocode"
+import {useGetPromoCode, useGetPromoCodeProducts} from "./promocode/promoCodeSlice"
 
 const Cart = () => {
     const {t} = useLanguage()
@@ -25,12 +28,19 @@ const Cart = () => {
     const cartTotalPrice = useCartTotalPrice()
     const cartCountItems = useCartCountItems()
     const cartComboProducts = useCartCombos()
+    const cartComboProductItems = useCartComboProducts()
+    const promoCodeProducts = useGetPromoCodeProducts()
+    const promoCode = useGetPromoCode()
 
     const onClickHandler = () => {
+        // console.log(cartComboProducts, cartComboProductItems)
         window.Telegram.WebApp.sendData(JSON.stringify({
             cartEntitiesProducts,
+            cartComboProducts,
+            cartComboProductItems,
             cartTotalPrice,
-            cartCountItems
+            cartCountItems,
+            promoCode
         }))
     }
 
@@ -45,8 +55,11 @@ const Cart = () => {
                     <CartProductItem Component={ProductItem} product={product} key={product.uid} />)}
                 {cartComboProducts && cartComboProducts.map(combo =>
                     <CartComboItem combo={combo} key={combo.id} />)}
+                {promoCodeProducts && promoCodeProducts.map(product =>
+                    <CartProductItem Component={ProductItem} product={product} key={product.uid} coupon />)}
             </div>
-            <Recommended />
+            {!cartComboProducts.length && <Promocode />}
+            {/*<Recommended />*/}
             <div className={styles.bottomInfo}>
                 <div className={styles.totalInfo}>
                     <div className={styles.item}>
@@ -59,7 +72,6 @@ const Cart = () => {
                     </div>
                 </div>
             </div>
-
             <div className={styles.actions}>
                 <Button onClick={onClickHandler}>
                     <div className={styles.button}>

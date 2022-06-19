@@ -33,7 +33,11 @@ function App() {
         // Определить язык
         const urlParams = new URLSearchParams(window.location.search)
         const lang = urlParams.get("lang")
+        const phone = urlParams.get("phone")
+        const token = urlParams.get("token")
         lang && setCookie("lang", lang)
+        phone && setCookie("phone", phone)
+        token && setCookie("token", token)
         // Смена языка
         ;(async () => {
             await i18n.changeLanguage(lang || getCookie("lang") || "uz")

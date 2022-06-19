@@ -20,3 +20,7 @@
 .button.secondary {
     background: #262A2C;
 }
+
+.button.danger {
+    background: var(--primary-gradient);
+}

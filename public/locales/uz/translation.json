@@ -19,5 +19,11 @@
   "promotions": "Aksiyalar",
   "cart": "Savat",
   "select": "Tanlash",
-  "addedCart": " savatchaga qo'shildi"
+  "addedCart": " savatchaga qo'shildi",
+  "ErrorPromoCodeAuth": "Promokodni kiritishda xato, tizimga kirishingiz kerak!",
+  "ErrorPromoCode": "Noma'lum xato. Qayta urinib ko'ring.",
+  "ErrorInvalidPromoCode": "Xato. Noto'g'ri reklama kodi!",
+  "promo": "Promo kod",
+  "sendLoading": "Yuklanmoqda...",
+  "apply": "Qo'llash"
 }

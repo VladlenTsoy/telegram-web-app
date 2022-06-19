@@ -4,13 +4,15 @@ import app from "features/app/appSlice"
 import menu from "features/menu/menuSlice"
 import cart from "features/cart/cartSlice"
 import combo from "features/combo/comboSlice"
+import promoCode from "features/cart/promocode/promoCodeSlice"
 
 export const store = configureStore({
     reducer: {
         app,
         menu,
         cart,
-        combo
+        combo,
+        promoCode
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({immutableCheck: false})
