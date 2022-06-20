@@ -28,5 +28,6 @@
   "apply": "Qo'llash",
   "cancel": "Bekor qilish",
   "sale": "Kod bo'yicha chegirma",
-  "add": "Qo‘shish"
+  "add": "Qo‘shish",
+  "orderFullPrice": "Umumiy narx"
 }
