@@ -13,6 +13,7 @@ import Button from "components/button/Button"
 import {addToCart} from "features/cart/cartSlice"
 import {navigate} from "features/app/appSlice"
 import {message} from "components/message/notice"
+import md5 from "md5"
 
 export type CrustType = {title: string; id: string; price: number}
 
@@ -116,7 +117,6 @@ const PizzaHalfDetails: React.FC<PizzaHalfDetailsProps> = ({half}) => {
             // @ts-ignore
             const arrSelected: SelectedHalf[] = Object.values(selected)
             if (arrSelected.length === 2 && modifiers.length) {
-                console.log(1)
                 const selectedModifiers: CartProductModifier[] = arrSelected.map(item => ({
                     productId: item.id,
                     amount: 1,
@@ -130,9 +130,9 @@ const PizzaHalfDetails: React.FC<PizzaHalfDetailsProps> = ({half}) => {
                 dispatch(
                     addToCart({
                         uid:
-                            half.id +
-                            arrSelected.reduce((acc, val) => (acc + val.id), "") +
-                            modifiers.reduce((acc, val) => (acc + val.productId), ""),
+                            md5(half.id +
+                                arrSelected.reduce((acc, val) => (acc + val.id), "") +
+                                modifiers.reduce((acc, val) => (acc + val.productId), "")),
                         productId: half.id,
                         type: "pizza",
                         title: half.translations.title,

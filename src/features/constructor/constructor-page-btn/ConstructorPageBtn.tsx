@@ -9,6 +9,7 @@ import {addToCart} from "features/cart/cartSlice"
 import {message} from "components/message/notice"
 import {useLanguage} from "utils/i18n.config"
 import {navigate} from "features/app/appSlice"
+import md5 from "md5"
 
 interface ConstructorPageBtnProps {
     modifiers: CartProductModifier[]
@@ -34,7 +35,7 @@ const ConstructorPageBtn: React.FC<ConstructorPageBtnProps> = ({modifiers, selec
             // Добавление в корзину
             dispatch(
                 addToCart({
-                    uid: selectedConstructor.id + modifiers.reduce((acc, val) => (acc + val.productId), ""),
+                    uid: md5(selectedConstructor.id + modifiers.reduce((acc, val) => (acc + val.productId), "")),
                     productId: selectedConstructor.productId,
                     title: selectedConstructor.translations.title,
                     defaultTitle: selectedConstructor.name,
