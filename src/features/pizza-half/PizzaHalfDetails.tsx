@@ -92,7 +92,7 @@ const PizzaHalfDetails: React.FC<PizzaHalfDetailsProps> = ({half}) => {
     }, [half, lang, dispatch])
 
     useEffect(() => {
-        const crust = half.crusts.products[0]
+        const crust = JSON.parse(JSON.stringify(half.crusts.products)).sort((a: any, b: any) => a.price - b.price)[0]
         if (crust)
             setModifiers([
                 {
