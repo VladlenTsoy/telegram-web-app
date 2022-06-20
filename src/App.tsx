@@ -22,6 +22,7 @@ function App() {
     const isLoading = useGetMenuLoading()
 
     useEffect(() => {
+        // 1
         // Запуск телеграм приложения
         window.Telegram.WebApp.ready()
         // Тема для приложения
