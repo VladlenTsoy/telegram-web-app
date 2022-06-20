@@ -38,6 +38,8 @@ function App() {
         lang && setCookie("lang", lang)
         phone && setCookie("phone", phone)
         token && setCookie("token", token)
+        alert(phone)
+        alert(token)
         // Смена языка
         ;(async () => {
             await i18n.changeLanguage(lang || getCookie("lang") || "uz")
