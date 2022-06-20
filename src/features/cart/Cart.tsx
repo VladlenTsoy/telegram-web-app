@@ -66,9 +66,18 @@ const Cart = () => {
                         <div className={styles.title}>Доставка</div>
                         <div className={styles.value}>Бесплатно</div>
                     </div>
+                    {promoCode.discount.summa > 0 &&
+                        <div className={styles.item}>
+                            <div className={styles.title}>{t("sale")}</div>
+                            <div className={styles.value}>
+                                {formatPrice(promoCode.discount.summa || 0)} {t("sum")}
+                            </div>
+                        </div>
+                    }
                     <div className={cn(styles.item, styles.totalPrice)}>
                         <div className={styles.title}>К оплате</div>
-                        <div className={styles.value}>{formatPrice(cartTotalPrice)} {t("sum")}</div>
+                        <div
+                            className={styles.value}>{formatPrice(cartTotalPrice - promoCode.discount.summa || 0)} {t("sum")}</div>
                     </div>
                 </div>
             </div>
@@ -79,7 +88,7 @@ const Cart = () => {
                             Оформить заказ
                         </div>
                         <div className={styles.right}>
-                            {formatPrice(cartTotalPrice)} {t("sum")}
+                            {formatPrice(cartTotalPrice - promoCode.discount.summa || 0)} {t("sum")}
                         </div>
                     </div>
                 </Button>

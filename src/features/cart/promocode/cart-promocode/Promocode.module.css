@@ -13,6 +13,7 @@
     gap: 1rem;
     grid-template-columns: 1fr 1fr;
     align-items: center;
+    margin-bottom: 1rem;
 }
 
 .promocode .container .wrapperInput input {
@@ -32,4 +33,10 @@
 [data-theme="light"] .promocode .container .wrapperInput input {
     background: #EFEFEF;
     border: 0;
+}
+
+.message {
+    background: #FFE8C6;
+    border-radius: var(--border-radius);
+    padding: 1rem;
 }

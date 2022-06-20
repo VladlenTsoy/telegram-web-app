@@ -5,7 +5,7 @@ import {useDispatch} from "store"
 import {cancelPromoCode, useGetPromoCode} from "../promoCodeSlice"
 import {useCartTotalPrice} from "../../cartSlice"
 import {checkPromoCode} from "../checkPromoCode"
-import {getCookie} from "../../../../utils/cookie"
+import {getCookie} from "utils/cookie"
 import {useTranslation} from "react-i18next"
 
 const Promocode = () => {
@@ -28,7 +28,8 @@ const Promocode = () => {
         if (coupon !== "" && phone) await dispatch(checkPromoCode({coupon, token, phone, name}))
     }
 
-    const onCancelHandler = () => {
+    const onCancelHandler = (e: any) => {
+        e.preventDefault()
         dispatch(cancelPromoCode())
     }
 
@@ -49,7 +50,7 @@ const Promocode = () => {
         if (promoCode.name === "epam" && totalPrice > 0) {
             const phone = getCookie("phone") || "+998903192933"
             const token = getCookie("token")
-            const name = window.Telegram.WebApp.initDataUnsafe.user?.first_name || ""
+            const name = window.Telegram.WebApp.initDataUnsafe.user?.first_name || "Гость"
             const promise = dispatch(checkPromoCode({
                 coupon: promoCode.name,
                 name,
@@ -65,7 +66,11 @@ const Promocode = () => {
     return (
         <div className={styles.promocode}>
             <label htmlFor="">Промокод</label>
-            <form className={styles.container} onSubmit={onSubmitHandler}>
+            <form
+                className={styles.container}
+                onSubmit={
+                    promoCode.name ? onCancelHandler : onSubmitHandler}
+            >
                 <div className={styles.wrapperInput}>
                     <input
                         placeholder={t("promo")}
@@ -75,11 +80,10 @@ const Promocode = () => {
                 <div className={styles.wrapperButton}>
                     {promoCode.name ?
                         <Button
-                            htmlType="button"
+                            htmlType="submit"
                             type="danger"
-                            onClick={onCancelHandler}
                         >
-                            {}
+                            {t("cancel")}
                         </Button> :
                         <Button
                             htmlType="submit"

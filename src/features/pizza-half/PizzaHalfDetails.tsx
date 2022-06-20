@@ -41,6 +41,7 @@ const PizzaHalfDetails: React.FC<PizzaHalfDetailsProps> = ({half}) => {
     const [titleCrust, setTitleCrust] = useState<string>()
     const [crusts, setCrusts] = useState<CrustType[]>([])
     const [modifiers, setModifiers] = useState<CartProductModifier[]>([])
+    const totalPrice = half.price + modifiers.reduce((acc, modifier) => acc + modifier.price, 0)
 
     // Смена теста
     const onChangeCrustHandler = (id: string) => {
@@ -185,7 +186,7 @@ const PizzaHalfDetails: React.FC<PizzaHalfDetailsProps> = ({half}) => {
             </div>
             <div className={styles.actions}>
                 <div className={styles.price}>
-                    {formatPrice(half.price)} {t("sum")}
+                    {formatPrice(totalPrice)} {t("sum")}
                 </div>
                 <Button type="secondary" onClick={onClickHandler}
                         disabled={!(selected.left && selected.right)}>{t("addToCart")}</Button>

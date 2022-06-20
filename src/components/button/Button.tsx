@@ -21,6 +21,7 @@ const Button: React.FC<ButtonProps> = (
         htmlType
     }
 ) => {
+    console.log(type, children)
     return (
         <button
             type={htmlType}

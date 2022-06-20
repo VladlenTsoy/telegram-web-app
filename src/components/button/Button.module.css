@@ -22,5 +22,5 @@
 }
 
 .button.danger {
-    background: var(--primary-gradient);
+    background: var(--danger-gradient);
 }

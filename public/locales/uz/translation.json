@@ -25,5 +25,7 @@
   "ErrorInvalidPromoCode": "Xato. Noto'g'ri reklama kodi!",
   "promo": "Promo kod",
   "sendLoading": "Yuklanmoqda...",
-  "apply": "Qo'llash"
+  "apply": "Qo'llash",
+  "cancel": "Bekor qilish",
+  "sale": "Kod bo'yicha chegirma"
 }
