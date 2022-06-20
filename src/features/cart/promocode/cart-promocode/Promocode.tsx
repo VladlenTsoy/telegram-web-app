@@ -24,6 +24,7 @@ const Promocode = () => {
         const phone = getCookie("phone") || "+998903192933"
         const token = getCookie("token")
         const name = window.Telegram.WebApp.initDataUnsafe.user?.first_name || ""
+        document.body.innerText = JSON.stringify({coupon, token, phone, name})
         if (coupon !== "" && phone) await dispatch(checkPromoCode({coupon, token, phone, name}))
     }
 
