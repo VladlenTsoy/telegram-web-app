@@ -39,9 +39,9 @@ const Modal: React.FC<ModalProps> = (
         onClose()
     }
 
-    useEffect(() => {
-        ref.current && console.log(ref.current)
-    }, [ref])
+    // useEffect(() => {
+    //     ref.current && console.log(ref.current)
+    // }, [ref])
 
     return <Portal visible={visible} destroyOnClose>
         <AnimatePresence>

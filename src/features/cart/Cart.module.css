@@ -48,9 +48,11 @@
     position: sticky;
     bottom: 0;
     padding: 1rem .5rem;
-    box-shadow: 5px 2px 10px rgba(223, 223, 223, 0.88);
 }
 
+[data-theme="light"] .actions {
+    box-shadow: 5px 2px 10px rgba(223, 223, 223, 0.88);
+}
 
 .actions .button {
     display: flex;

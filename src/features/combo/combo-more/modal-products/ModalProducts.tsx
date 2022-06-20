@@ -65,16 +65,13 @@ const ModalProducts: React.FC<ModalProductsProps> = (
 ) => {
     const selectedGroup = combo.items.find(g => g.id === selectGroupId)
 
-    if (!(selectedGroup && selectGroupId))
-        return <></>
-
     return (
         <Modal visible={visible} onClose={onClose} title={selectedGroup?.name}>
-            <ModalContent
+            {!!(selectedGroup && selectGroupId) && <ModalContent
                 selectedGroup={selectedGroup}
                 selectGroupId={selectGroupId}
                 addComboProduct={addComboProduct}
-            />
+            />}
         </Modal>
     )
 }

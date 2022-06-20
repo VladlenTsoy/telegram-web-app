@@ -13,15 +13,27 @@
     justify-content: space-between;
     border-radius: 100px;
     padding: 12px 18px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.19);
     margin: 8px 0;
+    background: #F5D6A8;
+}
+
+[data-theme="light"] .mainBlock {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.19);
 }
 
 .mainBlock .label {
     font-size: var(--font-size-lg);
     font-weight: 600;
     line-height: 19px;
+    color: black;
+}
+
+[data-theme="light"] .mainBlock .label {
     color: var(--tg-theme-text-color);
+}
+
+.mainBlock svg path{
+    /*fill: var(--tg-theme-text-color);*/
 }
 
 .wrapper .title {

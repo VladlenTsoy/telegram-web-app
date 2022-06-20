@@ -22,8 +22,8 @@
 }
 
 .actions {
-    display: grid;
-    grid-template-columns: 120px 1fr;
+    display: flex;
+    gap: 1rem;
     align-items: center;
     padding: .5rem;
     position: sticky;
@@ -32,6 +32,9 @@
     bottom: 0;
     z-index: 2;
     background: var(--tg-theme-bg-color);
+}
+
+[data-theme="light"] .actions {
     box-shadow: 0 -7px 10px rgba(0, 0, 0, 0.06);
 }
 
