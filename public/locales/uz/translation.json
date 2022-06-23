@@ -29,5 +29,14 @@
   "cancel": "Bekor qilish",
   "sale": "Kod bo'yicha chegirma",
   "add": "Qo‘shish",
-  "orderFullPrice": "Umumiy narx"
+  "orderFullPrice": "Umumiy narx",
+  "free": "Tekin",
+  "leftHalf": "Chap yarmi",
+  "rightHalf": "O'ng yarmi",
+  "checkout": "Buyurtma qilish",
+  "new": "Yangi",
+  "count": "dona",
+  "deliver": "Yetkazib berish",
+  "collect": "Setni yeg'ish",
+  "constructorDesc": "O’z pitsangizni sevimli ingredientlardan yarating"
 }

@@ -36,7 +36,7 @@ const ComboList = () => {
                     <div className={styles.image}>
                         {combo.image && <img src={combo.image} alt={combo.name} />}
                     </div>
-                    <button className={styles.btn}>Собрать</button>
+                    <button className={styles.btn}>{t("collect")}</button>
                 </div>
             )}
         </div>

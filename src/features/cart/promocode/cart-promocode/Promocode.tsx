@@ -65,7 +65,7 @@ const Promocode = () => {
 
     return (
         <div className={styles.promocode}>
-            <label htmlFor="">Промокод</label>
+            <label htmlFor="">{t("promo")}</label>
             <form
                 className={styles.container}
                 onSubmit={

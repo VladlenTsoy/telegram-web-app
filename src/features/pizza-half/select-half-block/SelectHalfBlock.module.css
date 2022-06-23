@@ -18,6 +18,7 @@
 }
 
 [data-theme="light"] .mainBlock {
+    background: var(--tg-theme-bg-color);
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.19);
 }
 

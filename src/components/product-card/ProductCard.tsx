@@ -14,7 +14,7 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({product, scale}) => {
-    const {lang} = useLanguage()
+    const {lang, t} = useLanguage()
     const dispatch = useDispatch()
     const cartProduct = useCartGetByUID(product.id)
 
@@ -56,7 +56,7 @@ const ProductCard: React.FC<ProductCardProps> = ({product, scale}) => {
                 <div className={styles.title}>{product.translations.title[lang]}</div>
                 <div className={styles.priceAndButton}>
                     <div className={styles.price}>
-                        <span>{formatPrice(product.price)}</span>сум
+                        <span>{formatPrice(product.price)}</span>{t("sum")}
                     </div>
                     <div className={styles.actions}>
                         <button
@@ -70,7 +70,7 @@ const ProductCard: React.FC<ProductCardProps> = ({product, scale}) => {
                             onClick={onClickAddHandler}
                             className={cn(styles.action, styles.add, {[styles.block]: !cartProduct})}
                         >
-                            {!!cartProduct ? <span><BsPlus /></span> : <span>Добавить</span>}
+                            {!!cartProduct ? <span><BsPlus /></span> : <span>{t("add")}</span>}
                         </button>
                     </div>
                 </div>

@@ -136,6 +136,16 @@ export declare namespace TelegramWebApps {
          * A hash of all passed parameters, which the bot server can use to check their validity.
          */
         hash?: string;
+        /**
+         *
+         */
+        chat?: {
+            id: number
+            type: "group" | "supergroup" | "channel",
+            title: string
+            username: string
+            photo_url: string
+        }
     }
 
     interface WebAppUser {

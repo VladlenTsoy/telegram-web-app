@@ -3,6 +3,7 @@ import styles from "./ModificatorBlock.module.css"
 import {formatPrice} from "utils/formatPrice"
 import {CartProductModifier} from "../../../types/Cart"
 import cn from "classnames"
+import {useLanguage} from "../../../utils/i18n.config"
 
 interface ModificatorBlockProps {
     id: string
@@ -23,14 +24,15 @@ const ModificatorBlock: React.FC<ModificatorBlockProps> = (
         onAddToppingHandler
     }
 ) => {
-    const isActive = modifiers.find(modify => modify.productId == id)
+    const {t} = useLanguage()
+    const isActive = modifiers.find(modify => modify.productId === id)
 
     return (
         <div className={styles.modify} onClick={() => onAddToppingHandler(id)}>
             <img src={image} alt="" width={50} height={50} />
             <div className={styles.title}>{title}</div>
             <div className={styles.bottomBlock}>
-                <p>{formatPrice(price)} сум</p>
+                <p>{formatPrice(price)} {t("sum")}</p>
                 <button className={cn(styles.button, {[styles.active]: isActive})}>
                     {!isActive ?
                         <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">

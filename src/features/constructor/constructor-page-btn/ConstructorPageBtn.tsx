@@ -18,7 +18,7 @@ interface ConstructorPageBtnProps {
 
 const ConstructorPageBtn: React.FC<ConstructorPageBtnProps> = ({modifiers, selectedConstructor}) => {
     const dispatch = useDispatch()
-    const {lang} = useLanguage()
+    const {lang, t} = useLanguage()
     const countTopping = modifiers.filter(mod => mod.type === "topping").length
     const isDisabled = countTopping < 1 || countTopping > 10
     const totalPrice = selectedConstructor.price +
@@ -57,9 +57,9 @@ const ConstructorPageBtn: React.FC<ConstructorPageBtnProps> = ({modifiers, selec
     return (
         <div className={styles.actions}>
             <div className={styles.price}>
-                {formatPrice(totalPrice)} сум
+                {formatPrice(totalPrice)} {t("sum")}
             </div>
-            <Button type="secondary" onClick={onClickHandler} disabled={isDisabled}>Добавить</Button>
+            <Button type="secondary" onClick={onClickHandler} disabled={isDisabled}>{t("add")}</Button>
         </div>
     )
 }

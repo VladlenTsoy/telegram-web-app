@@ -15,7 +15,7 @@ interface HeaderMenuProps {
 }
 
 const HeaderMenu: React.FC<HeaderMenuProps> = ({categories, selectCategoryId, onClickHandler}) => {
-    const {lang} = useLanguage()
+    const {lang, t} = useLanguage()
     const dispatch = useDispatch()
     const cartCountItems = useCartQtyItems()
     const cartTotalPrice = useCartTotalPrice()
@@ -49,8 +49,8 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({categories, selectCategoryId, on
                 >
                     <span className={styles.icon}>🎉</span>
                     <div>
-                        <div className={styles.title}>Новые</div>
-                        <div className={styles.count}>Акции</div>
+                        <div className={styles.title}>{t("new")}</div>
+                        <div className={styles.count}>{t("promotions")}</div>
                     </div>
                 </div>
                 <div
@@ -60,8 +60,8 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({categories, selectCategoryId, on
                     onClick={toCartHandler}
                 >
                     <div>
-                        <div className={styles.title}>Корзина</div>
-                        <div className={styles.count}>{cartCountItems} шт.</div>
+                        <div className={styles.title}>{t("cart")}</div>
+                        <div className={styles.count}>{cartCountItems} {t("count")}.</div>
                     </div>
                     <div className={styles.icon}>🛒</div>
                 </div>

@@ -167,14 +167,14 @@ const PizzaHalfDetails: React.FC<PizzaHalfDetailsProps> = ({half}) => {
             />}
             <div className={styles.selectHalfs}>
                 <SelectHalfBlock
-                    title={"Левая половинка"}
+                    title={t("leftHalf")}
                     products={halfs}
                     selectedProduct={selected.left}
                     selectProduct={selectProduct}
                     isLeft
                 />
                 <SelectHalfBlock
-                    title={"Правая половинка"}
+                    title={t("rightHalf")}
                     products={halfs}
                     selectedProduct={selected.right}
                     selectProduct={selectProduct}

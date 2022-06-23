@@ -16,6 +16,7 @@
     "i18next-http-backend": "^1.4.1",
     "js-cookie": "^3.0.1",
     "md5": "^2.3.0",
+    "mixpanel-browser": "^2.45.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-i18next": "^11.16.9",
@@ -52,6 +53,7 @@
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.2",
-    "@types/md5": "^2.3.2"
+    "@types/md5": "^2.3.2",
+    "@types/mixpanel-browser": "^2.38.0"
   }
 }

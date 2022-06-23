@@ -8,6 +8,7 @@ import {useApp} from "./features/app/appSlice"
 import {useGetMenu, useGetMenuLoading} from "./features/menu/menuSlice"
 import Constructor from "./features/constructor/constructor"
 import PizzaHalf from "./features/pizza-half/PizzaHalf"
+import mixpanel from "mixpanel-browser"
 
 const MenuList = React.lazy(() => import("./features/menu/MenuList"))
 const Cart = React.lazy(() => import("./features/cart/Cart"))
@@ -24,6 +25,12 @@ function App() {
     useEffect(() => {
         // Запуск телеграм приложения
         window.Telegram.WebApp.ready()
+        // Загрузка mixpanel
+        mixpanel.init("951f0eb4551cdf581bbf1a2f5af8237d")
+        if (window.Telegram?.WebApp?.initDataUnsafe?.chat?.id)
+            mixpanel.track("tg_web_app_open", {distinct_id: window.Telegram.WebApp.initDataUnsafe.chat.id})
+        else
+            mixpanel.track("tg_web_app_open")
         // Тема для приложения
         document.body.dataset.theme = window?.Telegram?.WebApp?.colorScheme || "light"
         // document.body.dataset.theme = "dark"

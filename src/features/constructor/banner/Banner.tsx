@@ -3,8 +3,10 @@ import styles from "./Banner.module.css"
 import LogoImage from "assets/images/constructor/logo-white.png"
 import PizzaConstructorImage from "assets/images/constructor/pizza-constructor.svg"
 import PizzaBGImage from "assets/images/constructor/pizza-bg.svg"
+import {useTranslation} from "react-i18next"
 
 const Banner = () => {
+    const {t} = useTranslation()
     return (
         <div className={styles.banner}>
             <div className={styles.textImgBlock}>
@@ -16,7 +18,7 @@ const Banner = () => {
                     alt=""
                 />
                 <p>
-                    Собери свою пиццу <br /> с любимых ингредиентов
+                    {t("constructorDesc")}
                 </p>
             </div>
             <div className={styles.pizzaImg}>
