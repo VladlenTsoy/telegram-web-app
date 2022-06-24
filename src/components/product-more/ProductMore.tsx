@@ -27,12 +27,15 @@ const ProductMore: React.FC<ProductMoreProps> = ({group, onClose}) => {
 
     useEffect(() => {
         const _sizes: ProductSize[] = JSON.parse(JSON.stringify(group.products)).sort((a: any, b: any) => a.price - b.price)
-        const __sizes = _sizes.map(i => ({
-            id: i.id,
-            // @ts-ignore
-            title: t(i.translations.title[lang].trim().split(" ").pop().toLocaleLowerCase()),
-            price: i.price
-        }))
+        const __sizes = _sizes.map(i => {
+            const title = i.translations.title[lang] || i.name
+            return {
+                id: i.id,
+                // @ts-ignore
+                title: t(title?.trim()?.split(" ").pop().toLocaleLowerCase()),
+                price: i.price
+            }
+        })
         setProductSize(_sizes[0])
         setSizes(__sizes)
     }, [group, lang, t])
