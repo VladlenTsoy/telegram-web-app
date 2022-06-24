@@ -51,7 +51,7 @@ const ConstructorDetails: React.FC<ConstructorDetailsProps> = ({constructorGroup
             setCrusts(
                 _products.map(product => ({
                     id: product.id,
-                    title: product.translations.title[lang],
+                    title: product.translations.title[lang] || product.name,
                     groupId: selectedConstructor.parentGroup,
                     amount: 1,
                     price: product.price,
@@ -91,7 +91,7 @@ const ConstructorDetails: React.FC<ConstructorDetailsProps> = ({constructorGroup
             setSizes(
                 reverse.map(product => ({
                     id: product.id,
-                    title: product.translations.title[lang].replace(lang === "ru" ? " конструктор" : " Konstruktor", "").replace(" konstruktor", "")
+                    title: (product.translations.title[lang] || product.name).replace(lang === "ru" ? " конструктор" : " Konstruktor", "").replace(" konstruktor", "")
                 }))
             )
             const crust = reverse[0].crusts.products[0]

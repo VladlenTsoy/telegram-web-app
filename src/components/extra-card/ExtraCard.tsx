@@ -24,7 +24,7 @@ const ExtraCard: React.FC<ConstructorCardProps> = ({item, type, link}) => {
         <div className={cn(styles.card, styles[type])} onClick={clickHandler}>
             <div className={styles.icon}>{type === "constructor" ? "👷" : "🌓"}</div>
             <div className={styles.title}>
-                {item.translations.title[lang]}
+                {item.translations.title[lang] || item.name}
             </div>
         </div>
     )
